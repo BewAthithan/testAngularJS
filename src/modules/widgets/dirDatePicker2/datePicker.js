@@ -145,6 +145,6 @@ app.directive('datePicker', function (ngAuthSettings, moment) {
                 }
             }, true);
         },
-        templateUrl: "modules/ModuleOms/widgets/dirDatePicker2/datepicker.html",
+        templateUrl: "modules/widgets/dirDatePicker2/datepicker.html",
     };
 });
