@@ -1,0 +1,134 @@
+<div id="page-content-wrapper" ng-show="onShow">
+    <div>
+        <h3>ProductConvertion Form</h3>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                Product :
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="input-group" style="padding:0!important;">
+                    <input type="text" class="form-control" ng-model="filterModel.productName" value="filterModel.productIndex">
+                    <span class="input-group-btn">
+                        <button ng-click='popupProduct.onClick()' class="btn btn-primary" style="padding: 8px 12px;"
+                            type="button">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                Convertion ID :
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="filterModel.productConversionId" type="text" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                Convertion Name :
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="filterModel.productConversionName" type="text" class="form-control" placeholder="Input Text"/>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                Convertion Ratio:
+            </div>
+
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="filterModel.productConversionRatio" maxlength ="10" chars="only-numbers" type="text" class="form-control" placeholder="Input Number"/>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                Convertion Weight:
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="filterModel.productConversionWeight" maxlength ="10" chars="only-numbers" type="text" class="form-control" placeholder="Input Number"/>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;" placeholder="Input Number">
+                Convertion Width:
+            </div>
+
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="filterModel.productConversionWidth" maxlength ="10" chars="only-numbers" type="text" class="form-control" placeholder="Input Number"/>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                Convertion Length:
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="filterModel.productConversionLength" maxlength ="10" chars="only-numbers" type="text" class="form-control" placeholder="Input Number"/>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                Convertion Height:
+            </div>
+
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="filterModel.productConversionHeight" maxlength ="10" chars="only-numbers" type="text" class="form-control" placeholder="Input Number"/>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                Convertion Volume:
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="filterModel.productConversionVolume" maxlength ="10" chars="only-numbers" type="text" class="form-control" placeholder="Input Number"/>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                ConvertionVolume Ratio:
+            </div>
+
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="dropdown">
+                    <select ng-click="selectVolumn()" ng-model="actionVolumn" class="form-control">
+                        <option value="0"> -- Select your Volumn -- </option>
+                        <option value="1">CM.</option>
+                        <option value="1000000">M.</option>
+
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- .button -->
+    <div class="row  col-md-12 form-right" style="margin-right: 2px;padding: 5px 5px 5px 5px;margin-top:10px;">
+        <div ng-show="Cancel">
+            <button ng-click="back()" class="ks-btn red pull-right">Cancel</button>
+        </div>
+        <div ng-show="update">
+            <button ng-click="edit()" class="ks-btn pull-right" style="margin-right: 5px">
+                Update</button>
+        </div>
+        <div ng-show="create">
+            <button ng-click="add()" class="ks-btn primary pull-right" style="margin-right: 5px">
+                Create</button>
+        </div>
+    </div>
+    <!-- /.button -->
+</div>
+
+<product-popup on-show='popupProduct.onShow' config='popupProduct.config' invokes='popupProduct.invokes' delegates='popupProduct.delegates'>
+</product-popup>

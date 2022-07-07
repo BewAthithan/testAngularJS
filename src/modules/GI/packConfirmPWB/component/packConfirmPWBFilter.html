@@ -1,0 +1,175 @@
+<div class="row">
+    <div class="div-shadow">
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-8 col-md-3 col-xs-12">
+                        <span>Owner</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <div class="input-group" style="padding:0!important;">
+                            <input type="text" class="form-control" ng-model="filterModel.ownerName" value="filterModel.ownerIndex">
+                            <span class="input-group-btn">
+                                <button ng-click='popupOwner.onClick()' class="btn btn-primary" type="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-8 col-md-3 col-xs-12">
+                        <span>SO NO</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <input type="text" class="form-control" ng-model="filterModel.planGoodsIssueNo" />
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-8 col-md-3 col-xs-12">
+                        <span>POS Status</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <div class="input-group" style="padding:0!important;">
+                            <input type="text" class="form-control" ng-model="filterModel.processStatusName" value="filterModel.processStatusId">
+                            <span class="input-group-btn">
+                                <button ng-click='popupStatus.onClick()' class="btn btn-primary" type="button" type="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-8 col-md-3 col-xs-12">
+                        <span>Due Date From</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <dir-date-picker ng-model="filterModel.planGoodsIssueDueDate"></dir-date-picker>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-8 col-md-3 col-xs-12">
+                        <span>Due Date To</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <dir-date-picker ng-model="filterModel.planGoodsIssueDueDateTo"></dir-date-picker>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-8 col-md-3 col-xs-12">
+                        <span>Sale Order Type</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <div class="input-group" style="padding:0!important;">
+                            <input type="text" class="form-control" ng-model="filterModel.documentTypeName" value="filterModel.documentTypeIndex">
+                            <span class="input-group-btn">
+                                <button ng-click='popupDocumentType.onClick()' class="btn btn-primary" type="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-8 col-md-3 col-xs-12">
+                        <span>Route</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <div class="input-group" style="padding:0!important;">
+                            <input type="text" class="form-control" ng-model="filterModel.routeName" value="filterModel.routeIndex">
+                            <span class="input-group-btn">
+                                <button ng-click='popupRoute.onClick()' class="btn btn-primary" type="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-8 col-md-3 col-xs-12">
+                        <span>Round</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <div class="input-group" style="padding:0!important;">
+                            <input type="text" class="form-control" ng-model="filterModel.roundName" value="filterModel.roundIndex">
+                            <span class="input-group-btn">
+                                <button ng-click='popupRound.onClick()' class="btn btn-primary" type="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-right padding-m">
+            <button class="btn btn-primary hidden-xs" ng-click="filterSearch()">
+                <i class="fa fa-search" aria-hidden="true"></i> Search</button>
+            <button class="btn btn-primary btn-block btn-md visible-xs mt-lg" ng-click="filterSearch()">
+                <i class="fa fa-search" aria-hidden="true"></i> Search</button>
+            <button class="btn btn-success hidden-xs" ng-click="clearSearch()">Clear</button>
+            <button class="btn btn-success btn-block btn-md visible-xs mt-lg" ng-click="clearSearch()">Clear</button>
+        </div>
+        <div class="form-group" style="margin-bottom:10px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+
+                </div>
+                <!-- <div class="col-lg-4 col-md-4 col-xs-12">
+
+                </div> -->
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <!-- <div class="col-lg-2 col-md-2 col-xs-12"></div> -->
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <span>Sort By</span>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-xs-6">
+                        <select ng-model="filterModel.columnName" class="form-control">
+                            <option value="">Select One</option>
+                            <option value="PlanGoodsIssue_No">SO No</option>
+                            <option value="PlanGoodsIssue_Due_Date">DueDate</option>
+                            <option value="Owner_Name">Owner</option>
+                            <option value="SoldTo_Name">SoldTo</option>
+                            <option value="ShipTo_Name">ShipTo</option>
+                            <option value="Route_Name">Route</option>
+                            <option value="Round_Name">Round</option>
+                            <option value="ProcessStatus_Name">POS </option>
+                            <option value="QtySo">Qty SO</option>
+                            <option value="QtyPOS">Qty POS</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-6">
+                        <select ng-model="filterModel.orderBy" class="form-control">
+                            <option value="">Order By</option>
+                            <option value="ASC">ASC</option>
+                            <option value="DESC">DESC</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<owner-popup on-show='popupOwner.onShow' config='popupOwner.config' invokes='popupOwner.invokes' delegates='popupOwner.delegates'>
+</owner-popup>
+<round-popup on-show='popupRound.onShow' config='popupRound.config' invokes='popupRound.invokes' delegates='popupRound.delegates'>
+</round-popup>
+<route-popup on-show='popupRoute.onShow' config='popupRoute.config' invokes='popupRoute.invokes' delegates='popupRoute.delegates'>
+</route-popup>
+<status-popup on-show='popupStatus.onShow' config='popupStatus.config' invokes='popupStatus.invokes' delegates='popupStatus.delegates'>
+</status-popup>
+<document-type-popup-plan-gi on-show='popupDocumentType.onShow' config='popupDocumentType.config' invokes='popupDocumentType.invokes'
+    delegates='popupDocumentType.delegates'>

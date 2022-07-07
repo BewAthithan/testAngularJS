@@ -1,0 +1,15 @@
+<header class="page-header">
+    <h2>Pick Short</h2>
+</header>
+<div>
+    <div>
+        <short-picking-filter filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch"
+            trigger-create="create" ng-show="isFilter">
+        </short-picking-filter>
+
+        <div style="margin-top:15px;">
+            <short-picking-table filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch"
+                trigger-create="create" is-filter="isFilter"></short-picking-table>
+        </div>
+    </div>
+</div>

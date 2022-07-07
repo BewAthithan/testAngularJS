@@ -1,0 +1,18 @@
+<header class="page-header">
+    <h2>Document Type</h2>
+</header>
+<div class="container-fluid" style="padding: 20px; " id="master-document-type">       
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12" style="padding:0px;">
+            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                <master-document-type-filter filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create" ng-show="isFilter"> 
+                </master-document-type-filter>
+            </div>      
+        </div>  
+    </div>   
+    <br>   
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+            <master-document-type-table-list filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create" is-filter="isFilter">
+            </master-document-type-table-list>
+        </div>
+</div>

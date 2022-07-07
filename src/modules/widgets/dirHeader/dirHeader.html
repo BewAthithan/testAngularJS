@@ -1,0 +1,288 @@
+﻿<script>
+    $(document).ready(function () {
+        $('.dropdown-toggle').dropdown();
+
+        if ($('html').hasClass('sidebar-left-opened')) {
+            $('html').toggleClass('sidebar-left-opened');
+        }
+        else {
+            $('html').toggleClass('sidebar-left-opened');
+            $('html').toggleClass('sidebar-left-opened');
+        }
+    });
+
+    // $(".close").hide();
+    // $(".menu2").hide();
+    // $(".hamburger").click(function () {
+    //     $(".menu2").slideToggle("slow", function () {
+    //         $(".hamburger").hide();
+    //         $(".close").show();
+    //     });
+    // });
+
+    // $(".close").click(function () {
+    //     $(".menu2").slideToggle("slow", function () {
+    //         $(".close").hide();
+    //         $(".hamburger").show();
+    //     });
+    // });
+</script>
+
+<style>
+    body:fullscreen {
+        overflow: scroll !important;
+    }
+
+    body:-ms-fullscreen {
+        overflow: scroll !important;
+    }
+
+    body:-webkit-full-screen {
+        overflow: scroll !important;
+    }
+
+    body:-moz-full-screen {
+        overflow: scroll !important;
+    }
+</style>
+
+<!-- <style>
+    .menu2 {
+
+        font-weight: bold;
+        font-size: 0.8em;
+        width: 300px;
+        background: #131313;
+        position: relative;
+        text-align: center;
+        margin: 51px 0px;
+    }
+
+    .menu2 ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        list-style-image: none;
+    }
+
+    .menu2 li {
+        display: block;
+        padding: 15px 0 15px 0;
+        border-bottom: #1d1f20 1px solid;
+    }
+
+    .menu2 li:hover {
+        display: block;
+        background: #181818;
+        padding: 15px 0 15px 0;
+        border-bottom: #1d1f20 1px solid;
+    }
+
+    .menu2 ul li a {
+        text-decoration: none;
+        margin: 0px;
+        color: #fff;
+    }
+
+    .menu2 ul li a:hover {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .menu2 a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .menu2 a:hover {
+        text-decoration: none;
+        color: white;
+    }
+</style> -->
+
+<style>
+    .m-0 {
+        margin: 0;
+    }
+    .mg {
+        margin-right: 0.5rem;
+        margin-bottom: 0;
+        margin-top: 5px;
+    }
+    .client-warehouse-767 {
+        display: none;
+    }
+    .client-warehouse {
+        display: initial;
+    }
+    @media (max-width: 767px) {
+        .header  {
+            height: 60px;
+        }
+        .client-warehouse-767 {
+            display: inline-block;
+        }
+        .client-warehouse {
+            display: none;
+        }
+    }
+</style>
+
+
+
+<header class="header">
+    <div class="logo-container ">
+        <img src="img/omni-wms logo.png" style="width: 50px;"/>        
+        <label class="client-warehouse-767 m-0">
+            <p class="mg"><strong>Client:</strong> {{client}}</p>
+            <p class="m-0"><strong>Warehouse:</strong> {{warehouse}}</p>
+        </label>
+
+        <!-- <a style="margin-top:-10px;">
+            <img src="styles/img/Logo_Tops1.png" height="45" alt="TOPS" />
+
+        </a> -->
+
+
+        
+
+        <!-- <div class="visible-xs" style="position: absolute; margin-top: -45px; margin-left: 50%;"><button id="goFS"><i
+                    class="fa fa-arrows-alt" aria-hidden="true"></i> Full Screen</button></div> -->
+
+
+        <!-- <div class="toggle-sidebar-left visible-xs" ng-click="toggleHtml()" data-toggle-class="sidebar-left-opened"
+            data-target="html" tabindex="false">
+
+            <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+        </div> -->
+
+
+
+
+        
+
+
+        <!-- <div class="navbar-header pull-right">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">YouTube</a>
+            </div>
+            <ul class="nav navbar-nav pull-right">
+                <li>
+                    <p class="navbar-btn hamburger">
+                        <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+                    </p>
+                </li>
+                <li>
+                    <p class="navbar-btn close">
+                        <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></a>
+                    </p>
+                </li>
+            </ul>
+
+        <!--/.navbar -->
+
+        <!-- start: search & user box -->
+        <div class="header-right hidden-xs">
+            
+            <!-- จะเอากลับมาใช้ให้ไปที่ D:\Central\CTOP-NewTheme\assets\stylesheets\theme.css 1423 -->
+            <span class="separator"></span>
+
+            <!-- <ul class="notifications">
+                <li>
+                    <a href="#" class="dropdown-toggle notification-icon" data-toggle="dropdown">
+                        <i class="fa fa-bell"></i>
+                        <span class="badge">3</span>
+                    </a>
+
+                    <div class="dropdown-menu notification-menu">
+                        <div class="notification-title">
+                            <span class="pull-right label label-default">3</span>
+                            Alerts
+                        </div>
+
+                        <div class="content">
+                            <ul>
+                                <li>
+                                    <a href="#" class="clearfix">
+                                        <div class="image">
+                                            <i class="fa fa-thumbs-down bg-danger"></i>
+                                        </div>
+                                        <span class="title">Server is Down!</span>
+                                        <span class="message">Just now</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="clearfix">
+                                        <div class="image">
+                                            <i class="fa fa-lock bg-warning"></i>
+                                        </div>
+                                        <span class="title">User Locked</span>
+                                        <span class="message">15 minutes ago</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="clearfix">
+                                        <div class="image">
+                                            <i class="fa fa-signal bg-success"></i>
+                                        </div>
+                                        <span class="title">Connection Restaured</span>
+                                        <span class="message">10/10/2014</span>
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <hr />
+
+                            <div class="text-right">
+                                <a href="#" class="view-more">View All</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul> -->
+
+            <span class="separator"></span>
+
+            <label class="client-warehouse m-0" style="margin-right: 10px;">
+                <label class="mg"><strong>Client:</strong> {{client}}</label>
+                <label class="mg"><strong>Warehouse:</strong> {{warehouse}}</label>
+            </label>
+            <div id="userbox" class="userbox">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    aria-expanded="false">
+                    <figure class="profile-picture">
+                        <img src="assets/images/!logged-user.jpg" alt="Joseph Doe" class="img-circle"
+                            data-lock-picture="assets/images/!logged-user.jpg" />
+                    </figure>
+                    <div class="profile-info">
+                        <span class="name">{{data}}</span>
+                        <span class="role">{{userGroupName}}</span>
+                    </div>
+                    <i class="fa custom-caret"></i>
+                </a>
+                <div class="dropdown-menu">
+                    <ul class="list-unstyled">
+                        <li class="divider"></li>
+                        <!-- <li>
+                            <a role="menuitem" tabindex="-1" href="pages-user-profile.html"><i class="fa fa-user"></i>
+                                My Profile</a>
+                        </li>
+                        <li>
+                            <a role="menuitem" tabindex="-1" href="#" data-lock-screen="true"><i class="fa fa-lock"></i>
+                                Lock Screen</a>
+                        </li> -->
+                        <li>
+                            <a role="menuitem" tabindex="-1" href="#" ng-click="logOut()"><i
+                                    class="fa fa-power-off"></i>
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+</header>

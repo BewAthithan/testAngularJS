@@ -1,0 +1,38 @@
+<header class="page-header">
+    <h2>Putaway By SKU</h2>
+</header>
+
+<div class="row panel-body">
+    <div class="col-lg-6 col-md-6 col-xs-12">
+        <div class="col-lg-3 col-md-3 col-xs-12">
+            <span>LPN No:</span>
+        </div>
+        <div class="col-lg-9 col-md-9 col-xs-12">
+            <input type="text" ng-model="putAwaySku.tagNo" class="form-control"  ks-enter="ScanSku(putAwaySku)" blur-on-enter required/>
+        </div>
+    </div>
+</div>
+
+<div class="tabs">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a data-target="#productdetail" data-toggle="tab"> Product Detail</a>
+        </li>
+        <li>
+            <a data-target="#receivedproduct" data-toggle="tab" id="Test">Received Product</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <!-- <div id="productdetail" class="tab-pane active">
+            <putaway-product-detail></putaway-product-detail>
+        </div> -->
+        <div id="productdetail" class="tab-pane active">
+            <putaway-product-detail filter-model="filterModel" trigger-search="triggerSearch" search-result-model="searchResultModel" 
+                is-item="isItem"></putaway-product-detail>
+        </div>
+        <div id="receivedproduct" class="tab-pane">
+            <putaway-receive-product filter-model="filterModel" trigger-search="triggerSearch" search-result-model="searchResultModel" 
+            is-item="isItem"></putaway-receive-product>
+        </div>
+    </div>
+</div>

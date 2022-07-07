@@ -1,0 +1,170 @@
+<div id="page-content-wrapper" ng-show="onShow">
+    <div>
+        <h3>SoldTo Form</h3>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                SoldToID :
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="filterModel.soldToId" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                SoldToType :
+            </div>
+
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="input-group" style="padding:0!important;">
+                    <input type="text" class="form-control" ng-model="filterModel.soldToTypeName" value="filterModel.soldToTypeIndex">
+                    <span class="input-group-btn">
+                        <button ng-click='popupSoldToType.onClick()' class="btn btn-primary" style="padding: 8px 12px;"
+                            type="button">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                SoldToName :
+            </div>
+
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="filterModel.soldToName" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                SoldToAddress :
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="filterModel.soldToAddress" type="text" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                Country :
+            </div>
+
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="input-group" style="padding:0!important;">
+                    <input type="text" class="form-control" ng-model="filterModel.countryName" value="filterModel.countryIndex">
+                    <span class="input-group-btn">
+                        <button ng-click='popupCountry.onClick()' class="btn btn-primary" style="padding: 8px 12px;"
+                            type="button">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                Province :
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="input-group" style="padding:0!important;">
+                    <input type="text" class="form-control" ng-model="filterModel.provinceName" value="filterModel.provinceIndex">
+                    <span class="input-group-btn">
+                        <button ng-click='popupProvince.onClick()' class="btn btn-primary" style="padding: 8px 12px;"
+                            type="button">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                District :
+            </div>
+
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="input-group" style="padding:0!important;">
+                    <input type="text" class="form-control" ng-model="filterModel.districtName" value="filterModel.districtIndex">
+                    <span class="input-group-btn">
+                        <button ng-click='popupDistrict.onClick()' class="btn btn-primary" style="padding: 8px 12px;"
+                            type="button">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                SubDistrict :
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="input-group" style="padding:0!important;">
+                    <input type="text" class="form-control" ng-model="filterModel.subDistrictName" value="filterModel.subDistrictIndex">
+                    <span class="input-group-btn">
+                        <button ng-click='popupSubDistrict.onClick()' class="btn btn-primary" style="padding: 8px 12px;"
+                            type="button">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>       
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                PostCode :
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="input-group" style="padding:0!important;">
+                    <input type="text" class="form-control" ng-model="filterModel.postCodeIndex" value="filterModel.postCodeIndex">
+                    <span class="input-group-btn">
+                        <button ng-click='popupPostCode.onClick()' class="btn btn-primary" style="padding: 8px 12px;"
+                            type="button">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- .button -->
+    <div ng-show="Cancel">
+        <button ng-click="back()" class="ks-btn red pull-right">Cancel</button>
+    </div>
+    <div ng-show="update">
+        <button ng-click="edit()" class="ks-btn pull-right" style="margin-right: 5px">
+            Update</button>
+    </div>
+    <div ng-show="create">
+        <button ng-click="add()" class="ks-btn primary pull-right" style="margin-right: 5px">
+            Create</button>
+    </div>
+    <!-- /.button -->
+</div>
+
+<sold-to-type-popup on-show='popupSoldToType.onShow' config='popupSoldToType.config' invokes='popupSoldToType.invokes'
+    delegates='popupSoldToType.delegates'>
+</sold-to-type-popup>
+<sub-district-popup on-show='popupSubDistrict.onShow' config='popupSubDistrict.config' invokes='popupSubDistrict.invokes'
+    delegates='popupSubDistrict.delegates'>
+</sub-district-popup>
+<district-popup on-show='popupDistrict.onShow' config='popupDistrict.config' invokes='popupDistrict.invokes' delegates='popupDistrict.delegates'>
+</district-popup>
+<province-popup on-show='popupProvince.onShow' config='popupProvince.config' invokes='popupProvince.invokes' delegates='popupProvince.delegates'>
+</province-popup>
+<country-popup on-show='popupCountry.onShow' config='popupCountry.config' invokes='popupCountry.invokes' delegates='popupCountry.delegates'>
+</country-popup>
+<postcode-popup on-show='popupPostCode.onShow' config='popupPostCode.config' invokes='popupPostCode.invokes' delegates='popupPostCode.delegates'>
+</postcode-popup>

@@ -1,0 +1,74 @@
+<div class="row" ng-show="soList">
+    <div class="div-shadow" style="margin-top:20px;margin-left:15px;margin-right:15px;margin-bottom:15px;">
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <span>Loading No</span>
+                </div>
+                <div class="col-lg-5 col-md-5 col-xs-12" style="margin-top:5px;">
+                    <input type="text" class="form-control" ng-model="filterModel.truckLoadNo" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <span>SO No.</span>
+                </div>
+                <div class="col-lg-5 col-md-5 col-xs-12" style="margin-top:5px;">
+                    <input type="text" class="form-control" ng-model="filterModel.soNo" disabled>
+                </div>
+            </div>
+        </div>
+
+
+        <div style="margin-top:15px;margin-left:15px;margin-right:15px;">
+            <div class="table-responsive kl-tbl-height table-overflow div-shadow">
+                <table class="table table-striped table-width-100 table-bordeered">
+                    <thead>
+                        <tr>
+                            <th>
+                                <!-- <input ng-change="detectCheckAll()" ng-model="checkAll" type="checkbox" id="all" class="ig-control__cbx"
+                                    checked /> -->
+                                <!-- <label for="all"></label> -->
+                            </th>
+                            <th ng-click="config.sortTable= !config.sortTable">No</th>
+                            <th ng-click="config.sortTable= !config.sortTable">Carton No</th>
+                            <th ng-click="config.sortTable= !config.sortTable">Load Date</th>
+                            <th ng-click="config.sortTable= !config.sortTable">Load Time</th>
+                            <th ng-click="config.sortTable= !config.sortTable">Load By</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in $vm.searchResultModel" ng-if="$vm.searchResultModel.length != 0">
+                            <td>
+                                <div class="ig-control">
+                                    <input ng-model="data.selected" type="checkbox" id="checkCarton_{{$index}}" class="ig-control__cbx"
+                                        checked ng-disabled="filterModel.documentStatus == -1 || filterModel.documentStatus == 2"/>
+                                    <label for="checkCarton_{{$index}}"></label>
+                                </div>
+                            </td>
+                            <td class="text-left">{{$index+1}}</td>
+                            <td>{{data.tagOutNo}}</td>
+                            <td>{{data.loadDate}}</td>
+                            <td>{{data.loadTime}}</td>
+                            <td>{{data.loadBy}}</td>
+                        </tr>
+                        <tr ng-if="$vm.searchResultModel.length == 0">
+                            <td colspan="11" class="text-center">No Data</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>        
+        <div class="form-group">
+            <div class="text-right padding-m">
+                <button class="btn btn-danger hidden-xs" ng-click="DeleteCarton($vm.searchResultModel)" ng-disabled="filterModel.documentStatus == -1 || filterModel.documentStatus == 2">Delete</button>
+                <button class="btn btn-danger btn-block btn-md visible-xs mt-lg" ng-click="DeleteCarton($vm.searchResultModel)" ng-disabled="filterModel.documentStatus == -1 || filterModel.documentStatus == 2">Delete</button>
+                <button ng-click="back(filterModel.soNo)" class="btn btn-primary hidden-xs">Back</button>
+                <button ng-click="back(filterModel.soNo)" class="btn btn-primary btn-block btn-md visible-xs mt-lg">Back</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,260 @@
+<style>
+    div.image {
+        width: 100px;
+        height: 100px;
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIA...);
+    }
+</style>
+<div ng-show="$vm.isFilterTable">
+    <div class="form-group" style="margin-top:15px;">
+        <div class="col-lg-12 col-md-12 col-xs-12">
+            <div class="col-lg-5 col-md-5 col-xs-12">
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <span>SO No</span>
+                </div>
+                <div class="col-lg-8 col-md-8 col-xs-12">
+                    <input type="text" class="form-control" ng-model="Model.planGoodsIssueNo" disabled />
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a data-target="#tab1" data-toggle="tab" style="background-color:{{colortab1}}" ng-click="selectedTab(1)"
+                ng-init="colortab1 = '#FDFEFE'">POS Promotion</a>
+        </li>
+        <li class="active">
+            <a data-target="#tab2" data-toggle="tab" style="background-color:{{colortab2}}"
+                ng-click="selectedTab(2)">POS Detail</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div id="tab1" class="tab-pane active" ng-if="selected == 1">
+            <div class="table-responsive kl-tbl-height table-overflow">
+                <table class="table table-striped table-width-100 table-bordeered">
+                    <thead>
+                        <tr>
+                            <th>Coupon</th>
+                            <th>BarCode</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in promotionModel" ng-if="promotionModel.length != 0" style="height: 150px">
+                            <td>{{data.promotionsType}}</td>
+                            <td>
+                                <div>
+                                    <!-- <img src="https://internationalbarcodes.com/wp-content/uploads/sites/95/2013/11/SSCC-Pallet-Barcode.jpg" width="150" height="30"> -->
+                                    <img alt="Embedded Image" ng-src="data:image/png;base64,{{data.promotionsBarcode}}"
+                                        width="220" height="70" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr ng-if="promotionModel.length == 0">
+                            <td colspan="11" class="text-center">No Data</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="form-group" style="margin-top:15px;">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-5 col-md-5 col-xs-12">
+                        <div class="col-lg-4 col-md-4 col-xs-12">
+                            <span>DeliveryBarcode</span>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-xs-12">
+                            <img alt="Embedded Image" ng-src="data:image/png;base64,{{payModel.deliveryBarcode}}"
+                                width="200" height="50" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" style="margin-top:15px;">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-5 col-md-5 col-xs-12">
+                        <div class="col-lg-4 col-md-4 col-xs-12">
+                            <span>Payment</span>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-xs-12">
+                            <input type="text" class="form-control" ng-model="payModel.paymentType" disabled />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" style="margin-top:15px;">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-5 col-md-5 col-xs-12">
+                        <div class="col-lg-4 col-md-4 col-xs-12">
+                            <span>Payment issuer</span>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-xs-12">
+                            <input type="text" class="form-control" ng-model="payModel.paymentCode" disabled />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" style="margin-top:15px;">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-5 col-md-5 col-xs-12">
+                        <div class="col-lg-4 col-md-4 col-xs-12">
+                            <span>Print Tax Invoice</span>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-xs-12">
+                            <input type="text" class="form-control" ng-model="payModel.printTaxInvoice" disabled />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" style="margin-top:15px;">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-5 col-md-5 col-xs-12">
+                        <div class="col-lg-4 col-md-4 col-xs-12">
+                            <span>Grand Total</span>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-xs-12">
+                            <input type="text" class="form-control" ng-model="payModel.calGrandTotal" disabled />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12 visible-xs" style="margin-bottom:15px;">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <button class="btn btn-dark btn-block btn-md visible-xs mt-lg"
+                            ng-click="Confirm(filterModel)">Confirm</button>
+                        <button class="btn btn-primary btn-block btn-md visible-xs mt-lg"
+                            ng-click="back()">Back</button>
+                    </div>
+                </div>
+            </div>
+            <div class="text-right padding-m  " style="margin-bottom:15px;">
+                <button class="btn btn-dark hidden-xs" ng-click="Confirm(filterModel)">Confirm</button>
+                <button class="btn btn-primary hidden-xs" ng-click="back()">Back</button>
+            </div>
+        </div>
+        <div id="tab2" class="tab-pane active" ng-if="selected == 2">
+
+
+      
+
+            <div class="row" style="margin-top:30px;">
+
+                <div class="row" style="margin-top: 20px; margin-bottom: 50px; margin-left: 20px;" ng-repeat="data in filterModel" >
+                    <div style="position: absolute;">
+                        <img ng-src="{{data.image}}" width="100" height="100" style="margin-top: 50px;">
+                    </div>
+                    <div style="position: absolute;" ng-if="data.qtyPOS == 0">
+
+                    </div>
+
+                    <div style="position: absolute;" ng-if="data.qtyPOS != 0">
+                        <img alt="Embedded Image" ng-src="data:image/png;base64,{{data.productIdBarcode}}" width="200"
+                            height="50" style="margin-top: 230px;" />
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-xs-3">
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-xs-3">
+                            <span>รหัสสินค้า</span>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-xs-5">
+                            <input type="text" class="form-control" ng-model="data.productId" disabled />
+                        </div>
+
+                    </div>
+
+                    <div class="row" style="margin-top:10px;">
+                        <div class="col-lg-3 col-md-3 col-xs-3">
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-xs-3">
+                            <span>ชื่อสินค้า</span>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-xs-5">
+                            <input type="text" class="form-control" ng-model="data.productName" disabled />
+                        </div>
+
+                    </div>
+
+                    <div class="row" style="margin-top:10px;">
+                        <div class="col-lg-3 col-md-3 col-xs-3">
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-xs-3">
+                            <span>คูปอง</span>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-xs-5">
+                            <input type="text" class="form-control" ng-model="data.discountsType" disabled />
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top:10px;">
+                        <div class="col-lg-3 col-md-3 col-xs-3">
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-xs-3">
+                            <span>จำนวน</span>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-xs-3">
+                            <input style="background:{{getColor(data.qtySo,data.qtyPOS,data.replaceStatus,data.catchWeight)}}" type="text" class="form-control" ng-model="data.qtyPOS" disabled />
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-xs-3" style="margin-left: -20px;">
+                            <input style="background:{{getColor(data.qtySo,data.qtyPOS,data.replaceStatus,data.catchWeight)}}" type="text" class="form-control" ng-model="data.qtySo" disabled />
+                        </div>
+
+                    </div>
+
+
+                    <div class="row" style="margin-top:10px;">
+                        <div class="col-lg-3 col-md-3 col-xs-3">
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-xs-3">
+                            <span>ราคา</span>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-xs-3">
+                            <input type="text" class="form-control" ng-model="data.unitPrice" disabled />
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-xs-3" style="margin-left: -20px;">
+                            <input type="text" class="form-control" ng-model="data.productConversionName" disabled />
+                        </div>
+
+                    </div>
+
+                    <div class="row" style="margin-top:10px;">
+                        <div class="col-lg-8 col-md-8 col-xs-8">
+                            <span></span>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-xs-3">
+                            <!-- <button class="btn btn-primary hidden-xs"
+                                    ng-click="Close(filterModel, $index, data.posItemIndex)">Close</button> -->
+                            <button class="btn btn-primary btn-block btn-md"
+                                ng-click="Close(filterModel, $index, data.posItemIndex)">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            
+
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-xs-12 visible-xs">
+                    <!-- <button class="btn btn-dark btn-block btn-md visible-xs mt-lg"
+                        ng-click="Confirm(filterModel)">Confirm</button> -->
+                    <button class="btn btn-primary btn-block btn-md visible-xs mt-lg" ng-click="back()">Back</button>
+                </div>
+            </div>
+
+            <div class="text-right padding-m col-lg-12 col-md-12 col-xs-12 hidden-x" style="margin-bottom:15px;">
+                <!-- <button class="btn btn-dark hidden-xs" ng-click="Confirm(filterModel)">Confirm</button> -->
+                <button class="btn btn-primary hidden-xs" ng-click="back()">Back</button>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+</div>
+
+<the-one-card-popup on-show='popupTheOneCard.onShow' config='popupTheOneCard.config' invokes='popupTheOneCard.invokes'
+    delegates='popupTheOneCard.delegates'>
+</the-one-card-popup>
+<!-- Table Item -->

@@ -1,0 +1,17 @@
+<header class="page-header">
+    <h2> Scan-QA</h2>
+</header>
+
+<div >
+    <scan-qa-filter filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch"
+        trigger-create="create" ng-show="isFilter">
+        <br>
+    </scan-qa-filter>
+</div>
+
+
+<div style="margin-top:15px;">
+    <scan-qa-table-list filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch"
+        trigger-create="create" is-filter="isFilter">
+    </scan-qa-table-list>
+</div>

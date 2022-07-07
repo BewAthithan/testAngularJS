@@ -1,0 +1,73 @@
+<style>
+    .kl-tbl-height {
+        overflow-y: auto;
+        height: 350px !important;
+    }
+</style>
+<div class="row   table-responsive table-overflow  div-shadow" ng-show="$vm.isFilter" style="margin-bottom:15px;">
+    <div class="table-responsive kl-tbl-height table-overflow div-shadow">
+    <table class="table table-striped table-bordeered  table-width-200">
+        <thead>
+            <tr>
+                <th class="text-center">Action</th>
+                <th>No.</th>
+                <th>SO No</th>
+                <th>DueDate</th>
+                <th>Owner</th>
+                <th>SoldTo</th>
+                <th>ShipTo</th>
+                <th>Route</th>
+                <th>Round</th>
+                <th>Sale Order Type</th>
+                <th>POS Status</th>
+                <th>Qty SO</th>
+                <th>Qty POS</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in $vm.searchResultModel">
+                <td ng-show="show.action" class="text-center">
+                    <div>
+                        <a class="btn btn-success" ng-click="editItem(data)" ng-disabled="data.documentStatus == 2">
+                            <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                </td>
+                <td class="text-left">{{$index+1}}</td>
+                <td>{{data.planGoodsIssueNo}}</td>
+                <td>{{data.planGoodsIssueDueDate|dateFormate}}</td>
+                <td>{{data.ownerName}}</td>
+                <td>{{data.soldToName}}</td>
+                <td>{{data.shipToName}}</td>
+                <td>{{data.routeName}}</td>
+                <td>{{data.roundName}}</td>
+                <td>{{data.documentTypeName}}</td>
+                <td>{{data.processStatusName}}</td>
+                <td>{{data.qtySo}}</td>
+                <td>{{data.qtyPOS}}</td>
+
+            </tr>
+        </tbody>
+    </table>
+    </div>
+</div>
+<div class="row table-responsive table-overflow " ng-show="$vm.isFilter" style="margin-bottom:15px;">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 " style="padding-top:0px" ng-show="show.pagination">
+            <select class='form-control' style='width:70px;display:inline;' ng-model='$vm.filterModel.perPage'
+                ng-options="v.value as v.value for v in pageOption" ng-init='$vm.filterModel.perPage = 30' ng-change='changeTableSize()'>
+            </select>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 " style="padding:0px" ng-show="show.pagination">
+            <ul uib-pagination total-items="$vm.filterModel.totalRow"
+                ng-change='changePage()' items-per-page="$vm.filterModel.perPage" num-pages="$vm.filterModel.num"
+                ng-model="$vm.filterModel.currentPage" max-size="$vm.filterModel.maxSize" class="pull-right"
+                boundary-link-numbers="true" rotate="false"></ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<pos-form on-show="onShow" ng-hide="$vm.isFilter"></pos-form>

@@ -1,0 +1,22 @@
+<header class="page-header">
+    <h2>Product Convertion</h2>
+</header>
+<div class="container-fluid" style="padding: 20px; " id="master-product">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12" style="padding:0px;">
+            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="margin-left:10px;">
+                <product-conversion-filter filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" 
+                trigger-create="create" ng-show="isFilter" is-item="isItem"> 
+                </product-conversion-filter>
+            </div>      
+        </div>  
+    </div>   
+    <br>
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+            <product-conversion-table-list filter-model="filterModel" search-result-model="searchResultModel" 
+            trigger-search="callSearch" trigger-create="create" is-filter="isFilter" is-item="isItem">
+            </product-conversion-table-list>
+        </div>
+</div>
+
+

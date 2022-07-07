@@ -1,0 +1,78 @@
+{
+  "name": "npm-reinstall",
+  "version": "1.2.1",
+  "description": "Just reinstall npm package.",
+  "bin": {
+    "reinstall": "./dist/bin.js",
+    "rin": "./dist/bin.js"
+  },
+  "preferGlobal": true,
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=4",
+    "npm": ">=3"
+  },
+  "scripts": {
+    "prebuild": "rimraf dist/*",
+    "build": "tsc -p .",
+    "prebuild-docker": "run-s build",
+    "build-docker": "./script/build-docker",
+    "test:local:4": "docker run -t --rm npm-reinstall:node4",
+    "test:local:6": "docker run -t --rm npm-reinstall:node6",
+    "test:local:8": "docker run -t --rm npm-reinstall:node8",
+    "test:local": "run-s test:local:*",
+    "preparetest": "ts-node ./script/prepare-test.ts",
+    "pretest": "run-p preparetest build",
+    "test": "cross-env TS_NODE_COMPILER_OPTIONS={\\\"allowJs\\\":true} mocha --compilers ts:ts-node/register ./test/*.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gluons/npm-reinstall.git"
+  },
+  "keywords": [
+    "install",
+    "reinstall",
+    "package",
+    "module"
+  ],
+  "author": "Saran Tanpituckpong <sarunta@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gluons/npm-reinstall/issues"
+  },
+  "homepage": "https://github.com/gluons/npm-reinstall",
+  "devDependencies": {
+    "@types/chai": "^4.0.4",
+    "@types/del": "^3.0.0",
+    "@types/mocha": "^2.2.43",
+    "@types/node": "^8.0.28",
+    "@types/ora": "^1.3.1",
+    "@types/update-notifier": "^1.0.2",
+    "@types/yargs": "^8.0.2",
+    "chai": "*",
+    "chalk-animation": "^1.2.0",
+    "cross-env": "^5.0.5",
+    "eslint": "^4.7.0",
+    "eslint-config-gluons": "^2.1.0",
+    "lodash.once": "^4.1.1",
+    "mocha": "*",
+    "npm-run-all": "^4.0.2",
+    "rimraf": "^2.6.2",
+    "ts-node": "^3.3.0",
+    "tslint": "^5.7.0",
+    "tslint-config-gluons": "^1.0.5",
+    "typescript": "^2.5.2"
+  },
+  "dependencies": {
+    "@danielbayerlein/caniuse-yarn": "^1.1.0",
+    "chalk": "^1.1.3",
+    "cross-spawn": "^5.1.0",
+    "del": "^2.2.2",
+    "has-yarn": "^1.0.0",
+    "ora": "^1.2.0",
+    "update-notifier": "^2.1.0",
+    "yargs": "^8.0.1"
+  }
+}

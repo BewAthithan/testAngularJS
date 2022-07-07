@@ -1,0 +1,19 @@
+<header class="page-header">
+    <h2>Task manager</h2>
+</header>
+<div >
+
+    <div >
+        <auto-task-filter filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create"
+            ng-show="isFilter">
+            <br>
+        </auto-task-filter>
+    </div>
+
+
+
+    <div style="margin-top:15px;">
+        <auto-task-table-list filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create"
+            is-filter="isFilter"></auto-task-table-list>
+    </div>
+</div>

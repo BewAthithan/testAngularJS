@@ -1,0 +1,140 @@
+<div class="row" ng-show="!$vm.isFilter">
+    <header class="page-header">
+        <h2> Cart Assign</h2>
+    </header>
+    <div class="row">
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-2 col-md-2 col-xs-3">
+                    <h5>
+                        <span>Cart No </span>
+                    </h5>
+                </div>
+                <div class="col-lg-7 col-md-7 col-xs-9">
+                    <input type="text" id="focusScanLocation" ks-enter="Submit()" ng-model="filterModel.equipment" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="text-right padding-m">
+            <button class="btn btn-success hidden-xs" ng-click="Submit()">Submit</button>
+            <button class="btn btn-success btn-block btn-md visible-xs mt-lg" ng-click="Submit()">Submit</button>
+            <button class="btn btn-primary hidden-xs" ng-click="back()">Back</button>
+            <button class="btn btn-primary btn-block btn-md visible-xs mt-lg" ng-click="back()">Back</button>
+        </div>
+    </div>
+</div>
+
+<div class="row" ng-show="$vm.isFilter">
+    <div class="div-shadow">
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <span>USER</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <input type="text" class="form-control" ng-model="filterModel.user_Name" disabled>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-2 col-md-2 col-xs-12">
+                        <span>WG</span>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <!-- <input type="text" class="form-control" ng-model="filterModel.taskGroup_Name" disabled> -->
+                        <select class='form-control' ng-model='dropdownWordGroup.model' ng-options="v.taskGroup_Name for v in dropdownWordGroup">
+                            <!-- <option value="">Please Select</option> -->
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <span>Order</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <input type="text" class="form-control" ng-model="filterModel.planGoodsIssue_No" />
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-2 col-md-2 col-xs-12">
+                        <span>Route</span>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <select class='form-control' ng-model='dropdownRoute.model' ng-options="v.route_Name for v in dropdownRoute">
+                            <option value="">Please Select</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <span>Round</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <select class='form-control' ng-model='dropdownRound.model' ng-options="v.round_Name for v in dropdownRound">
+                            <option value="">Please Select</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-2 col-md-2 col-xs-12">
+                        <span>Cart Location</span>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <!-- <select class='form-control' ng-model='dropdownequipmentItem.model' ng-options="v.equipmentItem_Name for v in dropdownequipmentItem" ng-change="changeCart(dropdownequipmentItem.model)"> -->
+                        <!-- <option value="">Please Select</option> -->
+                        <!-- </select> -->
+                        <auto-comple ng-model="filterModel.equipmentItem_Index" value="filterModel.equipmentItem_Name" id="filterModel.equipmentItem_Id"
+                            sourceurl="api" api="url" key2="filterModel.equipment_Index" key3="filterModel.equipment_Id" key4="filterModel.equipment_Name"
+                            key5="filterModel.user_Name" ks-enter="ScanCart();"></auto-comple>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <!-- <div class="text-right padding-m">
+                        <button class="btn btn-primary " ng-click="filterSearch()">
+                            <i class="fa fa-search" aria-hidden="true"></i> Search</button>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <span>Due Date</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <dir-date-picker ng-model="filterModel.planGoodsIssue_Due_Date"></dir-date-picker>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12">
+
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="text-right padding-m">
+                        <button class="btn btn-primary hidden-xs" ng-click="filterSearch()">
+                            <i class="fa fa-search" aria-hidden="true"></i> Search</button>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="text-right padding-m">
+                        <button class="btn btn-primary btn-block btn-md visible-xs mt-lg" ng-click="filterSearch()">
+                            <i class="fa fa-search" aria-hidden="true"></i> Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

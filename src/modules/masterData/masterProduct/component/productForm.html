@@ -1,0 +1,336 @@
+<div id="page-content-wrapper" ng-show="onShow">
+    <div>
+        <h3>Product Form</h3>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                ProductID:
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="filterModel.productId" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                ProductName:
+            </div>
+
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="filterModel.productName" type="text" class="form-control" placeholder="Input Text" />
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                SecondName:
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="filterModel.productSecondName" type="text" class="form-control"
+                    placeholder="Input Text" />
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                ThirdName:
+            </div>
+
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="filterModel.productThirdName" type="text" class="form-control"
+                    placeholder="Input Text" />
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                ProductCategory:
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="input-group" style="padding:0!important;">
+                    <input type="text" class="form-control" ng-model="filterModel.productCategoryName"
+                        value="filterModel.ProductCategoryIndex">
+                    <span class="input-group-btn">
+                        <button ng-click='popupProductCategory.onClick()' class="btn btn-primary" type="button">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                ProductType:
+            </div>
+
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="input-group" style="padding:0!important;">
+                    <input type="text" class="form-control" ng-model="filterModel.productTypeName"
+                        value="filterModel.ProductTypeIndex">
+                    <span class="input-group-btn">
+                        <button ng-click='popupProductType.onClick()' class="btn btn-primary" type="button">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                ProductSubType:
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="input-group" style="padding:0!important;">
+                    <input type="text" class="form-control" ng-model="filterModel.productSubTypeName"
+                        value="filterModel.ProductSubTypeIndex">
+                    <span class="input-group-btn">
+                        <button ng-click='popupProductSubType.onClick()' class="btn btn-primary" type="button">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                ProductConversion
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="filterModel.productConversionName" type="text" class="form-control"
+                    placeholder="Input Uom" />
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                ProductItemLife_Y
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="filterModel.productItemLifeY" maxlength="5" chars="only-numbers" type="text"
+                    class="form-control" placeholder="Input Number" />
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                ProductItemLife_M
+            </div>
+
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="filterModel.productItemLifeM" maxlength="5" chars="only-numbers" type="text"
+                    class="form-control" placeholder="Input Number" />
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                ProductItemLife_D
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="filterModel.productItemLifeD" maxlength="5" chars="only-numbers" type="text"
+                    class="form-control" placeholder="Input Number" />
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                ProductImage_Path
+            </div>
+
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="filterModel.productImagePath" type="text" class="form-control"
+                    placeholder="Input Text" />
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                Temperature
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <select ng-model="filterModel.putAway_Type" id="selectTemperature" class="form-control">
+                    <option value="" selected>Select Temperature</option>
+                    <option value="04">04</option>
+                    <option value="12">12</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                IsLot
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
+                <div class="ig-control">
+                    <input type="checkbox" ng-model="filterModel.isLot" id="IsLot" class="ig-control__cbx" checked />
+                    <label for="IsLot"></label>
+                </div>
+            </div>
+
+            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                IsExpDate
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
+                <div class="ig-control">
+                    <input type="checkbox" ng-model="filterModel.isExpDate" id="IsExpDate" class="ig-control__cbx"
+                        checked />
+                    <label for="IsExpDate"></label>
+                </div>
+            </div>
+
+            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                IsMfgDate
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
+                <div class="ig-control">
+                    <input type="checkbox" ng-model="filterModel.isMfgDate" id="IsMfgDate" class="ig-control__cbx"
+                        checked />
+                    <label for="IsMfgDate"></label>
+                </div>
+            </div>
+
+            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"
+                style="vertical-align:middle;line-height:30px;margin-right:25px;">
+                IsCatchWeight
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
+                <div class="ig-control">
+                    <input type="checkbox" ng-model="filterModel.isCatchWeight" id="IsCatchWeight"
+                        class="ig-control__cbx" checked />
+                    <label for="IsCatchWeight"></label>
+                </div>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"
+                style="vertical-align:middle;line-height:30px;margin-right:25px;">
+                IsSerial
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
+                <div class="ig-control">
+                    <input type="checkbox" ng-model="filterModel.isSerial" id="IsSerial" class="ig-control__cbx"
+                        checked />
+                    <label for="IsSerial"></label>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <!-- <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                Custom Attribute 1
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
+                <div class="ig-control">
+                    <input type="checkbox" ng-model="filterModel.customAttribute1" id="customAttribute1" class="ig-control__cbx" checked />
+                    <label for="customAttribute1"></label>
+                </div>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                Custom Attribute 2
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
+                <div class="ig-control">
+                    <input type="checkbox" ng-model="filterModel.customAttribute2" id="customAttribute2" class="ig-control__cbx" checked />
+                    <label for="customAttribute2"></label>
+                </div>
+            </div>
+
+            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                Custom Attribute 3
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
+                <div class="ig-control">
+                    <input type="checkbox" ng-model="filterModel.customAttribute3" id="customAttribute3" class="ig-control__cbx" checked />
+                    <label for="customAttribute3"></label>
+                </div>
+            </div>
+
+            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;margin-right:25px;">
+                Custom Attribute 4
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
+                <div class="ig-control">
+                    <input type="checkbox" ng-model="filterModel.customAttribute4" id="customAttribute4" class="ig-control__cbx"
+                        checked />
+                    <label for="customAttribute4"></label>
+                </div>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;margin-right:25px;">
+                Custom Attribute 5
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
+                <div class="ig-control">
+                    <input type="checkbox" ng-model="filterModel.customAttribute5" id="customAttribute5" class="ig-control__cbx"
+                        checked />
+                    <label for="customAttribute5"></label>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <label>Custom Attribute 1 Date From</label>
+                <!-- <dir-date-picker ng-model="filterModel.customAttribute1DateFrom"></dir-date-picker> -->
+                <input type="date" class="form-control" ng-model="filterModel.customAttribute1DateFrom"
+                    value="filterModel.customAttribute1DateFrom" />
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <label>Custom Attribute 1 Date To</label>
+                <!-- <dir-date-picker ng-model="filterModel.customAttribute1DateTo"></dir-date-picker> -->
+                <input type="date" class="form-control" ng-model="filterModel.customAttribute1DateTo"
+                    value="filterModel.customAttribute1DateTo" />
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <label>Custom Attribute Value 1</label>
+                <input type="text" class="form-control" ng-model="filterModel.customAttributeValue1" />
+            </div>
+        </div>
+    </div>
+
+    <!-- /.button -->
+    <div class="col-lg-12 form-right" style="margin-right: 2px;padding: 5px 5px 5px 5px;margin-top:10px;">
+        <div ng-show="Cancel">
+            <button ng-click="back()" class="ks-btn red pull-right">Cancel</button>
+        </div>
+        <div ng-show="update">
+            <button ng-click="edit()" class="ks-btn pull-right" style="margin-right: 5px">
+                Update</button>
+        </div>
+        <div ng-show="create">
+            <button ng-click="add()" class="ks-btn primary pull-right" style="margin-right: 5px">
+                Create</button>
+        </div>
+        <button ng-click="addConvertion(filterModel.productIndex)" class="ks-btn orange pull-right"
+            ng-show="buttons.addConvertion" style="margin-right: 5px">
+            Add Convertion</button>
+
+    </div>
+</div>
+
+<product-category-popup on-show='popupProductCategory.onShow' config='popupProductCategory.config'
+    invokes='popupProductCategory.invokes' delegates='popupProductCategory.delegates'>
+</product-category-popup>
+<product-type-popup on-show='popupProductType.onShow' config='popupProductType.config'
+    invokes='popupProductType.invokes' delegates='popupProductType.delegates'>
+</product-type-popup>
+<product-sub-type-popup on-show='popupProductSubType.onShow' config='popupProductSubType.config'
+    invokes='popupProductSubType.invokes' delegates='popupProductSubType.delegates'>
+</product-sub-type-popup>
+<product-conversion-popup on-show='popupProductConversion.onShow' config='popupProductConversion.config'
+    invokes='popupProductConversion.invokes' delegates='popupProductConversion.delegates'>
+</product-conversion-popup>

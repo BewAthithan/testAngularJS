@@ -1,0 +1,17 @@
+<header class="page-header">
+    <h2>Picking by cart</h2>
+</header>
+<div >
+
+    <div >
+        <assign-cart-filter filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create" is-filter="isFilter">
+        </assign-cart-filter>
+    </div>
+
+
+
+    <div style="margin-top:15px;">
+        <assign-cart-table-list filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create"
+            is-filter="isFilter"></assign-cart-table-list>
+    </div>
+</div>

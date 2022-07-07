@@ -1,0 +1,17 @@
+<header class="page-header">
+    <h2> Load To Truck</h2>
+</header>
+
+<div>
+    <load-to-truck-filter filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create"
+        ng-show="isFilter">
+        <br>
+    </load-to-truck-filter>
+</div>
+
+
+<div>
+    <load-to-truck-table-list filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create"
+        is-filter="isFilter">
+    </load-to-truck-table-list>
+</div>

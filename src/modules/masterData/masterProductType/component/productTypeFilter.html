@@ -1,0 +1,63 @@
+<div class="row">
+    <div>
+        <h3 style="margin-left:15px;">Product Type</h3>
+    </div>
+    <!-- search box -->
+    <div class="col-lg-3 col-md-3 col-xs-3" style="margin-top:10px; padding:0px;" ng-hide='$vm.filterModel.advanceSearch'>
+        <div class="input-group">
+            <autocomplete-str ng-model="$vm.filterModel.key" value="atcom.key" sourceurl="autoComplete.basic"></autocomplete-str>
+            <span class="input-group-btn">
+                <button ng-click="filter()" class="btn btn-primary" style="padding: 8.5px;">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </button>
+            </span>
+        </div>
+        <!-- /input-group -->
+    </div>
+    <div class="col-lg-3 col-md-3 col-xs-3" ng-show='$vm.filterModel.advanceSearch'></div>
+    <!-- end search box -->
+    <div class="col-lg-9 col-md-9 col-xs-9 text-right" style="margin-top: 5px;">
+        <!-- <button class="ks-btn primary" ng-click="toggleSearch()" style="padding: 8.5px;"> Advance Serach </button> -->
+        <button class="ks-btn" ng-click="$vm.triggerCreate()" style="padding: 8.5px; background-color: #57b5a7; border-color: #57b5a7;">
+        Create</button>
+    </div>
+</div>
+
+<div ng-show="$vm.filterModel.advanceSearch" class="row div-shadow default-bg">
+    <!--Order No-->
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                ProductType ID :
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="$vm.filterModel.code" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                ProductType Name :
+            </div>
+
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="$vm.filterModel.name" type="text" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                Product Category :
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="$vm.filterModel.code" type="text" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <!--Search-->
+    <div class="col-lg-12 col-md-12 col-sm-11 col-xs-11 text-right container-margin" style="margin-top:20px; padding:0px; margin-left:10px; padding-right:46px;">
+        <button ng-click="filter()" class="ks-btn primary" style="margin:5px;min-width:100px">
+            <i class="fa fa-search" aria-hidden="true"></i> Search</button>
+    </div>
+</div>

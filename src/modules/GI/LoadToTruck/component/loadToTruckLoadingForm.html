@@ -1,0 +1,85 @@
+<div class="row  div-shadow" ng-show="isLoading">
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:15px;">
+        <h4> Load To Truck Detail</h4>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-12 col-md-12">
+            <div class="col-md-6">
+                <span class="col-md-4">Loading No:</span>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" ng-model="filterModel.truckLoadNo" disabled/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-12 col-md-12">
+            <div class="col-md-6" style="margin-top:10px;">
+                <span class="col-md-4" style="margin-top:5px;">SO No:</span>
+                <div class="col-md-8">
+                    <input type="text" ng-model="filterModel.refDocumentNo" class="form-control" disabled/>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-12 col-md-12">
+            <div class="col-md-6" style="margin-top:10px;">
+                <span class="col-md-4" style="margin-top:5px;">Pick Ticket:</span>
+                <div class="col-md-8">
+                    <input type="text" ng-model="filterModel.tagOutPickNo" class="form-control" disabled/>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-12 col-md-12">
+            <div class="col-md-6" style="margin-top:10px;">
+                <span class="col-md-4" style="margin-top:5px;">Zone:</span>
+                <div class="col-md-8">
+                    <div class="input-group" style="padding:0!important;">
+                        <input type="text" class="form-control" ng-model="filterModel.zoneName" value="filterModel.zoneIndex" disabled>
+                        <span class="input-group-btn">
+                            <button ng-click='popupZone.onClick()' class="btn btn-primary form-control" style="padding: 8px 12px;"
+                                type="button" disabled>
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-12 col-md-12">
+            <div class="col-md-6" style="margin-top:10px;">
+                <span class="col-md-4" style="margin-top:5px;">CTNPrint:</span>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" ng-model="filterModel.ctnPrintQty" disabled/>
+                </div>
+                <span class="col-md-2" style="margin-top:5px;">CTNConfirm:</span>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" ng-model="filterModel.ctnConfirmQty" disabled/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-12 col-md-12">
+            <div class="col-md-6" style="margin-top:10px; margin-bottom:15px;">
+                <button ng-click="back()" class="btn btn-danger pull-right" ng-show="buttons.back">{{ 'CANCEL' | translate }}</button>
+                <button ng-click="edit()" class="btn btn-success pull-right" ng-show="buttons.update" style="margin-right: 5px" ng-disabled="Formdisabled">{{ 'Update' | translate }}</button>
+                <button ng-click="add()" class="btn btn-primary pull-right" ng-show="buttons.add" style="margin-right: 5px" ng-disabled="Formdisabled">{{ 'CREATE' | translate }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<zone-popup on-show='popupZone.onShow' config='popupZone.config' invokes='popupZone.invokes' delegates='popupZone.delegates'>
+</zone-popup>

@@ -1,0 +1,26 @@
+<header class="page-header">
+    <h2>Equipment Type</h2>
+</header>
+<div class="container-fluid" style="padding: 20px; " id="master-equipment-type">       
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12" style="padding:0px;">
+            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                <master-equipment-type-filter filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create" ng-show="isFilter"> 
+                </master-equipment-type-filter>
+            </div>      
+        </div>  
+    </div>   
+    <br>
+        <!-- <div class="col-md-12" ng-show="showChart">
+                <chart-capload invokes='chartCapload.invokes' delegates='chartCapload.delegates' config='chartCapload.config' type='chartCapload.type'></chart-capload>
+                <chart-utilization invokes='chartUtilization.invokes' delegates='chartUtilization.delegates' config='chartUtilization.config' type='chartUtilization.type'></chart-utilization>
+        </div> -->        
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+            <master-equipment-type-table-list filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create" is-filter="isFilter">
+            </master-equipment-type-table-list>
+        </div>
+</div>
+<!-- <order-history-modal on-show='showHistory.onShow' config='showHistory.config' invokes='showHistory.invokes' delegates='showHistory.delegates'>
+</order-history-modal>
+
+<chart-sidebar config='showChart.config' invokes='showChart.invokes' delegates='showChart.delegates' dataset="datalist.items" ></chart-sidebar> -->

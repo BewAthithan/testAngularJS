@@ -1,0 +1,455 @@
+<!-- <style>
+    /* .sortorder:after {
+        content: '\25b2'; 
+        }
+    .sortorder.reverse:after {
+        content: '\25bc';
+        } */
+
+    table {
+        display: flex;
+        flex-direction: column;
+        height: 400px;
+    }   
+
+    tbody {
+        overflow-y: auto;
+        overflow-x: auto;
+    }
+
+    thead>tr,
+    tbody>tr,
+    tfoot>tr {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        position: relative;
+    }
+
+    thead,
+    tfoot {
+        flex-shrink: 0;
+    }
+
+    th,
+    tbody td {
+        width: 400%;
+        text-overflow: auto;
+    }
+
+
+
+    .text-fixed-width {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .tooltip-inner {
+        min-width: 250px;
+    }
+
+    .tr320 {
+        max-width: 320px;
+        min-width: 320px;
+    }
+
+    .tr250 {
+        max-width: 250px;
+        min-width: 150px;
+    }
+
+    .tr180 {
+        max-width: 180px;
+        min-width: 120px;
+    }
+    .tr120 {
+        max-width: 180px;
+        min-width: 50px;
+    }
+    .tr80 {
+        max-width: 180px;
+        min-width: 10px;
+    }
+
+</style> -->
+<style>
+    /* .sortorder:after {
+            content: '\25b2'; 
+            }
+        .sortorder.reverse:after {
+            content: '\25bc';
+            } */
+
+    table {
+        display: flex;
+        flex-direction: column;
+        height: 400px;
+    }
+
+    tbody {
+        overflow-y: auto;
+        overflow-x: auto;
+    }
+
+    thead>tr,
+    tbody>tr,
+    tfoot>tr {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        position: relative;
+    }
+
+    thead,
+    tfoot {
+        flex-shrink: 0;
+    }
+
+    th,
+    tbody td {
+        width: 100%;
+        text-overflow: auto;
+    }
+</style>
+<div class="row table-responsive table-overflow  div-shadow" ng-show="$vm.isFilter" style="margin-bottom:15px;">
+    
+    <!-- <div class="div-shadow" style="margin-top:15px;"> -->
+    <!-- <div class="table-responsive kl-tbl-height table-overflow"> -->
+    <!-- PC -->
+    <div id="tab1" class="tab-pane active hidden-xs" ng-if="$vm.filterModel.selected == 1">
+
+        <table class="table table-striped table-bordeered  table-width-150">
+            <thead>
+                <tr>
+                    <th class="text-center {{ddl}}" style="width: 12%;">
+                        <button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown" ng-click="ddlClick()">Action
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                            <li role="presentation" ng-click="$vm.stockdetail($vm.resultLocationDetail)">
+                                <a role="menuitem" tabindex="-1">Stock Detail</a>
+                            </li>
+                        </ul>
+                    </th>
+                    <th class="text-center" style="width: 10%;">No.</th>
+                    <th class="text-center" style="width: 20%;">Location Name</th>
+                    <th class="text-center" style="width: 20%;">Location Type</th>
+                    <th class="text-center" style="width: 20%;">Zone</th>
+                    <th class="text-center" style="width: 20%;">Work Area</th>
+                    <th class="text-center" style="width: 20%;">Location Bay</th>
+                    <th class="text-center" style="width: 20%;">Location Depth</th>
+                    <th class="text-center" style="width: 20%;">Location Level</th>
+                    <th class="text-center" style="width: 20%;">Putaway Sequence</th>
+                    <th class="text-center" style="width: 20%;">Picking Sequence</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in $vm.resultLocationDetail" ng-if="$vm.resultLocationDetail.length != 0">
+                    <td class="text-center" style="width: 12%;">
+                        <div class="ig-control">
+                            <input ng-model="data.selected" ng-click="clearCheck($index)" type="checkbox" id="check_{{$index}}"
+                                class="ig-control__cbx" checked />
+                            <label for="check_{{$index}}"></label>
+                        </div>
+                    </td>
+                    <td class="text-center" style="width: 10%;">{{$index+1}}</td>
+                    <td class="text-center" style="width: 20%;">{{data.locationName}}</td>
+                    <td class="text-center" style="width: 20%;">{{data.locationTypeName}}</td>
+                    <td class="text-center" style="width: 20%;">{{data.zoneName}}</td>
+                    <td class="text-center" style="width: 20%;">{{data.locationWorkAreaId}}</td>
+                    <td class="text-center" style="width: 20%;">{{data.locationBay}}</td>
+                    <td class="text-center" style="width: 20%;">{{data.locationDepth}}</td>
+                    <td class="text-center" style="width: 20%;">{{data.locationLevel}}</td>
+                    <td class="text-center" style="width: 20%;">{{data.putAwaySeq}}</td>
+                    <td class="text-center" style="width: 20%;">{{data.pickingSeq}}</td>
+
+                </tr>
+                <tr ng-if="$vm.resultLocationDetail.length == 0">
+                    <td colspan="11" class="text-center">No Data</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>  
+    <!-- PC -->
+    <div id="tab2" class="tab-pane active hidden-xs" ng-if="$vm.filterModel.selected == 2">
+        <table class="table table-striped table-bordeered  table-width-100">
+            <thead>
+                <tr>
+                    <th class="text-center" style="width: 10%;">No.</th>
+                    <th class="text-center" style="width: 20%;">Product Barcode</th>
+                    <th class="text-center" style="width: 20%;">Product Name</th>
+                    <th class="text-center" style="width: 20%;">Location Name</th>
+                    <th class="text-center" style="width: 20%;">Zone</th>
+                    <th class="text-center" style="width: 20%;">Putaway Sequence</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in $vm.resultPutawaySuggestion" ng-if="$vm.resultPutawaySuggestion.length != 0">
+                    <td class="text-center" style="width: 10%;">{{$index+1}}</td>
+                    <td class="text-center" style="width: 20%;">{{data.productId}}</td>
+                    <td class="text-center" style="width: 20%;">{{data.productSecondName}}</td>
+                    <td class="text-center" style="width: 20%;">{{data.locationName}}</td>
+                    <td class="text-center" style="width: 20%;">{{data.zoneName}}</td>
+                    <td class="text-center" style="width: 20%;">{{data.putAwaySeq}}</td>
+
+                </tr>
+                <tr ng-if="$vm.resultPutawaySuggestion.length == 0">
+                    <td colspan="11" class="text-center">No Data</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<!-- Mobile -->
+<div class=" row visible-xs visible-sm div-shadow" ng-show="$vm.isFilter" style="overflow: auto;margin-left:3px;margin-right:3px;">
+    <div id="tab1" class=" row active  visible-xs visible-sm" ng-if="$vm.filterModel.selected == 1">
+        <table>
+            <thead ng-repeat="data in $vm.resultLocationDetail" class="trStyle">
+                <th class="col-lg-2 col-md-2 col-xs-10 size form-group ">
+                    <div class="form-group">
+                        <div class="col-xs-12" style="margin-top:10px;padding-left:0px">
+                            <button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">Action
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li role="presentation" ng-click="$vm.stockdetail($vm.resultLocationDetail)">
+                                    <a role="menuitem" tabindex="-1">Stock Detail</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </th>
+                <th class="col-lg-2 col-md-2 col-xs-2 size form-group">
+                    <div class="ig-control">
+                        <input ng-model="data.selected" ng-click="clearCheck($index)" type="checkbox" id="check_{{$index}}"
+                            class="ig-control__cbx" checked />
+                        <label for="check_{{$index}}"></label>
+                    </div>
+                </th>
+                <tr style="margin-bottom:10px;">
+                    <th class="col-lg-2 col-md-2 col-xs-12 size ">
+                        <div class="col-xs-7" style="padding-left:0px;">
+                            Location Name
+                        </div>
+                        <div class="col-xs-5" style="padding-left:0px;margin:0px;">
+                            <h5 style="margin:0px;">{{data.locationName}}</h5>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr style="margin-bottom:10px;">
+                    <th class="col-lg-2 col-md-2 col-xs-12 size ">
+                        <div class="col-xs-7" style="padding-left:0px;">
+                            Location Type
+                        </div>
+                        <div class="col-xs-5" style="padding-left:0px;margin:0px;">
+                            <h5 style="margin:0px;">{{data.locationTypeName}}</h5>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr style="margin-bottom:10px;">
+                    <th class="col-lg-2 col-md-2 col-xs-12 size ">
+                        <div class="col-xs-7" style="padding-left:0px;">
+                            Zone
+                        </div>
+                        <div class="col-xs-5" style="padding-left:0px;margin:0px;">
+                            <h5 style="margin:0px;">{{data.zoneName}}</h5>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr style="margin-bottom:10px;">
+                    <th class="col-lg-2 col-md-2 col-xs-12 size ">
+                        <div class="col-xs-7" style="padding-left:0px;">
+                            Work Area
+                        </div>
+                        <div class="col-xs-5" style="padding-left:0px;margin:0px;">
+                            <h5 style="margin:0px;">{{data.locationWorkAreaId}}</h5>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr style="margin-bottom:10px;">
+                    <th class="col-lg-2 col-md-2 col-xs-12 size ">
+                        <div class="col-xs-7" style="padding-left:0px;">
+                            Location Bay
+                        </div>
+                        <div class="col-xs-5" style="padding-left:0px;margin:0px;">
+                            <h5 style="margin:0px;">{{data.locationBay}}</h5>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr style="margin-bottom:10px;">
+                    <th class="col-lg-2 col-md-2 col-xs-12 size ">
+                        <div class="col-xs-7" style="padding-left:0px;">
+                            Location Depth
+                        </div>
+                        <div class="col-xs-5" style="padding-left:0px;margin:0px;">
+                            <h5 style="margin:0px;">{{data.locationDepth}}</h5>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr style="margin-bottom:10px;">
+                    <th class="col-lg-2 col-md-2 col-xs-12 size ">
+                        <div class="col-xs-7" style="padding-left:0px;">
+                            Location Level
+                        </div>
+                        <div class="col-xs-5" style="padding-left:0px;margin:0px;">
+                            <h5 style="margin:0px;">{{data.locationLevel}}</h5>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr style="margin-bottom:10px;">
+                    <th class="col-lg-2 col-md-2 col-xs-12 size ">
+                        <div class="col-xs-7" style="padding-left:0px;">
+                            PutawaySequence
+                        </div>
+                        <div class="col-xs-5" style="padding-left:0px;margin:0px;">
+                            <h5 style="margin:0px;">{{data.putAwaySeq}}</h5>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr style="margin-bottom:10px;">
+                    <th class="col-lg-2 col-md-2 col-xs-12 size ">
+                        <div class="col-xs-7" style="padding-left:0px;">
+                            PickingSequence
+                        </div>
+                        <div class="col-xs-5" style="padding-left:0px;margin:0px;">
+                            <h5 style="margin:0px;">{{data.pickingSeq}}</h5>
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <!-- Mobile -->
+    <div id="tab2" ng-if="$vm.filterModel.selected == 2" class=" row active  visible-xs visible-sm " style="overflow: auto">
+        <table>
+            <thead ng-repeat="data in $vm.resultPutawaySuggestion" class="trStyle">
+                <tr style="margin-bottom:10px;">
+                    <th class="col-lg-2 col-md-2 col-xs-12 size ">
+                        <div class="col-xs-5" style="padding-right:0px;">
+                            Location Name:
+                        </div>
+                        <div class="col-xs-7" style="padding-right:0px;margin:0px;">
+                            <h5 style="margin:0px;">{{data.locationName}}</h5>
+                        </div>
+                    </th>
+                </tr>
+                <tr style="margin-bottom:10px;">
+                    <th class="col-lg-2 col-md-2 col-xs-12 size ">
+                        <div class="col-xs-5" style="padding-right:0px;">
+                            Product:
+                        </div>
+                        <div class="col-xs-7" style="padding-right:0px;margin:0px;">
+                            <h5 style="margin:0px;">{{data.productId}}</h5>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr style="margin-bottom:10px;">
+                    <th class="col-lg-2 col-md-2 col-xs-12 size ">
+                        <div class="col-xs-5" style="padding-right:0px;">
+                            Product Name:
+                        </div>
+                        <div class="col-xs-7" style="padding-right:0px;margin:0px;">
+                            <h5 style="margin:0px;">{{data.productSecondName}}</h5>
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+
+        </table>
+    </div>
+
+</div>
+<!-- PC Tab1 -->
+<div class="hidden-xs" ng-show="$vm.isFilter">
+    <div id="tab1" class="tab-pane active hidden-xs" ng-if="$vm.filterModel.selected == 1">
+        <div class="row table-responsive table-overflow" ng-show="$vm.isFilter" style="margin-bottom:15px;">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 " style="padding-top:0px;margin-top:20px" ng-show="show.pagination">
+                    <select class='form-control' style='width:70px;display:inline;' ng-model='$vm.filterModel.perPage'
+                        ng-options="v.value as v.value for v in pageOption" ng-init='filterModel.perPage = 30'
+                        ng-change='changeTableSize()'>
+                    </select>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 " style="padding:0px" ng-show="show.pagination">
+                    <ul uib-pagination total-items="$vm.filterModel.totalRow" ng-change='changePage()' items-per-page="$vm.filterModel.perPage"
+                        num-pages="$vm.filterModel.num" ng-model="$vm.filterModel.currentPage" max-size="$vm.filterModel.maxSize"
+                        class="pull-right" boundary-link-numbers="true" rotate="false"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Mobile Tab2 -->
+<div class=" row table-responsive table-overflow visible-xs visible-sm" ng-show="$vm.isFilter" style="overflow: auto;margin-left:3px;margin-top:10px">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-if="$vm.filterModel.selected == 1">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 " style="padding-top:0px;margin-top:20px;padding-left:0px;"
+            ng-show="show.pagination">
+            <select class='form-control' style='width:70px;display:inline;' ng-model='$vm.filterModel.perPage'
+                ng-options="v.value as v.value for v in pageOption" ng-init='filterModel.perPage = 30' ng-change='changeTableSize()'>
+            </select>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 " style="padding:0px;padding-left:0px;" ng-show="show.pagination">
+            <ul uib-pagination total-items="$vm.filterModel.totalRow" ng-change='changePage()' items-per-page="$vm.filterModel.perPage"
+                num-pages="$vm.filterModel.num" ng-model="$vm.filterModel.currentPage" max-size="$vm.filterModel.maxSize"
+                class="pull-right" boundary-link-numbers="true" rotate="false"></ul>
+        </div>
+    </div>
+</div>
+
+<!-- PC Tab2-->
+<div class="hidden-xs" ng-show="$vm.isFilter">
+    <div id="tab1" class="tab-pane active hidden-xs" ng-if="$vm.filterModel.selected == 2">
+        <div class="row table-responsive table-overflow" ng-show="$vm.isFilter" style="margin-bottom:15px;">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 " style="padding-top:0px;margin-top:20px" ng-show="show.pagination">
+                    <select class='form-control' style='width:70px;display:inline;' ng-model='$vm.putAwaySug.perPage'
+                        ng-options="v.value as v.value for v in pageOption" ng-init='$vm.putAwaySug.perPage = 30'
+                        ng-change='changeTableSize1()'>
+                    </select>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 " style="padding:0px" ng-show="show.pagination">
+                    <ul uib-pagination total-items="$vm.putAwaySug.totalRow" ng-change='changePage1()' items-per-page="$vm.putAwaySug.perPage"
+                        num-pages="$vm.putAwaySug.num" ng-model="$vm.putAwaySug.currentPage" max-size="$vm.putAwaySug.maxSize"
+                        class="pull-right" boundary-link-numbers="true" rotate="false"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Mobile Tab2-->
+<div class=" row table-responsive table-overflow visible-xs visible-sm" ng-show="$vm.isFilter" style="overflow: auto;margin-left:3px;margin-top:10px">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-if="$vm.filterModel.selected == 2">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 " style="padding-top:0px;margin-top:20px;padding-left:0px;"
+            ng-show="show.pagination">
+            <select class='form-control' style='width:70px;display:inline;' ng-model='$vm.putAwaySug.perPage'
+                ng-options="v.value as v.value for v in pageOption" ng-init='putAwaySug.perPage = 30' ng-change='changeTableSize1()'>
+            </select>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 " style="padding:0px;padding-left:0px;" ng-show="show.pagination">
+            <ul uib-pagination total-items="$vm.putAwaySug.totalRow" ng-change='changePage1()' items-per-page="$vm.putAwaySug.perPage"
+                num-pages="$vm.putAwaySug.num" ng-model="$vm.putAwaySug.currentPage" max-size="$vm.putAwaySug.maxSize"
+                class="pull-right" boundary-link-numbers="true" rotate="false"></ul>
+        </div>
+    </div>
+</div>
+
+
+<!-- <sku-product-conversion is-loading="isLoading" ng-hide="$vm.isFilter"> </sku-product-conversion> -->
+<location-stock-detail is-stock="isStock" ng-hide="$vm.isFilter"> </location-stock-detail>
+<!-- <sku-allocated is-allocated="isAllocated" ng-hide="$vm.isFilter"> </sku-stock-detail> -->

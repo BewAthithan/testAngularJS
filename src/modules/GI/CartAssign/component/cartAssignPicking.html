@@ -1,0 +1,29 @@
+<div class="tab-content" ng-show="$vm.isLoadingPicking">
+    <header class="page-header">
+        <h2>Picking - As Cart Assign(RF) </h2>
+    </header>
+    <div class="row">
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-2 col-md-2 col-xs-12 text-center">
+                    <h5><span>Cart Location </span></h5>
+                </div>
+                <div class="col-lg-7 col-md-5 col-xs-12">
+                    <input type="text" id="focusScanLocation" autocomplete="off" readonly
+                        ks-enter="Confirm()"
+                        ng-model="filterModel.equipmentItemName" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="text-right padding-m">
+            <button class="btn btn-success hidden-xs" ng-click="Confirm()">Confirm</button>
+            <button class="btn btn-success btn-block btn-md visible-xs mt-lg" ng-click="Confirm()">Confirm</button>
+            <button class="btn btn-primary hidden-xs" ng-click="back()">Back</button>
+            <button class="btn btn-primary btn-block btn-md visible-xs mt-lg" ng-click="back()">Back</button>
+        </div>
+    </div>
+</div>
+
+<span style="color: white;">
+    {{tme}}
+</span>

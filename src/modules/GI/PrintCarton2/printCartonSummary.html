@@ -1,0 +1,17 @@
+<header class="page-header">
+    <h2> PrintCarton - Autorunwave</h2>
+</header>
+
+<div>
+    <print-carton-filter-two filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create"
+        ng-show="isFilter">
+        <br>
+    </print-carton-filter-two>
+</div>
+
+
+<div>
+    <print-carton-table-list-two filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create"
+        is-filter="isFilter">
+    </print-carton-table-list-two>
+</div>

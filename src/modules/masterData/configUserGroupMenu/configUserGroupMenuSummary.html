@@ -1,0 +1,15 @@
+<header class="page-header">
+    <h2>{{ 'CONFIGUSERGROUPMENU' | translate }}</h2>
+</header>
+
+<div class="row div-shadow">
+    <div style="margin-bottom:15px;">
+        <config-user-group-menu-filter filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create" ng-show="isFilter">
+        </config-user-group-menu-filter>
+    </div>
+
+    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+        <config-user-group-menu-table-list filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create" is-filter="isFilter">
+        </config-user-group-menu-table-list>
+    </div>
+</div>

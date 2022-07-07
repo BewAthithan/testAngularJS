@@ -1,0 +1,36 @@
+<div id="page-content-wrapper" ng-show="onShow">
+    <div>
+        <h3>ShipTo Type Form</h3>
+    </div>
+
+            <!-- .code -->
+            <div class="col-md-6" style="margin-top:10px;">
+                <span class="col-md-4" style="margin-top:5px;">ShipTo Type ID :</span>
+                <div class="col-md-8">
+                    <input ng-model="filterModel.shipToTypeId" type="text" class="form-control" />
+                </div>
+            </div>
+            <!-- /.code -->
+
+            <!-- .name -->
+            <div class="col-md-6" style="margin-top:10px;">
+                <span class="col-md-4" style="margin-top:5px;"> ShipTo Type Name :</span>
+                <div class="col-md-8">
+                    <input ng-model="filterModel.shipToTypeName" type="text" class="form-control" />
+                </div>
+            </div>
+
+    <!-- .button -->
+    <div ng-show="Cancel">
+        <button ng-click="back()" class="ks-btn red pull-right">Cancel</button>
+    </div>
+    <div ng-show="update">
+        <button ng-click="edit()" class="ks-btn pull-right" style="margin-right: 5px">
+            Update</button>
+    </div>
+    <div ng-show="create">
+        <button ng-click="add()" class="ks-btn primary pull-right" style="margin-right: 5px">
+            Create</button>
+    </div>
+    <!-- /.button -->
+</div>

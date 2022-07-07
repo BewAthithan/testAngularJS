@@ -1,0 +1,138 @@
+<header class="page-header">
+    <h2>Location</h2>
+</header>
+<div class="row" style="margin-top:10px;">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a data-target="#tab1" data-toggle="tab" style="background-color:{{colortab1}}" ng-click="selectedTab(1)"
+                ng-init="colortab1 = '#FDFEFE'">Location Detail</a>
+        </li>
+        <li class="active">
+            <a data-target="#tab2" data-toggle="tab" style="background-color:{{colortab2}}" ng-click="selectedTab(2)">Putaway
+                Suggestion
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="row" ng-if="$vm.filterModel.selected == 1">
+    <div class="div-shadow">
+        <div class="form-group" style="margin-top:20px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-4 col-md-3 col-xs-12">
+                        <span>Location</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <input type="text" ng-model="$vm.filterModel.locationName" class="form-control" placeholder="Key Search"
+                            maxlength="15" />
+                    </div>
+
+
+                    <!-- <div class="col-lg-6 col-xs-6 dropdown display-inline" style="margin-left:-15px;">
+                        <select ng-model="actionPSS" class="form-control" ng-init="actionPSS = '1'">
+                            <option value="1">SKU ID</option>
+                            <option value="2">SKU Name</option>
+                            <option value="3">Location Name</option>
+                        </select>
+                    </div>
+                    <div ng-switch="actionPSS">
+                        <div class="input-group col-lg-6 col-xs-6" ng-switch-when="1" ng-init="$vm.filterModel.subRefDocumentNo = ''">
+                            <input type="text" ng-model="$vm.filterModel.taskNo" class="form-control">
+                        </div>
+                        <div class="input-group col-lg-6 col-xs-6" ng-switch-when="2" ng-init="$vm.filterModel.taskNo = ''">
+                            <input type="text" ng-model="$vm.filterModel.subRefDocumentNo" class="form-control">
+                        </div>
+                        <div class="input-group col-lg-6 col-xs-6" ng-switch-when="3" ng-init="$vm.filterModel.taskNo = ''">
+                            <input type="text" ng-model="$vm.filterModel.locationName" class="form-control">
+                        </div>
+                    </div> -->
+                    
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-4 col-md-3 col-xs-12">
+                        <span>Zone</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <div class="input-group" style="padding:0!important;">
+                            <input type="text" class="form-control" ng-model="$vm.filterModel.zoneName">
+                            <span class="input-group-btn">
+                                <button ng-click='popupZone.onClick()' class="btn btn-primary" type="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="text-right padding-m">
+            <button class="btn btn-success" ng-click="exportFile.ExportFileLocationDetails('xls')">
+                <i class="fa fa-file-excel-o" aria-hidden="true"> Export Excel</i>
+            </button>
+            <button class="btn btn-success" ng-click="exportFile.ExportFileLocationDetails('pdf')">
+                <i class="fa fa-file-pdf-o" aria-hidden="true"> Export Pdf</i>
+            </button>
+            <button ng-click="ScanlocationName()" class="btn btn-primary hidden-xs">
+                <i class="fa fa-search" aria-hidden="true"></i> Search</button>
+            <button ng-click="ScanlocationName()" class="btn btn-primary btn-block btn-md visible-xs mt-lg">
+                <i class="fa fa-search" aria-hidden="true"></i> Search</button>
+            <button ng-click="clearSearch()" class="btn btn-success hidden-xs">ClearSearch</button>
+            <button ng-click="clearSearch()" class="btn btn-success btn-block btn-md visible-xs mt-lg">ClearSearch</button>
+        </div>
+    </div>
+</div>
+<div class="row" ng-if="$vm.filterModel.selected == 2">
+    <div class="div-shadow">
+
+        <div class="form-group" style="margin-top:20px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <!-- <div class="col-lg-4 col-md-3 col-xs-12">
+                        <span>Location</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <input type="text" ng-model="$vm.putAwaySug.locationName" class="form-control" placeholder="Key Search"
+                            maxlength="15" ks-enter="putawaySuggestSearch()" />
+                    </div> -->
+
+                    <div class="col-lg-6 col-xs-6 dropdown display-inline" style="margin-left:-15px;">
+                        <select ng-model="actionDDL" class="form-control" ng-init="actionDDL = '1'">
+                            <option value="1">SKU ID</option>
+                            <option value="2">SKU Name</option>
+                            <option value="3">Location Name</option>
+                        </select>
+                    </div>
+                    <div ng-switch="actionDDL">
+                        <div class="input-group col-lg-6 col-xs-6" ng-switch-when="1" ng-init="$vm.putAwaySug.productSecondName = '' ; $vm.putAwaySug.locationName = ''">
+                            <input type="text" ng-model="$vm.putAwaySug.productId" class="form-control">
+                        </div>
+                        <div class="input-group col-lg-6 col-xs-6" ng-switch-when="2" ng-init="$vm.putAwaySug.productId = '' ; $vm.putAwaySug.locationName = ''">
+                            <input type="text" ng-model="$vm.putAwaySug.productSecondName" class="form-control">
+                        </div>
+                        <div class="input-group col-lg-6 col-xs-6" ng-switch-when="3" ng-init="$vm.putAwaySug.productId = ''; $vm.putAwaySug.productSecondName = ''">
+                            <input type="text" ng-model="$vm.putAwaySug.locationName" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-right padding-m">
+            <button class="btn btn-success" ng-click="exportFile.ExportFilePutawaySuggestionLocation('xls')">
+                <i class="fa fa-file-excel-o" aria-hidden="true"> Export Excel</i>
+            </button>
+            <button class="btn btn-success" ng-click="exportFile.ExportFilePutawaySuggestionLocation('pdf')">
+                <i class="fa fa-file-pdf-o" aria-hidden="true"> Export Pdf</i>
+            </button>
+            <button ng-click="putawaySuggestSearch()" class="btn btn-primary hidden-xs">
+                <i class="fa fa-search" aria-hidden="true"></i> Search</button>
+            <button ng-click="putawaySuggestSearch()" class="btn btn-primary btn-block btn-md visible-xs mt-lg">
+                <i class="fa fa-search" aria-hidden="true"></i> Search</button>
+            <button ng-click="clearSearch()" class="btn btn-success hidden-xs">ClearSearch</button>
+            <button ng-click="clearSearch()" class="btn btn-success btn-block btn-md visible-xs mt-lg">ClearSearch</button>
+        </div>
+    </div>
+</div>
+<zone-popup on-show='popupZone.onShow' config='popupZone.config' invokes='popupZone.invokes' delegates='popupZone.delegates'>
+</zone-popup>

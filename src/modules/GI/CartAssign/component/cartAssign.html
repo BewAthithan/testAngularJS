@@ -1,0 +1,136 @@
+<style>
+    #hiddenField {
+        height: 17px;
+        width: 1px;
+        position: absolute;
+        margin-left: 3px;
+        margin-top: 2px;
+        border: none;
+        border-width: 0px 0px 0px 0px;
+    }
+
+    #cursorMeasuringDiv {
+        position: absolute;
+        visibility: hidden;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #hiddenField:focus {
+        border: 1px solid gray;
+        border-width: 0px 0px 0px 1px;
+        outline: none;
+        animation-name: cursor;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+    }
+
+    @keyframes cursor {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+</style>
+
+<div id="divCartAssign" ng-show="$vm.isFilter">
+    <div class="div-shadow">
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-2 col-md-2 col-xs-12 ">
+                    <span>Pick Ticket</span>
+                </div>
+                <div class="col-lg-5 col-md-5 col-xs-12">
+                    <input type="text" id="tagOutPickNo" ng-model="filterModel.tagOutPickNo" readonly class="form-control bgwrite" ks-enter="ScanPickTicket()">
+                </div>
+            </div>
+        </div>
+      
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-2 col-md-2 col-xs-12 ">
+                    <span>Carton No</span>
+                </div>
+                <div class="col-lg-5 col-md-5 col-xs-12">
+                    <input type="text" ng-model="filterModel.tagOutNo" class="form-control" disabled />
+                </div>
+            </div>
+        </div>
+<!-- 
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-2 col-md-2 col-xs-12 ">
+                    <span>Cart Location</span>
+                </div>
+                <div class="col-lg-5 col-md-5 col-xs-12">
+                    <input type="text" id="tagOutPickNo1" ng-model="filterModel.equipmentItemName" readonly class="form-control">
+                </div>
+            </div>
+        </div>
+         -->
+
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-2 col-md-2 col-xs-12 ">
+                    <span>Cart Location</span>
+                </div>
+                
+                <div class="col-lg-5 col-md-5 col-xs-12">
+                    <div class="input-group">
+                        <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px;">
+                            <input type="text" id="tagOutPickNo1" ng-model="filterModel.equipmentItemName" readonly class="form-control bgwrite" ng-click="selectAll()" ks-enter="ScanCartNumber()">
+                            <!-- <input type="text" id="focusScanLocation" autocomplete="off" ng-click="selectAll()"
+                                ng-model="filterModel.equipmentItemName" ks-enter="ScanCartNumber()"
+                                placeholder=" Scan Cart Location " readonly class="form-control bgwrite" /> -->
+                                <!-- onfocus="this.removeAttribute('readonly');" -->
+                        </div>
+                        <span class="input-group-btn">
+                            <button class="btn btn-default hidden-xs" ng-click="$vm.CartList()" type="button">
+                                <i class="fa fa-bars" aria-hidden="true"></i></button>
+                            <button class="btn btn-default btn-block btn-md visible-xs" ng-click="$vm.CartList()"
+                                type="button">
+                                <i class="fa fa-bars" aria-hidden="true"></i></button>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="text-right padding-m">
+                    <button class="btn btn-success hidden-xs" ng-click="ConfirmNextPage()">Confirm</button>
+                    <button class="btn btn-success btn-block btn-md visible-xs mt-lg"
+                        ng-click="ConfirmNextPage()">Confirm</button>
+
+                    <!-- <button class="btn btn-success hidden-xs" ng-click="$vm.CartList()">CartList</button>
+                    <button class="btn btn-success btn-block btn-md visible-xs mt-lg" ng-click="$vm.CartList()">CartList</button> -->
+                    <button class="btn btn-primary hidden-xs" ng-click="Cleardata()">Clear</button>
+                    <button class="btn btn-primary btn-block btn-md visible-xs mt-lg"
+                        ng-click="Cleardata()">Clear</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<cart-assign-picking search-result-model="$vm.searchResultModel" trigger-create="$vm.createData" is-loading="isLoading"
+    is-loading-picking="isLoadingPicking" ng-hide="$vm.isFilter"></cart-assign-picking>
+<cart-assign-list search-result-model="$vm.searchResultModel" is-loading="isLoading"
+    is-loading-picking="isLoadingPicking" ng-hide="$vm.isFilter"></cart-assign-list>
+
+
+<!-- <pc-count-up count-to="1000" interval="1"></pc-count-up> -->
+<span style="color: white;">
+    [t1 : {{t1}}]
+    [t2 : {{t2}}]
+    [t3 : {{t3}}]
+    [t4 : {{t4}}]
+    [t5 : {{t5}}]
+    [t6 : {{t6}}]
+</span>

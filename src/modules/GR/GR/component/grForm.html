@@ -1,0 +1,326 @@
+<style>
+    .text-fixed-width {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+
+    th,
+    tbody td {
+        padding: 5px;
+    }
+</style>
+<div ng-show="$vm.isFilterTable">
+    <div class="row div-shadow">
+        <div>
+            <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:15px;">
+                <h4>Create Receiving</h4>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-xs-12">
+                            <span>Document No :</span>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-xs-12">
+                            <input type="text" class="form-control" ng-model="filterModel.goodsReceiveNo" disabled />
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-xs-12">
+                            <span>Receiving Date</span>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-xs-12">
+                            <dir-date-picker ng-model="filterModel.goodsReceiveDate" disabled="filterModel.documentStatus==1 || filterModel.documentStatus==-1 || filterModel.documentStatus == 2 || filterModel.documentStatus == 3"></dir-date-picker>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-xs-12">
+                            <span>Owner :</span>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="padding:0!important;">
+                                <!-- ng-disabled="filterModel.documentStatus==1 || filterModel.documentStatus==-1 || filterModel.documentStatus == 2 || filterModel.documentStatus == 3" -->
+                                <input readonly type="text" class="form-control bgwrite" ng-model="filterModel.ownerName" value="filterModel.ownerIndex" disabled>
+                                <span class="input-group-btn">
+                                    <button ng-click='popupOwner.onClick()' class="btn btn-primary" type="button"
+                                        ng-disabled="filterModel.documentStatus==1 || filterModel.documentStatus==-1 || filterModel.documentStatus == 2 || filterModel.documentStatus == 3">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-xs-12">
+                            <span>Status</span>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-xs-12">
+                            <input type="text" class="form-control" ng-model="filterModel.processStatusName" disabled />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-xs-12">
+                            <span>From Warehouse:</span>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="padding:0!important;">
+                                <input readonly type="text" class="form-control bgwrite" ng-model="filterModel.warehouseName" value="filterModel.warehouseIndex"
+                                    ng-disabled="filterModel.documentStatus==1 || filterModel.documentStatus==-1 || filterModel.documentStatus == 2 || filterModel.documentStatus == 3">
+                                <span class="input-group-btn">
+                                    <button ng-click='popupWarehouse.onClick()' class="btn btn-primary" type="button"
+                                        ng-disabled="filterModel.documentStatus==1 || filterModel.documentStatus==-1 || filterModel.documentStatus == 2 || filterModel.documentStatus == 3">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-xs-12">
+                            <span>To Warehouse:</span>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="padding:0!important;">
+                                <input readonly type="text" class="form-control bgwrite" ng-model="filterModel.warehouseNameTo" value="filterModel.warehouseIndexTo"
+                                    ng-disabled="filterModel.documentStatus==1 || filterModel.documentStatus==-1 || filterModel.documentStatus == 2 || filterModel.documentStatus == 3">
+                                <span class="input-group-btn">
+                                    <button ng-click='popupWarehouseTo.onClick()' class="btn btn-primary" type="button"
+                                        ng-disabled="filterModel.documentStatus==1 || filterModel.documentStatus==-1 || filterModel.documentStatus == 2 || filterModel.documentStatus == 3">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-xs-12">
+                            <span>Document Type :</span>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="padding:0!important;">
+                                <input readonly type="text" class="form-control bgwrite" ng-model="filterModel.documentTypeName" value="filterModel.documentTypeIndex"
+                                    ng-disabled="filterModel.documentStatus==1 || filterModel.documentStatus==-1 || filterModel.documentStatus == 2 || filterModel.documentStatus == 3">
+                                <span class="input-group-btn">
+                                    <button ng-click='popupDocumentType.onClick()' class="btn btn-primary" type="button"
+                                        ng-disabled="filterModel.documentStatus==1 || filterModel.documentStatus==-1 || filterModel.documentStatus == 2 || filterModel.documentStatus == 3">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-xs-12">
+                            <span>PO/ASN No:</span>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="padding:0!important;">
+                                <input readonly type="text" class="form-control bgwrite" ng-model="filterModel.planGoodsReceiveNo" value="filterModel.planGoodsReceive_Index"
+                                    ng-disabled="filterModel.documentStatus==1 || filterModel.documentStatus==-1 || filterModel.documentStatus == 2 || filterModel.documentStatus == 3">
+                                <span class="input-group-btn">
+                                    <button ng-click='popupPlanGr.onClick()' class="btn btn-primary" type="button"
+                                        ng-disabled="filterModel.documentStatus==1 || filterModel.documentStatus==-1 || filterModel.documentStatus == 2 || filterModel.documentStatus == 3">
+                                        <i class="glyphicon glyphicon-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-xs-12">
+                            <span>DockDoor :</span>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="padding:0!important;">
+                                <input readonly type="text" class="form-control bgwrite" ng-model="filterModel.dockDoorName" value="filterModel.dockDoorIndex"
+                                    ng-disabled="filterModel.documentStatus==1 || filterModel.documentStatus==-1 || filterModel.documentStatus == 2 || filterModel.documentStatus == 3">
+                                <span class="input-group-btn">
+                                    <button ng-click='popupDockDoor.onClick()' class="btn btn-primary" type="button"
+                                        ng-disabled="filterModel.documentStatus==1 || filterModel.documentStatus==-1 || filterModel.documentStatus == 2 || filterModel.documentStatus == 3">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-xs-12">
+                            <span>Vehicle Type:</span>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="padding:0!important;">
+                                <input readonly type="text" class="form-control bgwrite" ng-model="filterModel.vehicleTypeName" value="filterModel.vehicleTypeIndex"
+                                    ng-disabled="filterModel.documentStatus==1 || filterModel.documentStatus==-1 || filterModel.documentStatus == 2 || filterModel.documentStatus == 3">
+                                <span class="input-group-btn">
+                                    <button ng-click='popupVehicleType.onClick()' class="btn btn-primary" type="button"
+                                        ng-disabled="filterModel.documentStatus==1 || filterModel.documentStatus==-1 || filterModel.documentStatus == 2 || filterModel.documentStatus == 3">
+                                        <i class="glyphicon glyphicon-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-xs-12">
+                            <span>Container Type :</span>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="padding:0!important;">
+                                <input readonly type="text" class="form-control bgwrite" ng-model="filterModel.containerTypeName" value="filterModel.containerTypeIndex"
+                                    ng-disabled="filterModel.documentStatus==1 || filterModel.documentStatus==-1 || filterModel.documentStatus == 2 || filterModel.documentStatus == 3">
+                                <span class="input-group-btn">
+                                    <button ng-click='popupContainerType.onClick()' class="btn btn-primary" type="button"
+                                        ng-disabled="filterModel.documentStatus==1 || filterModel.documentStatus==-1 || filterModel.documentStatus == 2 || filterModel.documentStatus == 3">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-xs-12">
+                            <span>Reference</span>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-xs-12">
+                            <input type="text" class="form-control" ng-model="filterModel.documentRefNo1" ng-disabled="filterModel.documentStatus==1 || filterModel.documentStatus==-1 || filterModel.documentStatus == 2 || filterModel.documentStatus == 3">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="margin-bottom:30px">
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-xs-12">
+                            <span>Remark:</span>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-xs-12">
+                            <input type="text" class="form-control" ng-model="filterModel.documentRemark" ng-disabled="filterModel.documentStatus==1 || filterModel.documentStatus==-1 || filterModel.documentStatus == 2 || filterModel.documentStatus == 3">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div style="margin-top:20px;margin-bottom:10px;" class="row text-right">
+        <button class="btn btn-success" ng-click="$vm.addItem()" ng-disabled="filterModel.ownerIndex === undefined || filterModel.ownerName == '' || filterModel.documentStatus == 1 || filterModel.documentStatus==-1 || filterModel.documentStatus == 2 || filterModel.documentStatus == 3"
+            style="font-size:15px;width:9%">+
+            Item
+        </button>
+    </div>
+    <div class="row div-shadow">
+        <div class="col-lg-12 col-md-12 col-xs-12 text-right" style="padding:0px">
+            <div class="table-responsive table-overflow">
+                <table class="table table-striped table-bordeered table-width-150">
+                    <thead>
+                        <tr>
+                            <th class="text-center" style="width:250%">Action</th>
+                            <th class="text-center">No.</th>
+                            <th class="text-center" style="width:250%">Document No</th>
+                            <th class="text-center" style="width:250%">Product ID</th>
+                            <th class="text-center" style="width:600%">Product Name</th>
+                            <th class="text-center">Qty</th>
+                            <th class="text-center">UOM</th>
+                            <th class="text-center">Weight</th>
+                            <th class="text-center">Volume</th>
+                            <!-- <th>Status</th> -->
+                            <th class="text-center" style="width:400%">Remark</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in filterModel.listGoodsReceiveItemViewModels | orderBy:'refDocumentNo'">
+                            <td class="text-right" style="width:250%">
+                                <div class="text-align: center">
+                                    <a class="btn btn-primary" ng-click="editItem(data, $index)" ng-disabled="filterModel.documentStatus==1 || filterModel.documentStatus==-1 || filterModel.documentStatus == 2 || filterModel.documentStatus == 3">
+                                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                    </a>
+                                    <a class="btn btn-danger" style="margin-left:5px;" ng-click="deleteItem(filterModel.listGoodsReceiveItemViewModels,data)"
+                                        ng-disabled="filterModel.documentStatus==1 || filterModel.documentStatus==-1  || filterModel.documentStatus == 2 || filterModel.documentStatus == 3">
+                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                    </a>
+                                </div>
+                            </td>
+                            <td class="text-center">{{$index+1}}</td>
+                            <td class="text-center" style="width:250%">{{data.refDocumentNo}}</td>
+                            <td class="text-center" style="width:250%">{{data.productId}}</td>
+                            <td class="text-left" style="width:600%">{{data.productSecondName}}</td>
+                            <td class="text-center">{{data.qty}}</td>
+                            <td class="text-center">{{data.productConversionName}}</td>
+                            <td class="text-center">{{data.weight}}</td>
+                            <td class="text-center">{{data.volume}}</td>
+                            <!-- <td class="text-left">{{data.documentStatus}}</td> -->
+                            <td class="text-center" style="width:400%">{{data.goodsReceiveRemark}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="form-group" style="padding:0px">
+        <div class="col-lg-12 col-md-12" style="padding:0px;margin-left:45px">
+            <div class="col-md-12" style="margin-top:10px;">
+                <span class="col-md-10 text-right" style="margin-top:5px;">ยอดรวมสินค้า :</span>
+                <div class="col-md-2">                    
+                    <input type="text" class="form-control bgwrite text-right" ng-model="getTotal()" readonly/>
+                </div>                
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12 text-right" style="margin-bottom:15px;margin-left:30px">
+        <button ng-click="back()" class="btn btn-danger pull-right " ng-show="buttons.back">Back</button>
+        <button ng-click="edit()" class="btn btn-success pull-right " ng-show="buttons.update" style="margin-right: 5px">Update</button>
+        <button ng-click="add()" class="btn btn-primary pull-right " ng-show="buttons.add" style="margin-right: 5px">CREATE</button>
+    </div>
+</div>
+
+<gr-loading-form is-loading="isLoading" ng-hide="$vm.isFilterTable"></gr-loading-form>
+
+<owner-popup on-show='popupOwner.onShow' config='popupOwner.config' invokes='popupOwner.invokes' delegates='popupOwner.delegates'>
+</owner-popup>
+<document-type-gr-popup on-show='popupDocumentType.onShow' config='popupDocumentType.config' invokes='popupDocumentType.invokes'
+    delegates='popupDocumentType.delegates'>
+</document-type-gr-popup>
+<plan-gr-popup on-show='popupPlanGr.onShow' config='popupPlanGr.config' invokes='popupPlanGr.invokes' delegates='popupPlanGr.delegates'>
+</plan-gr-popup>
+<dock-door-popup on-show='popupDockDoor.onShow' config='popupDockDoor.config' invokes='popupDockDoor.invokes' delegates='popupDockDoor.delegates'>
+</dock-door-popup>
+<vehicle-type-popup on-show='popupVehicleType.onShow' config='popupVehicleType.config' invokes='popupVehicleType.invokes'
+    delegates='popupVehicleType.delegates'>
+</vehicle-type-popup>
+<container-type-popup on-show='popupContainerType.onShow' config='popupContainerType.config' invokes='popupContainerType.invokes'
+    delegates='popupContainerType.delegates'>
+</container-type-popup>
+<warehouse-popup on-show='popupWarehouse.onShow' config='popupWarehouse.config' invokes='popupWarehouse.invokes'
+    delegates='popupWarehouse.delegates'>
+</warehouse-popup>
+<warehouse-to-popup on-show='popupWarehouseTo.onShow' config='popupWarehouseTo.config' invokes='popupWarehouseTo.invokes'
+    delegates='popupWarehouseTo.delegates'>
+</warehouse-to-popup>

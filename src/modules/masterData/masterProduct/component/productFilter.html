@@ -1,0 +1,173 @@
+<div class="row">
+    <div class="col-lg-6 col-md-3 col-xs-4" style="margin-top:10px; padding-right:0px" ng-hide='model.advanceSearch'>
+        <div class="input-group-btn mb-md" style="padding:0!important;">
+            <div class="col-lg-6 dropdown display-inline" style="margin-left:-15px;">
+                <select ng-model="actionPS" class="form-control" ng-init="actionPS = '1' ">
+                    <option value="1">Product ID</option>
+                    <option value="2">Product Name</option>
+                    <option value="3">ProductType Name</option>
+                </select>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-xs-12" style="padding-left:0px ">
+                <span class="input-group-btn">
+                    <div ng-switch="actionPS">
+                        <div class="input-group" ng-switch-when="1">
+                            <input type="text" ng-model="filterModel.productId" class="form-control">
+                            <span class="input-group-btn">
+                                <button ng-click="searchFilter(filterModel)" class="btn btn-primary ">
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                </button>
+                            </span>
+                        </div>
+                        <div class="input-group" ng-switch-when="2">
+                            <input type="text" ng-model="filterModel.productName" class="form-control">
+                            <span class="input-group-btn">
+                                <button ng-click="searchFilter(filterModel)" class="btn btn-primary ">
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                </button>
+                            </span>
+                        </div>
+                        <div class="input-group" ng-switch-when="3">
+                            <input type="text" ng-model="filterModel.productTypeName" class="form-control">
+                            <span class="input-group-btn">
+                                <button ng-click="searchFilter(filterModel)" class="btn btn-primary ">
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </span>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-xs-3" ng-show='$vm.filterModel.advanceSearch'></div>
+    <!-- end search box -->
+    <div class="col-lg-6 col-md-6 col-xs-9 text-right" style="margin-top: 5px;">
+        <button class="btn btn-info" ng-click="$vm.triggerCreate()">
+            Create</button>
+    </div>
+</div>
+
+<div ng-show="$vm.filterModel.advanceSearch" class="row div-shadow default-bg">
+
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                    ProductID :
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="$vm.filterModel.code" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                    ProductName :
+            </div>
+
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="$vm.filterModel.name" type="text" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                SecondName :
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="$vm.filterModel.code" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                ThirdName :
+            </div>
+
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="$vm.filterModel.name" type="text" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                ProductCategory :
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="$vm.filterModel.code" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                ProductType :
+            </div>
+
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="$vm.filterModel.name" type="text" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                ProductSubType :
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="$vm.filterModel.code" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                ProductConversion :
+            </div>
+
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="$vm.filterModel.name" type="text" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                ProductItemLife_Y :
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="$vm.filterModel.code" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                ProductItemLife_M :
+            </div>
+
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="$vm.filterModel.name" type="text" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                ProductItemLife_D :
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="$vm.filterModel.code" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                ProductImage_Path :
+            </div>
+
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="$vm.filterModel.name" type="text" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <!--Search-->
+    <div class="col-lg-11 col-md-12 col-sm-11 col-xs-11 text-right container-margin" style="margin-top:20px; padding:0px; margin-left:10px;">
+        <button ng-click="filter()" class="ks-btn primary" style="margin:5px;min-width:100px">
+            <i class="fa fa-search" aria-hidden="true"></i> Search</button>
+    </div>
+</div>

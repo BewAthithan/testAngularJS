@@ -1,0 +1,17 @@
+<header class="page-header">
+    <h2> AutoPOS</h2>
+</header>
+
+<div>
+    <auto-pos-filter filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create"
+        ng-show="isFilter">
+        <br>
+    </auto-pos-filter>
+</div>
+
+
+<div>
+    <auto-pos-table-list filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create"
+        is-filter="isFilter">
+    </auto-pos-table-list>
+</div>

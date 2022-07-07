@@ -1,0 +1,43 @@
+<header class="page-header">
+    <h2>LPN Management</h2>
+</header>
+
+<div class="row">
+    <div class="div-shadow">
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <span>LPN Last No:</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <input type="text" ng-model="$vm.searchResultModel.lpnLastNo" class="form-control" disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <span>LPN Print:</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <input type="text" class="form-control" ng-model="filterModel.PrintNumber"/>
+                    </div>
+                </div>
+            </div>
+        </div>            
+            
+        <div class="text-right padding-m">
+            <button ng-click="goToPrint()" class="btn btn-primary hidden-xs">Print</button>
+            <button ng-click="goToPrint()" class="btn btn-primary btn-block btn-md visible-xs mt-lg">Print</button>
+            <button ng-click="clearData()" class="btn btn-success hidden-xs">Clear</button>
+            <button ng-click="clearData()" class="btn btn-success btn-block btn-md visible-xs mt-lg">Clear</button>
+        </div>
+    </div>
+</div>
+
+<report-popup on-show='popupReport.onShow' config='popupReport.config' invokes='popupReport.invokes' delegates='popupReport.delegates'>
+</report-popup>

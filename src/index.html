@@ -1,0 +1,1178 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp" class="fixed" ng-controller="AppCtrl">
+
+<head>
+    <link rel="icon" href="img/omni-wms logo.png">
+    <title>TopsClubApp Fulfillment Center</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="lib/angular-ui-bootstrap/dist/ui-bootstrap-csp.css">
+    <link ref="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css">
+
+    <!-- Custom CSS Libraries -->
+    <link href="styles/css/app.css" rel="stylesheet" />
+    <link href="styles/controls.css" rel="stylesheet" />
+    <link href="styles/tableStyle.css" rel="stylesheet" />
+    <link href="styles/datatable.css" rel="stylesheet" />
+    <link href="styles/button.css" rel="stylesheet" />
+    <link href="styles/fixedTable.css" rel="stylesheet">
+
+</head>
+
+<body style="overflow:unset;">
+
+    <div ui-view></div>
+
+    <span>
+        <dp-pageload></dp-pageload>
+    </span>
+
+    <!-- Jquery -->
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Vendor -->
+    <script src="assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
+    <script src="assets/vendor/nanoscroller/nanoscroller.js"></script>
+    <script src="assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="assets/vendor/magnific-popup/magnific-popup.js"></script>
+    <script src="assets/vendor/jquery-placeholder/jquery.placeholder.js"></script>
+
+    <!-- Angular Libraries -->
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/angular-touch/angular-touch.min.js"></script>
+    <script src="lib/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+    <script src="lib/angular-local-storage/dist/angular-local-storage.min.js"></script>
+    <script src="lib/angular-animate/angular-animate.min.js"></script>
+    <script src="lib/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
+    <script src="lib/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+    <script src="lib/angular-aria/angular-aria.min.js"></script>
+    <script src="lib/angular-filter/dist/angular-filter.min.js"></script>
+    <script src="lib/angular-translate/dist/angular-translate.min.js"></script>
+    <script src="lib/angular-translate/dist/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+    <script src="lib/moment/moment.js"></script>
+    <script src="lib/angular-moment/angular-moment.min.js"></script>
+    <script src="lib/moment/locale/th.js"></script>
+
+
+    <!-- Plug-in -->
+    <script src="lib/angular-ui-calendar/src/calendar.js"></script>
+    <script src="lib/chart.js/dist/Chart.min.js"></script>
+    <script src="lib/angular-chart.js/dist/angular-chart.min.js"></script>
+    <script src="lib/angularjs-dropdown-multiselect/dist/src/angularjs-dropdown-multiselect.js"></script>
+
+    <script src='www/lib/ng-file-upload-shim/ng-file-upload-shim.min.js'></script>
+    <script src='www/lib/ng-file-upload/ng-file-upload.min.js'></script>
+
+    <!-- Angular Modules -->
+    <!-- <script src="app.js"></script> -->
+    <script src="index.js"></script>
+    <script src="services/config.js" charset="utf-8"></script>
+    <script src="routers/config.js"></script>
+
+    <!-- library -->
+    <script type="text/javascript" src="assets/ui-sortable/sortable.min.js"></script>
+
+    <!-- assets library -->
+    <script src='assets/dpDialog/dpDialog.js'></script>
+    <script src='assets/dpModal/modal.js'></script>
+    <script src="assets/fixedTable/fixedTable.js"></script>
+
+    <!-- Load filters -->
+    <script src="filters/filterExpression.js"></script>
+    <script src="filters/filterQuery.js"></script>
+    <script src="filters/filterRemove.js"></script>
+    <script src="filters/filterDate.js"></script>
+
+    <!-- Load services -->
+    <script src="services/commonService.js"></script>
+    <script src="services/authInterceptorService.js"></script>
+    <script src="services/dataConstant.js"></script>
+    <script src="services/modalService.js"></script>
+    <script src="services/langService.js"></script>
+    <script src="services/clientService.js"></script>
+    <script src="services/customHttpInterceptor.js"></script>
+
+    <!-- Load component -->
+    <script src="assets/dpPageLoad/pageLoad.js"></script>
+    <script src="assets/read-excel-file/read-excel.js"></script>
+    <script src="widgets/dragDropTable/dragDropTableDirective.js"></script>
+
+    <!-- Load view controllers -->
+    <script src="controllers/state/login.js"></script>
+    <script src="controllers/state/home.js"></script>
+    <script src="controllers/state/test.js"></script>
+    <script src="controllers/partials/home/index.js"></script>
+    <script src="services/authService.js"></script>
+
+    <!-- Load Modules  -->
+
+    <!-- Load controllers -->
+    <script src="modules/widgets/dirHeader/dirHeader.js"></script>
+    <script src="modules/widgets/dirSidebar/dirSidebar.js"></script>
+    <script src="modules/widgets/dirDatepicker/dirDatepicker.js"></script>
+    <script src="modules/widgets/dirDatepicker2/datePicker.js"></script>
+    <script src="modules/widgets/datePicker/dirDatePicker.js"></script>
+    <script src="modules/widgets/autocompleteTxt/autocompleteTxt.js"></script>
+    <script src="modules/widgets/autocompleteTxt/autocompleteTxtCus.js"></script>
+    <script src="modules/widgets/dirFooter/dirFooter.js"></script>
+    <script src="modules/widgets/dirModal/dirModal.js"></script>
+    <script src="modules/widgets/dirLang/dirLang.js"></script>
+    <script src="modules/widgets/dirInputFilter/dirInputFilter.js"></script>
+    <script src="modules/widgets/dirDownloadPdf/downloadPdf.js"></script>
+    <script src="modules/widgets/customer/customer.js"></script>
+    <script src="widgets/auto/autocomple.js"></script>
+
+
+
+
+    <!-- Master data -->
+
+
+    <!-- Plan Receive -->
+    <!-- <script src="modules/planReceive/receive/component/planReceiveTableList.js"></script>
+    <script src="modules/planReceive/receive/component/planReceiveFilter.js"></script>
+    <script src="modules/planReceive/receive/planReceiveSelected.js"></script> -->
+
+
+    <!-- PutAway -->
+    <!-- <script src="modules/putAway/putAway.js"></script>
+    <script src="modules/putAway/component/filter/putAwayFilter.js"></script>
+    <script src="modules/putAway/component/table/tableDetailLpn.js"></script>
+    <script src="modules/putAway/component/table/tableDetail.js"></script> -->
+
+    <!-- Create Plan Receive -->
+    <!-- <script src="modules/createPlanReceive/createReceive/component/createPlanReceiveTableList.js"></script>
+    <script src="modules/createPlanReceive/createReceive/component/createPlanReceiveForm.js"></script>
+    <script src="modules/createPlanReceive/createReceive/component/customerRefForm.js"></script>
+    <script src="modules/createPlanReceive/createPlanReceiveSummary.js"></script>
+    <script src="modules/createPlanReceive/createReceive/component/itemDetail.js"></script> -->
+
+    <!-- Master Data-->
+    <script src="modules/masterData/masterEquipment/component/equipmentForm.js"></script>
+    <script src="modules/masterData/masterEquipment/component/equipmentTableList.js"></script>
+    <script src="modules/masterData/masterEquipment/component/equipmentFilter.js"></script>
+    <script src="modules/masterData/masterEquipment/equipmentSummary.js"></script>
+
+    <script src="modules/masterData/masterEquipmentType/component/equipmentTypeForm.js"></script>
+    <script src="modules/masterData/masterEquipmentType/component/equipmentTypeTableList.js"></script>
+    <script src="modules/masterData/masterEquipmentType/component/equipmentTypeFilter.js"></script>
+    <script src="modules/masterData/masterEquipmentType/equipmentTypeSummary.js"></script>
+
+    <script src="modules/masterData/masterEquipmentSubType/component/equipmentSubTypeForm.js"></script>
+    <script src="modules/masterData/masterEquipmentSubType/component/equipmentSubTypeTableList.js"></script>
+    <script src="modules/masterData/masterEquipmentSubType/component/equipmentSubTypeFilter.js"></script>
+    <script src="modules/masterData/masterEquipmentSubType/equipmentSubTypeSummary.js"></script>
+
+
+    <script src="modules/masterData/masterGrade/component/masterGradeForm.js"></script>
+    <script src="modules/masterData/masterGrade/component/masterGradeTableList.js"></script>
+    <script src="modules/masterData/masterGrade/component/masterGradeFilter.js"></script>
+    <script src="modules/masterData/masterGrade/masterGradeSummary.js"></script>
+
+    <script src="modules/masterData/masterVendorType/factory/vendorTypeFactory.js"></script>
+
+    <script src="modules/masterData/masterVendorType/component/vendorTypeForm.js"></script>
+    <script src="modules/masterData/masterVendorType/component/vendorTypeFilter.js"></script>
+    <script src="modules/masterData/masterVendorType/component/vendorTypeTableList.js"></script>
+    <script src="modules/masterData/masterVendorType/vendorTypeSummary.js"></script>
+
+
+    <script src="modules/masterData/masterOwnerType/component/ownerTypeTableList.js"></script>
+    <script src="modules/masterData/masterOwnerType/component/ownerTypeForm.js"></script>
+    <script src="modules/masterData/masterOwnerType/component/ownerTypeFilter.js"></script>
+    <script src="modules/masterData/masterOwnerType/ownerTypeSummary.js"></script>
+
+
+    <script src="modules/masterData/masterOwner/component/ownerTableList.js"></script>
+    <script src="modules/masterData/masterOwner/component/ownerForm.js"></script>
+    <script src="modules/masterData/masterOwner/component/ownerFilter.js"></script>
+    <script src="modules/masterData/masterOwner/ownerSummary.js"></script>
+
+    <script src="modules/masterData/masterOwnerVendor/component/ownerVendorTableList.js"></script>
+    <script src="modules/masterData/masterOwnerVendor/component/ownerVendorForm.js"></script>
+    <script src="modules/masterData/masterOwnerVendor/component/ownerVendorFilter.js"></script>
+    <script src="modules/masterData/masterOwnerVendor/ownerVendorSummary.js"></script>
+
+
+    <script src="modules/masterData/masterOwnerSoldTo/component/ownerSoldtoTableList.js"></script>
+    <script src="modules/masterData/masterOwnerSoldTo/component/ownerSoldtoForm.js"></script>
+    <script src="modules/masterData/masterOwnerSoldTo/component/ownerSoldtoFilter.js"></script>
+    <script src="modules/masterData/masterOwnerSoldTo/ownerSoldtoSummary.js"></script>
+
+    <script src="modules/masterData/masterVendor/component/vendorTableList.js"></script>
+    <script src="modules/masterData/masterVendor/component/vendorForm.js"></script>
+    <script src="modules/masterData/masterVendor/component/vendorFilter.js"></script>
+    <script src="modules/masterData/masterVendor/vendorSummary.js"></script>
+
+
+    <script src="modules/masterData/masterSoldTo/component/soldToTableList.js"></script>
+    <script src="modules/masterData/masterSoldTo/component/soldToForm.js"></script>
+    <script src="modules/masterData/masterSoldTo/component/soldToFilter.js"></script>
+    <script src="modules/masterData/masterSoldTo/factory/soldToFactory.js"></script>
+    <script src="modules/masterData/masterSoldTo/soldToSummary.js"></script>
+
+
+    <script src="modules/masterData/masterSoldToType/component/soldToTypeTableList.js"></script>
+    <script src="modules/masterData/masterSoldToType/component/soldToTypeForm.js"></script>
+    <script src="modules/masterData/masterSoldToType/component/soldToTypeFilter.js"></script>
+    <script src="modules/masterData/masterSoldToType/factory/soldToTypeFactory.js"></script>
+    <script src="modules/masterData/masterSoldToType/soldToTypeSummary.js"></script>
+
+
+    <script src="modules/masterData/masterShipTo/component/shipToTableList.js"></script>
+    <script src="modules/masterData/masterShipTo/component/shipToForm.js"></script>
+    <script src="modules/masterData/masterShipTo/component/shipToFilter.js"></script>
+    <script src="modules/masterData/masterShipTo/factory/shipToFactory.js"></script>
+    <script src="modules/masterData/masterShipTo/shipToSummary.js"></script>
+
+
+    <script src="modules/masterData/masterShipToType/component/shipToTypeTableList.js"></script>
+    <script src="modules/masterData/masterShipToType/component/shipToTypeForm.js"></script>
+    <script src="modules/masterData/masterShipToType/component/shipToTypeFilter.js"></script>
+    <script src="modules/masterData/masterShipToType/factory/shipToTypeFactory.js"></script>
+    <script src="modules/masterData/masterShipToType/shipToTypeSummary.js"></script>
+
+
+    <script src="modules/masterData/masterSoldToShipTo/component/soldToshipToTableList.js"></script>
+    <script src="modules/masterData/masterSoldToShipTo/component/soldToshipToForm.js"></script>
+    <script src="modules/masterData/masterSoldToShipTo/component/soldToshipToFilter.js"></script>
+    <script src="modules/masterData/masterSoldToShipTo/factory/soldToShipToFactory.js"></script>
+    <script src="modules/masterData/masterSoldToShipTo/soldToshipToSummary.js"></script>
+
+
+    <script src="modules/masterData/masterProductCategory/component/productCategoryTableList.js"></script>
+    <script src="modules/masterData/masterProductCategory/component/productCategoryForm.js"></script>
+    <script src="modules/masterData/masterProductCategory/component/productCategoryFilter.js"></script>
+    <script src="modules/masterData/masterProductCategory/productCategorySummary.js"></script>
+
+
+    <script src="modules/masterData/masterProductType/component/productTypeTableList.js"></script>
+    <script src="modules/masterData/masterProductType/component/productTypeForm.js"></script>
+    <script src="modules/masterData/masterProductType/component/productTypeFilter.js"></script>
+    <script src="modules/masterData/masterProductType/factory/productTypeFactory.js"></script>
+    <script src="modules/masterData/masterProductType/productTypeSummary.js"></script>
+
+
+    <script src="modules/masterData/masterProductOwner/component/productOwnerTableList.js"></script>
+    <script src="modules/masterData/masterProductOwner/component/productOwnerForm.js"></script>
+    <script src="modules/masterData/masterProductOwner/component/productOwnerFilter.js"></script>
+    <script src="modules/masterData/masterProductOwner/productOwnerSummary.js"></script>
+
+
+    <script src="modules/masterData/masterProductSubType/component/productSubTypeTableList.js"></script>
+    <script src="modules/masterData/masterProductSubType/component/productSubTypeForm.js"></script>
+    <script src="modules/masterData/masterProductSubType/component/productSubTypeFilter.js"></script>
+    <script src="modules/masterData/masterProductSubType/factory/productSubTypeFactory.js"></script>
+    <script src="modules/masterData/masterProductSubType/productSubTypeSummary.js"></script>
+
+
+    <script src="modules/masterData/masterProduct/component/productTableList.js"></script>
+    <script src="modules/masterData/masterProduct/component/productForm.js"></script>
+    <script src="modules/masterData/masterProduct/component/productFilter.js"></script>
+    <script src="modules/masterData/masterProduct/productSummary.js"></script>
+
+
+    <script src="modules/masterData/masterWareHouse/component/wareHouseTableList.js"></script>
+    <script src="modules/masterData/masterWareHouse/component/wareHouseForm.js"></script>
+    <script src="modules/masterData/masterWareHouse/component/wareHouseFilter.js"></script>
+    <script src="modules/masterData/masterWareHouse/wareHouseSummary.js"></script>
+
+
+    <script src="modules/masterData/masterRoom/component/roomTableList.js"></script>
+    <script src="modules/masterData/masterRoom/component/roomForm.js"></script>
+    <script src="modules/masterData/masterRoom/component/roomFilter.js"></script>
+    <script src="modules/masterData/masterRoom/factory/roomFactory.js"></script>
+    <script src="modules/masterData/masterRoom/roomSummary.js"></script>
+
+
+    <script src="modules/masterData/masterProductConversion/component/productConversionTableList.js"></script>
+    <script src="modules/masterData/masterProductConversion/component/productConversionForm.js"></script>
+    <script src="modules/masterData/masterProductConversion/component/productConversionFilter.js"></script>
+    <script src="modules/masterData/masterProductConversion/productConversionSummary.js"></script>
+
+
+    <script src="modules/masterData/masterZone/component/zoneTableList.js"></script>
+    <script src="modules/masterData/masterZone/component/zoneForm.js"></script>
+    <script src="modules/masterData/masterZone/component/zoneFilter.js"></script>
+    <script src="modules/masterData/masterZone/zoneSummary.js"></script>
+
+    <script src="modules/masterData/masterZoneLocation/component/zoneLocationTableList.js"></script>
+    <script src="modules/masterData/masterZoneLocation/component/zoneLocationForm.js"></script>
+    <script src="modules/masterData/masterZoneLocation/component/zoneLocationFilter.js"></script>
+    <script src="modules/masterData/masterZoneLocation/zoneLocationSummary.js"></script>
+
+    <script src="modules/masterData/masterZonePutAway/component/zonePutAwayTableList.js"></script>
+    <script src="modules/masterData/masterZonePutAway/component/zonePutAwayForm.js"></script>
+    <script src="modules/masterData/masterZonePutAway/component/zonePutAwayFilter.js"></script>
+    <script src="modules/masterData/masterZonePutAway/zonePutAwaySummary.js"></script>
+
+    <script src="modules/masterData/masterZonePutAwayLocation/component/zonePutAwayLocationTableList.js"></script>
+    <script src="modules/masterData/masterZonePutAwayLocation/component/zonePutAwayLocationForm.js"></script>
+    <script src="modules/masterData/masterZonePutAwayLocation/component/zonePutAwayLocationFilter.js"></script>
+    <script src="modules/masterData/masterZonePutAwayLocation/zonePutAwayLocationSummary.js"></script>
+
+
+    <script src="modules/masterData/masterLocationType/component/locationTypeTableList.js"></script>
+    <script src="modules/masterData/masterLocationType/component/locationTypeForm.js"></script>
+    <script src="modules/masterData/masterLocationType/component/locationTypeFilter.js"></script>
+    <script src="modules/masterData/masterLocationType/locationTypeSummary.js"></script>
+
+
+    <script src="modules/masterData/masterProductConversionBarcode/component/productconversionbarcodeTableList.js"></script>
+    <script src="modules/masterData/masterProductConversionBarcode/component/productconversionbarcodeForm.js"></script>
+    <script src="modules/masterData/masterProductConversionBarcode/component/productconversionbarcodeFilter.js"></script>
+    <script src="modules/masterData/masterProductConversionBarcode/productconversionbarcodeSummary.js"></script>
+
+
+    <script src="modules/masterData/masterLocationLock/component/locationlockTableList.js"></script>
+    <script src="modules/masterData/masterLocationLock/component/locationlockForm.js"></script>
+    <script src="modules/masterData/masterLocationLock/component/locationlockFilter.js"></script>
+    <script src="modules/masterData/masterLocationLock/locationlockSummary.js"></script>
+
+
+    <script src="modules/masterData/masterLocation/component/locationTableList.js"></script>
+    <script src="modules/masterData/masterLocation/component/locationForm.js"></script>
+    <script src="modules/masterData/masterLocation/component/locationFilter.js"></script>
+    <script src="modules/masterData/masterLocation/locationSummary.js"></script>
+
+
+    <script src="modules/masterData/masterTaskGroup/component/taskGroupTableList.js"></script>
+    <script src="modules/masterData/masterTaskGroup/component/taskGroupForm.js"></script>
+    <script src="modules/masterData/masterTaskGroup/component/taskGroupFilter.js"></script>
+    <script src="modules/masterData/masterTaskGroup/taskGroupSummary.js"></script>
+
+
+    <script src="modules/masterData/masterTaskGroupEquipment/component/taskGroupEquipmentTableList.js"></script>
+    <script src="modules/masterData/masterTaskGroupEquipment/component/taskGroupEquipmentForm.js"></script>
+    <script src="modules/masterData/masterTaskGroupEquipment/component/taskGroupEquipmentFilter.js"></script>
+    <script src="modules/masterData/masterTaskGroupEquipment/taskGroupEquipmentSummary.js"></script>
+
+
+    <script src="modules/masterData/masterTaskGroupUser/component/taskGroupUserTableList.js"></script>
+    <script src="modules/masterData/masterTaskGroupUser/component/taskGroupUserForm.js"></script>
+    <script src="modules/masterData/masterTaskGroupUser/component/taskGroupUserFilter.js"></script>
+    <script src="modules/masterData/masterTaskGroupUser/taskGroupUserSummary.js"></script>
+
+    <script src="modules/masterData/masterUser/component/userTableList.js"></script>
+    <script src="modules/masterData/masterUser/component/userForm.js"></script>
+    <script src="modules/masterData/masterUser/component/userFilter.js"></script>
+    <script src="modules/masterData/masterUser/userSummary.js"></script>
+
+    <script src="modules/masterData/masterUserGroup/component/userGroupTableList.js"></script>
+    <script src="modules/masterData/masterUserGroup/component/userGroupForm.js"></script>
+    <script src="modules/masterData/masterUserGroup/component/userGroupFilter.js"></script>
+    <script src="modules/masterData/masterUserGroup/userGroupSummary.js"></script>
+
+    <script src="modules/masterData/masterUserGroupMenu/component/userGroupMenuTableList.js"></script>
+    <script src="modules/masterData/masterUserGroupMenu/component/userGroupMenuForm.js"></script>
+    <script src="modules/masterData/masterUserGroupMenu/component/userGroupMenuFilter.js"></script>
+    <script src="modules/masterData/masterUserGroupMenu/userGroupMenuSummary.js"></script>
+
+    <script src="modules/masterData/masterUserGroupZone/component/userGroupZoneTableList.js"></script>
+    <script src="modules/masterData/masterUserGroupZone/component/userGroupZoneForm.js"></script>
+    <script src="modules/masterData/masterUserGroupZone/component/userGroupZoneFilter.js"></script>
+    <script src="modules/masterData/masterUserGroupZone/userGroupZoneSummary.js"></script>
+
+
+    <script src="modules/masterData/masterLocationWorkArea/component/locationWorkAreaTableList.js"></script>
+    <script src="modules/masterData/masterLocationWorkArea/component/locationWorkAreaForm.js"></script>
+    <script src="modules/masterData/masterLocationWorkArea/component/locationWorkAreaFilter.js"></script>
+    <script src="modules/masterData/masterLocationWorkArea/locationWorkAreaSummary.js"></script>
+
+
+    <script src="modules/masterData/masterWorkArea/component/workAreaTableList.js"></script>
+    <script src="modules/masterData/masterWorkArea/component/workAreaForm.js"></script>
+    <script src="modules/masterData/masterWorkArea/component/workAreaFilter.js"></script>
+    <script src="modules/masterData/masterWorkArea/workAreaSummary.js"></script>
+
+
+    <script src="modules/masterData/masterLocationEquipment/component/locationEquipmentTableList.js"></script>
+    <script src="modules/masterData/masterLocationEquipment/component/locationEquipmentForm.js"></script>
+    <script src="modules/masterData/masterLocationEquipment/component/locationEquipmentFilter.js"></script>
+    <script src="modules/masterData/masterLocationEquipment/locationEquipmentSummary.js"></script>
+
+
+    <script src="modules/masterData/masterTaskGroupWorkArea/component/taskGroupWorkAreaTableList.js"></script>
+    <script src="modules/masterData/masterTaskGroupWorkArea/component/taskGroupWorkAreaForm.js"></script>
+    <script src="modules/masterData/masterTaskGroupWorkArea/component/taskGroupWorkAreaFilter.js"></script>
+    <script src="modules/masterData/masterTaskGroupWorkArea/taskGroupWorkAreaSummary.js"></script>
+
+    <script src="modules/masterData/masterDocumentType/component/documentTypeTableList.js"></script>
+    <script src="modules/masterData/masterDocumentType/component/documentTypeForm.js"></script>
+    <script src="modules/masterData/masterDocumentType/component/documentTypeFilter.js"></script>
+    <script src="modules/masterData/masterDocumentType/documentTypeSummary.js"></script>
+
+    <script src="modules/widgets/autocomplaex/autocomplete.js"></script>
+    <script src="modules/widgets/autocomplaex/autocompleteStr.js"></script>
+
+    <!-- All Factory -->
+    <script src="modules/GR/putAway/putAwayByLPN/factory/putAwayFactory.js"></script>
+    <script src="modules/masterData/masterVendor/factory/vendorFactory.js"></script>
+    <script src="modules/masterData/masterDocumentType/factory/documentTypeFactory.js"></script>
+    <script src="modules/masterData/masterLocationType/factory/locationTypeFactory.js"></script>
+    <script src="modules/masterData/masterLocation/factory/locationFactory.js"></script>
+    <script src="modules/masterData/masterLocationLock/factory/locationLockFactory.js"></script>
+    <script src="modules/masterData/masterOwner/factory/ownerFactory.js"></script>
+    <script src="modules/masterData/masterOwnerSoldTo/factory/ownerSoldToFactory.js"></script>
+    <script src="modules/masterData/masterOwnerType/factory/ownerTypeFactory.js"></script>
+    <script src="modules/masterData/masterTaskGroup/factory/taskGroupFactory.js"></script>
+    <script src="modules/masterData/masterOwnerVendor/factory/ownerVendorFactory.js"></script>
+    <script src="modules/masterData/masterProduct/factory/productFactory.js"></script>
+    <script src="modules/masterData/masterProductCategory/factory/productCategoryFactory.js"></script>
+    <script src="modules/masterData/masterWareHouse/factory/warehouseFactory.js"></script>
+    <script src="modules/masterData/masterZone/factory/zoneFactory.js"></script>
+    <script src="modules/masterData/masterZonePutAway/factory/zonePutAwayFactory.js"></script>
+    <script src="modules/masterData/masterZonePutAwayLocation/factory/zonePutAwayLocationFactory.js"></script>
+    <script src="modules/masterData/masterProductConversion/factory/productConversionFactory.js"></script>
+    <script src="modules/masterData/masterZoneLocation/factory/zoneLocationFactory.js"></script>
+    <script src="modules/masterData/masterProductOwner/factory/productOwnerFactory.js"></script>
+    <script src="modules/masterData/masterProductConversionBarcode/factory/productConversionBarcodeFactory.js"></script>
+    <script src="modules/masterData/component/countryPopup/factory/countryFactory.js"></script>
+    <script src="modules/masterData/component/districtPopup/factory/districtFactory.js"></script>
+    <script src="modules/masterData/component/postcodePopup/factory/postcodeFactory.js"></script>
+    <script src="modules/masterData/component/provincePopup/factory/provinceFactory.js"></script>
+    <script src="modules/masterData/component/subDistrictPopup/factory/subDistrictFactory.js"></script>
+    <script src="modules/masterData/masterLocationWorkArea/factory/locationFactory.js"></script>
+    <script src="modules/masterData/masterWorkArea/factory/workAreaFactory.js"></script>
+    <script src="modules/masterData/masterTaskGroupWorkArea/factory/taskGroupWorkAreaFactory.js"></script>
+    <script src="modules/masterData/masterTaskGroupEquipment/factory/taskGroupEquipmentFactory.js"></script>
+    <script src="modules/masterData/masterTaskGroupUser/factory/taskGroupUserFactory.js"></script>
+    <script src="modules/masterData/component/equipmentPopup/factory/equipmentFactory.js"></script>
+    <script src="modules/masterData/component/menuPopup/factory/menuFactory.js"></script>
+    <script src="modules/GR/planGR/factory/planGoodsReceiveFactory.js"></script>
+    <script src="modules/GR/component/planGrTypePopup/factory/planGrTypeFactory.js"></script>
+    <script src="modules/GR/component/documentTypePopup/factory/documentTypeFactory.js"></script>
+    <script src="modules/GR/LPN/factory/lpnFactory.js"></script>
+    <script src="modules/masterData/masterUser/factory/userFactory.js"></script>
+    <script src="modules/masterData/masterUserGroup/factory/userGroupFactory.js"></script>
+    <script src="modules/masterData/masterUserGroupMenu/factory/userGroupMenuFactory.js"></script>
+    <script src="modules/masterData/masterUserGroupZone/factory/userGroupZoneFactory.js"></script>
+    <!-- <script src="modules/masterData/masterGrade/factory/itemStatusFactory.js"></script> -->
+    <script src="modules/masterData/component/processPopup/factory/processFactory.js"></script>
+    <script src="modules/masterData/masterLocationEquipment/factory/locationEquipmentFactory.js"></script>
+    <script src="modules/masterData/masterEquipmentType/factory/equipmentTypeFactory.js"></script>
+    <script src="modules/masterData/masterEquipmentSubType/factory/equipmentSubTypeFactory.js"></script>
+    <script src="modules/masterData/component/deptPopup/factory/deptPopupFactory.js"></script>
+    <script src="modules/masterData/component/subDeptPopup/factory/subDeptPopupFactory.js"></script>
+    <script src="modules/masterData/component/brandPopup/factory/brandPopupFactory.js"></script>
+
+
+    <!-- popup -->
+    <script src="modules/masterData/component/warehousePopup/warehousePopup.js"></script>
+    <script src="modules/masterData/component/warehousePopup/warehousePopupTable/warehousePopupTable.js"></script>
+
+    <script src="modules/masterData/component/roomPopup/roomPopup.js"></script>
+    <script src="modules/masterData/component/roomPopup/roomPopupTable/roomPopupTable.js"></script>
+
+    <script src="modules/masterData/component/locationTypePopup/locationTypePopup.js"></script>
+    <script src="modules/masterData/component/locationTypePopup/locationTypePopupTable/locationTypePopupTable.js"></script>
+
+    <script src="modules/masterData/component/productCategoryPopup/productCategoryPopup.js"></script>
+    <script src="modules/masterData/component/productCategoryPopup/productCategoryPopupTable/productCategoryPopupTable.js"></script>
+
+    <script src="modules/masterData/component/productTypePopup/productTypePopup.js"></script>
+    <script src="modules/masterData/component/productTypePopup/productTypePopupTable/productTypePopupTable.js"></script>
+
+    <script src="modules/masterData/component/productSubTypePopup/productSubTypePopup.js"></script>
+    <script src="modules/masterData/component/productSubTypePopup/productSubTypePopupTable/productSubTypePopupTable.js"></script>
+
+    <script src="modules/masterData/component/productConversion/productConversion.js"></script>
+    <script src="modules/masterData/component/productConversion/productConversionPopupTable/productConversionPopupTable.js"></script>
+
+    <script src="modules/masterData/component/locationLockPopup/locationLockPopup.js"></script>
+    <script src="modules/masterData/component/locationLockPopup/locationLockPopupTable/locationLockPopupTable.js"></script>
+
+    <script src="modules/masterData/component/locationPopup/locationPopup.js"></script>
+    <script src="modules/masterData/component/locationPopup/locationPopupTable/locationPopupTable.js"></script>
+
+    <script src="modules/masterData/component/zonePopup/zonePopupTable/zonePopupTable.js"></script>
+    <script src="modules/masterData/component/zonePopup/zonePopup.js"></script>
+
+    <script src="modules/masterData/component/zonePutAwayPopup/zonePutAwayPopupTable/zonePutAwayPopupTable.js"></script>
+    <script src="modules/masterData/component/zonePutAwayPopup/zonePutAwayPopup.js"></script>
+
+    <script src="modules/masterData/component/brandPopup/brandPopupTable/brandPopupTable.js"></script>
+    <script src="modules/masterData/component/brandPopup/brandPopup.js"></script>
+
+    <script src="modules/masterData/component/deptPopup/deptPopupTable/deptPopupTable.js"></script>
+    <script src="modules/masterData/component/deptPopup/deptPopup.js"></script>
+
+    <script src="modules/masterData/component/subDeptPopup/subDeptPopupTable/subDeptPopupTable.js"></script>
+    <script src="modules/masterData/component/subDeptPopup/subDeptPopup.js"></script>
+
+    <script src="modules/masterData/component/vendorTypePopup/vendorTypePopup.js"></script>
+    <script src="modules/masterData/component/vendorTypePopup/vendorTypePopupTable/vendorTypePopupTable.js"></script>
+
+    <script src="modules/masterData/component/ownerTypePopup/ownerTypePopupTable/ownerTypePopupTable.js"></script>
+    <script src="modules/masterData/component/ownerTypePopup/ownerTypePopup.js"></script>
+
+    <script src="modules/masterData/component/productPopup/productPopup.js"></script>
+    <script src="modules/masterData/component/productPopup/productPopupTable/productPopupTable.js"></script>
+
+    <script src="modules/masterData/component/ownerPopup/ownerPopup.js"></script>
+    <script src="modules/masterData/component/ownerPopup/ownerPopupTable/ownerPopupTable.js"></script>
+
+    <script src="modules/masterData/component/shipToPopup/shipToPopup.js"></script>
+    <script src="modules/masterData/component/shipToPopup/shipToPopupTable/shipToPopupTable.js"></script>
+
+    <script src="modules/masterData/component/userGroupPopup/userGroupPopup.js"></script>
+    <script src="modules/masterData/component/userGroupPopup/userGroupPopupTable/userGroupPopupTable.js"></script>
+
+    <script src="modules/masterData/component/menuPopup/newMenuPopup.js"></script>
+    <script src="modules/masterData/component/menuPopup/newMenuPopupTable/newMenuPopupTable.js"></script>
+
+    <script src="modules/masterData/component/shipToTypePopup/shipToTypePopup.js"></script>
+    <script src="modules/masterData/component/shipToTypePopup/shipToTypePopupTable/shipToTypePopupTable.js"></script>
+
+    <script src="modules/masterData/component/soldToPopup/soldToPopup.js"></script>
+    <script src="modules/masterData/component/soldToPopup/soldToPopupTable/soldToPopupTable.js"></script>
+
+    <script src="modules/masterData/component/soldToTypePopup/soldToTypePopup.js"></script>
+    <script src="modules/masterData/component/soldToTypePopup/soldToTypePopupTable/soldToTypePopupTable.js"></script>
+
+    <script src="modules/masterData/component/vendorPopup/vendorPopup.js"></script>
+    <script src="modules/masterData/component/vendorPopup/vendorPopupTable/vendorPopupTable.js"></script>
+
+    <script src="modules/masterData/component/countryPopup/countryPopup.js"></script>
+    <script src="modules/masterData/component/countryPopup/countryPopupTable/countryPopupTable.js"></script>
+
+    <script src="modules/masterData/component/districtPopup/districtPopup.js"></script>
+    <script src="modules/masterData/component/districtPopup/districtPopupTable/districtPopupTable.js"></script>
+
+    <script src="modules/masterData/component/postcodePopup/postcodePopup.js"></script>
+    <script src="modules/masterData/component/postcodePopup/postcodePopupTable/postcodePopupTable.js"></script>
+
+    <script src="modules/masterData/component/equipmentPopup/equipmentPopupTable/equipmentPopupTable.js"></script>
+    <script src="modules/masterData/component/equipmentPopup/equipmentPopup.js"></script>
+
+    <script src="modules/masterData/component/provincePopup/provincePopup.js"></script>
+    <script src="modules/masterData/component/provincePopup/provincePopupTable/provincePopupTable.js"></script>
+
+    <script src="modules/masterData/component/processPopup/processPopup.js"></script>
+    <script src="modules/masterData/component/processPopup/processPopupTable/processPopupTable.js"></script>
+
+
+    <script src="modules/GR/component/planGrTypePopup/planGrTypePopup.js"></script>
+    <script src="modules/GR/component/planGrTypePopup/planGrTypePopupTable/planGrTypePopupTable.js"></script>
+
+    <script src="modules/GR/component/documentTypePopup/documentTypePopupTable/documentTypeTable.js"></script>
+    <script src="modules/GR/component/documentTypePopup/documentTypePopup.js"></script>
+    <script src="modules/GR/component/documentTypePopup/documentTypeGrPopup/documentTypeGrPopup.js"></script>
+
+    <script src="modules/GR/component/planGrPopup/planGrPopup.js"></script>
+    <script src="modules/GR/component/planGrPopup/planGrPopupTable/planGrPopupTable.js"></script>
+
+    <script src="modules/masterData/component/warehouseToPopup/warehouseToPopup.js"></script>
+    <script src="modules/masterData/component/warehouseToPopup/warehouseToPopupTable/warehouseToPopupTable.js"></script>
+
+    <script src="modules/masterData/component/itemStatusPopup/factory/itemStatusFactory.js"></script>
+    <script src="modules/masterData/component/itemStatusPopup/itemStatusPopupTable/itemStatusPopupTable.js"></script>
+    <script src="modules/masterData/component/itemStatusPopup/itemStatusPopup.js"></script>
+
+    <script src="modules/GR/component/masterRequire/masterRequirePopup.js"></script>
+
+    <script src="modules/GR/component/suggestLocationPopup/factory/suggestLocationFactory.js"></script>
+    <script src="modules/GR/component/suggestLocationPopup/suggestLocationPopupTable/suggestLocationPopupTable.js"></script>
+    <script src="modules/GR/component/suggestLocationPopup/suggestLocationPopup.js"></script>
+    <!-- <script src=""></script> -->
+
+    <script src="modules/masterData/component/statusPopup/statusPopupTable/statusPopupTable.js"></script>
+    <script src="modules/masterData/component/statusPopup/statusPopup.js"></script>
+    <script src="modules/masterData/component/statusPopup/factory/statusPopupFactory.js"></script>
+
+
+    <script src="modules/widgets/dirPopup/popupDeliveryPlace/code.js"></script>
+    <script src="modules/widgets/dirPopup/popupPackaging/code.js"></script>
+    <script src="modules/widgets/dirPopup/popupProduct/code.js"></script>
+    <script src="modules/widgets/dirPopup/popupLotNo/code.js"></script>
+    <script src="modules/widgets/dirPopup/popupGrade/code.js"></script>
+    <script src="modules/widgets/dirPopup/popupSoldTo/code.js"></script>
+
+    <script src="modules/widgets/dirPopup/popupDeliveryTeam/code.js"></script>
+    <script src="modules/masterData/component/subDistrictPopup/subDistrictPopup.js"></script>
+    <script src="modules/masterData/component/subDistrictPopup/subDistrictPopupTable/subDistrictPopupTable.js"></script>
+
+    <script src="modules/widgets/dirPopup/popupDeliveryTeam/code.js"></script>
+
+    <script src="modules/masterData/component/workAreaPopup/workAreaPopup.js"></script>
+    <script src="modules/masterData/component/workAreaPopup/workAreaPopupTable/workAreaPopupTable.js"></script>
+
+    <script src="modules/masterData/component/taskGroupPopup/taskGroupPopup.js"></script>
+    <script src="modules/masterData/component/taskGroupPopup/taskGroupPopupTable/taskGroupPopupTable.js"></script>
+
+    <script src="modules/masterData/component/equipmentTypePopup/equipmentTypePopup.js"></script>
+    <script src="modules/masterData/component/equipmentTypePopup/equipmentTypePopupTable/equipmentTypePopupTable.js"></script>
+    <script src="modules/masterData/component/equipmentSubTypePopup/equipmentSubTypePopup.js"></script>
+    <script src="modules/masterData/component/equipmentSubTypePopup/equipmentSubTypePopupTable/equipmentSubTypePopupTable.js"></script>
+
+    <script src="modules/masterData/component/userPopup/userPopupTable/userPopupTable.js"></script>
+    <script src="modules/masterData/component/userPopup/userPopup.js"></script>
+
+    <script src="modules/GR/component/planGiPopup/planGiPopupTable/planGiPopupTable.js"></script>
+    <script src="modules/GR/component/planGiPopup/planGiPopup.js"></script>
+
+    <script src="modules/masterData/component/dockDoorPopup/factory/dockDoorFactory.js"></script>
+    <script src="modules/masterData/component/dockDoorPopup/dockDoorPopupTable/dockDoorPopupTable.js"></script>
+    <script src="modules/masterData/component/dockDoorPopup/dockDoorPopup.js"></script>
+
+    <script src="modules/masterData/component/vehicleTypePopup/factory/vehicleTypeFactory.js"></script>
+    <script src="modules/masterData/component/vehicleTypePopup/vehicleTypePopupTable/vehicleTypePopupTable.js"></script>
+    <script src="modules/masterData/component/vehicleTypePopup/vehicleTypePopup.js"></script>
+
+    <script src="modules/masterData/component/containerTypePopup/factory/containerTypeFactory.js"></script>
+    <script src="modules/masterData/component/containerTypePopup/containerTypePopupTable/containerTypePopupTable.js"></script>
+    <script src="modules/masterData/component/containerTypePopup/containerTypePopup.js"></script>
+
+    <script src="modules/masterData/component/t3plPopup/factory/t3plFactory.js"></script>
+    <script src="modules/masterData/component/t3plPopup/t3plPopupTable/t3plPopupTable.js"></script>
+    <script src="modules/masterData/component/t3plPopup/t3plPopup.js"></script>
+
+    <script src="modules/GI/component/marshallnoPopup/marshallnoPopup.js"></script>
+    <script src="modules/GI/component/marshallnoPopup/marshallnoPopupTable/marshallnoPopupTable.js"></script>
+
+    <script src="modules/masterData/component/cartonPopup/cartonPopup.js"></script>
+
+
+    <script src="widgets/ksEnter/ksEnter.js"></script>
+    <script src="widgets/ksSelectOnClick/ksSelectOnClick.js"></script>
+    <script src="widgets/fixHeader/code.js"></script>
+    <script src="widgets/chars/chars.js"></script>
+
+    <!--  Plan GR -->
+    <script src="modules/GR/planGR/planSummary.js"></script>
+    <script src="modules/GR/planGR/component/planTableList.js"></script>
+    <script src="modules/GR/planGR/component/planFilter.js"></script>
+    <script src="modules/GR/planGR/component/planForm.js"></script>
+    <script src="modules/GR/planGR/component/planLoadingForm.js"></script>
+    <script src="modules/GR/planGR/factory/planGoodsReceiveItemFactory.js"></script>
+
+    <!-- GR -->
+    <script src="modules/GR/GR/grSummary.js"></script>
+    <script src="modules/GR/GR/component/grTableList.js"></script>
+    <script src="modules/GR/GR/component/grFilter.js"></script>
+    <script src="modules/GR/GR/component/grForm.js"></script>
+    <script src="modules/GR/GR/component/grLoadingForm.js"></script>
+    <script src="modules/GR/GR/factory/goodsReceiveFactory.js"></script>
+    <script src="modules/GR/GR/factory/goodsReceiveItemFactory.js"></script>
+
+    <!-- Scan Receive -->
+    <script src="modules/GR/scanReceive/factory/scanReceiveFactory.js"></script>
+    <script src="modules/GR/scanReceive/scanReceiveProductDetail/scanReceiveProductDetail.js"></script>
+    <script src="modules/GR/scanReceive/scanReceiveProduct/scanReceiveProduct.js"></script>
+    <script src="modules/GR/scanReceive/scanReceive.js"></script>
+
+    <script src="modules/GR/component/goodReceivePopup/goodReceivePopup.js"></script>
+    <script src="modules/GR/component/goodReceivePopup/goodReceivePopupTable/goodReceivePopupTable.js"></script>
+    <script src="modules/GR/component/goodReceivePopup/factory/goodReceiveFactory.js"></script>
+
+    <!-- LPN -->
+    <script src="modules/GR/LPN/lpnManagement.js"></script>
+
+    <!-- Put Away -->
+    <script src="modules/GR/putAway/putAwayByLPN/putawayByLpn.js"></script>
+    <script src="modules/GR/putAway/putAwayBySKU/putAwayBySku.js"></script>
+    <script src="modules/GR/putAway/putAwayBySKU/putAwayProductDetail/putAwayProductDetail.js"></script>
+    <script src="modules/GR/putAway/putAwayBySKU/putAwayReceiveProduct/putAwayReceiveProduct.js"></script>
+
+
+    <!--Plan GI -->
+    <script src="modules/GI/planGI/factory/planGoodsIssueFactory.js"></script>
+    <script src="modules/GI/planGI/planGiSummary.js"></script>
+    <script src="modules/GI/planGI/component/planGIFilter.js"></script>
+    <script src="modules/GI/planGI/component/planGITableList.js"></script>
+    <script src="modules/GI/planGI/component/planGIForm.js"></script>
+    <script src="modules/GI/planGI/component/planGILoadingForm.js"></script>
+    <script src="modules/GI/planGI/factory/planGoodsIssueItemFactory.js"></script>
+
+    <!-- New Page Import Store to Store -->
+    <script src="modules/GI/ImportStoreToStore/factory/ImportStoreToStoreFactory.js"></script>
+    <script src="modules/GI/ImportStoreToStore/ImportStoreToStoreSummary.js"></script>
+    <script src="modules/GI/ImportStoreToStore/component/ImportStoreToStoreFilter.js"></script>
+    <script src="modules/GI/ImportStoreToStore/component/ImportStoreToStoreTableList.js"></script>
+    <script src="modules/GI/ImportStoreToStore/component/ImportStoreToStoreForm.js"></script>
+    <script src="modules/GI/ImportStoreToStore/component/ImportStoreToStoreLoadingForm.js"></script>
+    <script src="modules/GI/ImportStoreToStore/factory/ImportStoreToStoreItemFactory.js"></script>
+
+    <!-- New Page Packing -->
+    <script src="modules/GI/Packing/factory/PackingFactory.js"></script>
+    <script src="modules/GI/Packing/PackingSummary.js"></script>
+    <script src="modules/GI/Packing/component/PackingFilter.js"></script>
+    <script src="modules/GI/Packing/component/PackingTableList.js"></script>
+    <script src="modules/GI/Packing/component/PackingForm.js"></script>
+    <script src="modules/GI/Packing/component/PackingLoadingForm.js"></script>
+	
+	<!-- New Page Packing Info -->
+    <script src="modules/GI/PackingInfo/factory/PackingInfoFactory.js"></script>
+    <script src="modules/GI/PackingInfo/PackingInfo.js"></script>
+    <script src="modules/GI/PackingInfo/component/PackingInfoFilter.js"></script>
+    <script src="modules/GI/PackingInfo/component/PackingInfoTableList.js"></script>
+    <script src="modules/GI/PackingInfo/component/PackingInfoForm.js"></script>
+
+    <!-- New Page Close Pack Station -->
+    <script src="modules/GI/closePackStation/factory/closePackStationFactory.js"></script>
+    <script src="modules/GI/closePackStation/closePackStationSummary.js"></script>
+    <script src="modules/GI/closePackStation/component/closePackStationFilter.js"></script>
+    <script src="modules/GI/closePackStation/component/closePackStationForm.js"></script>
+    <script src="modules/GI/closePackStation/component/closePackStationLoadingForm.js"></script>
+
+    <!-- GI -->
+    <script src="modules/GI/GI/giSummary.js"></script>
+    <script src="modules/GI/GI/component/giFilter.js"></script>
+    <script src="modules/GI/GI/component/giTableList.js"></script>
+    <script src="modules/GI/GI/component/giForm.js"></script>
+    <script src="modules/GI/GI/component/giLoadingForm.js"></script>
+    <script src="modules/GI/GI/factory/goodIssueFactory.js"></script>
+    <script src="modules/GI/GI/factory/goodsIssueItemFactory.js"></script>
+
+    <!-- RUN WAVE -->
+    <script src="modules/GI/runWave/runWaveSummary.js"></script>
+    <script src="modules/GI/runWave/component/runWaveTableList.js"></script>
+    <script src="modules/GI/runWave/component/runWaveFilter.js"></script>
+    <script src="modules/GI/runWave/factory/runWaveFactory.js"></script>
+
+    <!-- PRINT -->
+    <script src="modules/GI/PrintCarton/printCartonSummary.js"></script>
+    <script src="modules/GI/PrintCarton/component/printCartonTableList.js"></script>
+    <script src="modules/GI/PrintCarton/component/printCartonFilter.js"></script>
+    <script src="modules/GI/PrintCarton/factory/PrintCartonFactory.js"></script>
+
+    <!-- CartAssign -->
+    <!-- <script src="modules/GI/CartAssign/cartAssignSummary.js"></script>
+    <script src="modules/GI/CartAssign/component/cartAssign.js"></script>
+    <script src="modules/GI/CartAssign/component/cartAssignList.js"></script>
+    <script src="modules/GI/CartAssign/component/cartAssignPicking.js"></script> -->
+    <script src="modules/GI/CartAssign/factory/cartAssignFactory.js"></script>
+
+    <!-- CartAssignV2 -->
+    <script src="modules/GI/CartAssignV2/cartAssignSummaryV2.js"></script>
+    <script src="modules/GI/CartAssignV2/component/cartAssignV2.js"></script>
+    <script src="modules/GI/CartAssignV2/component/cartAssignListV2.js"></script>
+    <script src="modules/GI/CartAssignV2/component/cartAssignPickingV2.js"></script>
+
+    <!-- POS -->
+    <script src="modules/GI/POS/POS.js"></script>
+    <script src="modules/GI/POS/component/posFilter.js"></script>
+    <script src="modules/GI/POS/component/posTableList.js"></script>
+    <script src="modules/GI/POS/component/posForm.js"></script>
+    <script src="modules/GI/POS/factory/posFactory.js"></script>
+
+    <!-- Load TO Truck -->
+    <script src="modules/GI/LoadToTruck/loadToTruck.js"></script>
+    <script src="modules/GI/LoadToTruck/component/loadToTruckFilter.js"></script>
+    <script src="modules/GI/LoadToTruck/component/loadToTruckForm.js"></script>
+    <script src="modules/GI/LoadToTruck/component/loadToTruckLoadingForm.js"></script>
+    <script src="modules/GI/LoadToTruck/component/loadToTruckTableList.js"></script>
+    <script src="modules/GI/LoadToTruck/factory/loadTruckFactory.js"></script>
+    <script src="modules/GI/LoadToTruck/factory/loadTruckItemFactory.js"></script>
+    <script src="modules/GI/LoadToTruck/component/loadToTruckSoList.js"></script>
+
+    <!-- Scan Load To Truck -->
+    <script src="modules/GI/ScanLoadToTruck/scanLoadToTruck.js"></script>
+    <script src="modules/GI/ScanLoadToTruck/factory/scanLoadToTruckFactory.js"></script>
+
+    <!-- ScanQA -->
+    <script src="modules/GI/ScanQA/scanQa.js"></script>
+    <script src="modules/GI/ScanQA/component/scanQasFilter.js"></script>
+    <script src="modules/GI/ScanQA/component/scanQaTableList.js"></script>
+    <script src="modules/GI/ScanQA/factory/scanQaFactory.js"></script>
+
+    <!-- call Center Real Time -->
+    <script src="modules/GI/CallCenterRealTime/callCenterRealTime.js"></script>
+    <script src="modules/GI/CallCenterRealTime/component/callCenterRealTimeFilter.js"></script>
+    <script src="modules/GI/CallCenterRealTime/component/callCenterRealTimeTableList.js"></script>
+
+    <!-- call Center -->
+    <script src="modules/GI/CallCenter/callCenter.js"></script>
+    <script src="modules/GI/CallCenter/component/callCenterFilter.js"></script>
+    <script src="modules/GI/CallCenter/component/callCenterTableList.js"></script>
+    <script src="modules/GI/CallCenter/component/callCenterForm.js"></script>
+    <script src="modules/GI/CallCenter/factory/callCenterFactory.js"></script>
+    <script src="modules/GI/CallCenter/component/callCenterLoadingForm.js"></script>
+    <script src="modules/GI/CallCenter/factory/callCenterItemFactory.js"></script>
+    <script src="modules/GI/CallCenter/component/CallcenterReasonCode.js"></script>
+
+    <!-- Overall Performance Dashboard -->
+    <script src="modules/GI/OverallPerformanceDashboard/overallPerformanceDashboard.js"></script>
+    <script src="modules/GI/OverallPerformanceDashboard/factory/overallFactory.js"></script>
+
+    <!-- Picking Order Performance -->
+    <script src="modules/GI/PickingOrderPerformance/pickingOrderPerformance.js"></script>
+    <script src="modules/GI/PickingOrderPerformance/factory/pickingOrderFactory.js"></script>
+    <script src="modules/GI/PickingOrderPerformanceExpress/pickingOrderPerformanceExpress.js"></script>
+    <script src="modules/GI/PickingOrderPerformanceBacklog/pickingOrderPerformanceBacklog.js"></script>
+
+    <!-- Expected  -->
+    <script src="modules/GI/Expected/Expected.js"></script>
+    <script src="modules/GI/Expected/factory/ExpectedFactory.js"></script>
+
+    <!-- Load To Truck List -->
+    <script src="modules/GI/LoadToTruckList/loadToTruckList.js"></script>
+    <script src="modules/GI/LoadToTruckList/factory/loadTruckListFactory.js"></script>
+
+    <!-- Cart Number -->
+    <!-- <script src="modules/GI/CartNumber/cartNumberSummary.js"></script>
+    <script src="modules/GI/CartNumber/component/cartNumber.js"></script>
+    <script src="modules/GI/CartNumber/component/cartShortPick.js"></script> -->
+    <script src="modules/GI/CartNumber/factory/cartNumberFactory.js"></script>
+    <script src="modules/GI/CartNumber/factory/reasonCodeMasterFactory.js"></script>
+
+    <script src="modules/GI/CartNumberV2/cartNumberSummaryV2.js"></script>
+    <script src="modules/GI/CartNumberV2/component/cartNumberV2.js"></script>
+    <script src="modules/GI/CartNumberV2/component/cartShortPickV2.js"></script>
+    <script src="modules/GI/CartNumberV2/component/CheckCartonNumberV2/checkCartonPopupV2.js"></script>
+    <!-- <script src="modules/GI/CartNumber/component/CheckCartonNumber/checkCartonPopup.js"></script> -->
+    <!-- MarshalRelease -->
+    <script src="modules/GI/MarshalRelease/marshalReleaseSummary.js"></script>
+    <script src="modules/GI/MarshalRelease/component/marshalReleaseFilter.js"></script>
+    <script src="modules/GI/MarshalRelease/component/marshalReleaseTableList.js"></script>
+    <!-- <script src="modules/GI/MarshalRelease/component/pickingTools.js"></script> -->
+    <script src="modules/GI/MarshalRelease/factory/marshallReleaseFactory.js"></script>
+
+    <!-- Round -->
+    <script src="modules/GI/component/Round/factory/roundFactory.js"></script>
+    <script src="modules/GI/component/Round/roundPopupTable/roundPopupTable.js"></script>
+    <script src="modules/GI/component/Round/roundPopup.js"></script>
+
+    <!-- Route -->
+    <script src="modules/GI/component/Route/routePopup.js"></script>
+    <script src="modules/GI/component/Route/factory/routeFactory.js"></script>
+    <script src="modules/GI/component/Route/routePopupTable/routePopupTable.js"></script>
+
+    <!-- Scan PickingTools -->
+    <script src="modules/GI/ScanPickingTools/scanPickingToolsSummary.js"></script>
+    <script src="modules/GI/ScanPickingTools/component/scanPickingTools.js"></script>
+    <script src="modules/GI/ScanPickingTools/factory/scanPickingToolsFactory.js"></script>
+    <script src="modules/GI/PickingTools/component/ReasonCode/shortPopup.js"></script>
+    <script src="modules/GI/PickingTools/component/ReasonCode/shortPopupTable/shortPopupTable.js"></script>
+
+
+    <!-- PickingTools ListTask -->
+    <script src="modules/GI/PickingToolsListTask/pickingToolsList.js"></script>
+    <script src="modules/GI/PickingToolsListTask/factory/pickingToolsListTaskFactory.js"></script>
+
+    <!-- Marshal Confirm Transfer -->
+    <script src="modules/GI/MarshalConfirmTransfer/marshalConfirmTransferSummary.js"></script>
+    <script src="modules/GI/MarshalConfirmTransfer/component/marshalConfirmTransferTableList.js"></script>
+    <script src="modules/GI/MarshalConfirmTransfer/component/marshalConfirmTransferFilter.js"></script>
+    <script src="modules/GI/MarshalConfirmTransfer/factory/marshalConfirmTransferFactory.js"></script>
+
+    <!-- Scan Put To Carton -->
+    <script src="modules/GI/ScanPutToCarton/scanPutToCartonSummary.js"></script>
+    <script src="modules/GI/ScanPutToCarton/component/scanPutToCarton.js"></script>
+    <script src="modules/GI/ScanPutToCarton/factory/scanPutToCartonFactory.js"></script>
+
+    <!-- Rule -->
+    <script src="modules/GI/component/waveTemplate/waveTemplatePopup.js"></script>
+    <script src="modules/GI/component/waveTemplate/waveTemplatePopupTable/waveTemplatePopupTable.js"></script>
+    <script src="modules/GI/component/waveTemplate/factory/waveTemplateFactory.js"></script>
+
+    <!--text editor -->
+    <link rel='stylesheet' href='www/lib/textAngular/dist/textAngular.css'>
+    <script src='www/lib/textAngular/dist/textAngular-rangy.min.js'></script>
+    <script src='www/lib/textAngular/dist/textAngular-sanitize.min.js'></script>
+    <script src='www/lib/textAngular/dist/textAngular.min.js'></script>
+
+
+    <script src="modules/GI/component/documentTypePopup/documentTypePopup.js"></script>
+    <script src="modules/GI/component/documentTypePopup/factory/documentTypeFactory.js"></script>
+    <script src="modules/GI/component/documentTypePopup/documentTypePopupTable/documentTypeTable.js"></script>
+
+
+    <!-- Tranfer -->
+    <script src="modules/Tranfer/Tranfer/tranferSummary.js"></script>
+    <script src="modules/Tranfer/Tranfer/component/tranferFilter.js"></script>
+    <script src="modules/Tranfer/Tranfer/component/tranferTableList.js"></script>
+    <script src="modules/Tranfer/Tranfer/factory/tranferFactory.js"></script>
+    <script src="modules/Tranfer/Tranfer/factory/tranferPalletFactory.js"></script>
+    <script src="modules/Tranfer/Tranfer/factory/tranferCartonFactory.js"></script>
+
+    <!-- Tranfer Item Relocation Active -->
+    <script src="modules/Tranfer/TransferItemRelocation/transferItemRelocationActiveSummary.js"></script>
+    <script src="modules/Tranfer/TransferItemRelocation/component/tranferItemRelocationActive.js"></script>
+    <script src="modules/Tranfer/TransferItemRelocation/component/tranferItemRelocationList.js"></script>
+
+    <!-- Tranfer Item Relocation Reserve -->
+    <script src="modules/Tranfer/TransferItemRelocationReserve/transferItemRelocationReserveSummary.js"></script>
+    <script src="modules/Tranfer/TransferItemRelocationReserve/component/tranferItemRelocationReserve.js"></script>
+    <script src="modules/Tranfer/TransferItemRelocationReserve/component/tranferItemRelocationReserveList.js"></script>
+    <script src="modules/Tranfer/TransferItemRelocationReserve/component/tranferItemCheckBalance.js"></script>
+
+    <!-- Tranfer Item Active -->
+    <script src="modules/Tranfer/TransferItemActive/transferItemActiveSummary.js"></script>
+    <script src="modules/Tranfer/TransferItemActive/component/tranferItemActive.js"></script>
+    <script src="modules/Tranfer/TransferItemActive/component/locationList.js"></script>
+    <script src="modules/Tranfer/TransferItemActive/component/checkBalance.js"></script>
+    <script src="modules/Tranfer/TransferItemActive/factory/TransferStockAdjustmentFactory.js"></script>
+    <script src="modules/Tranfer/component/StockAdjustmentPopup/StockAdjustmentPopup.js"></script>
+    <script src="modules/Tranfer/component/StockAdjustmentPopup/StockAdjustmentPopupTable/stockAdjustmentPopupTable.js"></script>
+    <script src="modules/Tranfer/component/StockAdjustmentPopup/factory/reasonCodeFactory.js"></script>
+
+
+    <!-- Tranfer Item Reserve -->
+    <script src="modules/Tranfer/TransferItemReserve/transferItemReserveSummary.js"></script>
+    <script src="modules/Tranfer/TransferItemReserve/component/tranferItemReserve.js"></script>
+    <script src="modules/Tranfer/TransferItemReserve/component/itemReserveLpnList.js"></script>
+    <script src="modules/Tranfer/TransferItemReserve/component/itemReserveCheckBalance.js"></script>
+    <script src="modules/Tranfer/TransferItemReserve/factory/TransferStockAdjustmentLPNFactory.js"></script>
+
+    <!-- Carton Item -->
+    <script src="modules/Tranfer/CartonItem/cartonItemSummary.js"></script>
+    <script src="modules/Tranfer/CartonItem/component/cartonItemForm.js"></script>
+    <script src="modules/Tranfer/CartonItem/component/cartonList.js"></script>
+
+    <!-- Status Grade -->
+    <script src="modules/Tranfer/StatusGrade/statusGradeSummary.js"></script>
+    <script src="modules/Tranfer/StatusGrade/factory/statusGradeFactory.js"></script>
+    <script src="modules/Tranfer/StatusGrade/component/statusGradeForm.js"></script>
+    <script src="modules/Tranfer/StatusGrade/component/lpnList.js"></script>
+
+    <!-- Transfer Pallet -->
+    <script src="modules/Tranfer/TransferPallet/transferPalletSummary.js"></script>
+    <script src="modules/Tranfer/TransferPallet/component/transferPallet.js"></script>
+    <script src="modules/Tranfer/TransferPallet/component/transferLpnList.js"></script>
+
+    <!-- Transfer Carton -->
+    <script src="modules/Tranfer/TransferCarton/transferCartonSummary.js"></script>
+    <script src="modules/Tranfer/TransferCarton/component/transferCarton.js"></script>
+    <script src="modules/Tranfer/TransferCarton/component/cartonList.js"></script>
+
+    <!-- Task List -->
+    <script src="modules/GI/TaskList/TaskList.js"></script>
+    <script src="modules/GI/TaskList/factory/TaskListFactory.js"></script>
+
+    <!-- Put to staging -->
+    <!-- <script src="modules/GI/PutToStaging/PutToStaging.js"></script> -->
+    <script src="modules/GI/PutToStagingV2/PutToStagingV2.js"></script>
+
+    <!-- Print Carton RF -->
+    <script src="modules/GI/PrintCartonRF/printCarton.js"></script>
+
+    <!-- Picking Tools -->
+    <script src="modules/GI/PickingTools/pickingTools.js"></script>
+
+    <!-- Scan POS Detail -->
+    <script src="modules/GI/ScanPOSDetail/scanPosDetail.js"></script>
+
+    <!-- Upload -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/xlsx.full.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/jszip.js"></script>
+    <script src="modules/GI/LoadToTruck/component/importPopup.js"></script>
+
+    <!-- <script src="modules/GI/ScanPOSDetail/scanPosDetail.js"></script> -->
+    <script src="modules/GI/PickingTools/pickingToolsSummary.js"></script>
+    <script src="modules/GI/PickingTools/component/pickingToolsFilter.js"></script>
+    <script src="modules/GI/PickingTools/component/pickingToolsTableList.js"></script>
+    <script src="modules/GI/PickingTools/component/locationListPickingTools.js"></script>
+
+    <script src="modules/GI/PickingTools/factory/pickingToolFactory.js"></script>
+    <script src="modules/GI/PickingTools/component/scanPickingForm.js"></script>
+    <script src="modules/GI/PickingTools/component/reasonCode.js"></script>
+
+
+    <!-- PickTicket -->
+    <script src="modules/GI/component/pickTicketPopup/pickTicketPopup.js"></script>
+    <script src="modules/GI/component/pickTicketPopup/pickTicketPopupTable/pickTicketPopupTable.js"></script>
+    <script src="modules/GI/component/pickTicketPopup/factory/pickTicketPopupFactory.js"></script>
+
+    <!-- MarshallTask -->
+    <script src="modules/GI/component/marshallTask/marshallTaskPopup.js"></script>
+    <script src="modules/GI/component/marshallTask/marshallTaskPopupTable/marshallTaskPopupTable.js"></script>
+    <script src="modules/GI/component/marshallTask/factory/marshallTaskFactory.js"></script>
+
+    <!-- Report -->
+    <script src="modules/report/reportSummary.js"></script>
+    <script src="modules/report/factory/reportFactory.js"></script>
+    <script src="modules/masterData/component/reportPopup/reportPopup.js"></script>
+    <!-- reasonCodePopup -->
+    <script src="modules/GI/component/ReasonCode/ReasonCodePopup.js"></script>
+    <script src="modules/GI/component/ReasonCode/ReasonCodePopupTable/ReasonCodePopupTable.js"></script>
+    <script src="modules/GI/component/ReasonCode/factory/reasonCodeGiFactory.js"></script>
+
+    <!-- TheOneCard -->
+    <script src="modules/GI/component/TheOneCard/TheOneCardPopup.js"></script>
+    <script src="modules/GI/component/TheOneCard/TheOneCardPopupTable/TheOneCardPopupTable.js"></script>
+    <script src="modules/GI/component/TheOneCard/factory/TheOneCardFactory.js"></script>
+
+    <script src="modules/GI/component/planGiPopup/planGiPopupTable/planGiPopupTable.js"></script>
+    <script src="modules/GI/component/planGiPopup/planGiPopup.js"></script>
+    <!-- <script src="modules/GI/LoadToTruck/factory/loadTruckFactory.js"></script> -->
+
+    <!-- reasonpopup -->
+    <script src="modules/masterData/component/ReasonPopup/reasonPopup.js"></script>
+    <script src="modules/masterData/component/ReasonPopup/factory/reasonCodeFactory.js"></script>
+    <script src="modules/masterData/component/ReasonPopup/GoodsReceivePopup/goodsReceivePopup.js"></script>
+
+    <script src="modules/Tranfer/CartonItem/factory/tranferCartonItemFactory.js"></script>
+
+    <script src="modules/GI/PickManual/pickManualSummary.js"></script>
+    <script src="modules/GI/PickManual/component/pickManualItem.js"></script>
+    <script src="modules/masterData/component/soCatchWeightPopup/code.js"></script>
+    <script src="modules/masterData/component/soCatchWeightPopup/soCatchWeightTable/code.js"></script>
+    <script src="modules/masterData/component/sogiCatchWeightPopup/code.js"></script>
+    <script src="modules/masterData/component/sogiCatchWeightPopup/sogiCatchWeightTable/code.js"></script>
+    <script src="modules/GI/PickManual/factory/pickManualFactory.js"></script>
+    <script src="modules/GI/PickManual/component/productList.js"></script>
+
+
+    <!-- ShortPickingTools -->
+    <script src="modules/GI/ShortPickingTools/shortSummary.js"></script>
+    <script src="modules/GI/ShortPickingTools/component/shortPickingFilter.js"></script>
+    <script src="modules/GI/ShortPickingTools/component/shortPickingForm.js"></script>
+    <script src="modules/GI/ShortPickingTools/component/shortPickingTable.js"></script>
+    <script src="modules/GI/ShortPickingTools/factory/shortPickingFactory.js"></script>
+    <script src="modules/GI/component/TaskPickShort/taskPickShortPopup.js"></script>
+    <script src="modules/GI/component/TaskPickShort/taskPickShortPopupTable/taskPickShortPopupTable.js"></script>
+
+    <script src="modules/widgets/pcCountUp/code.js"></script>
+    <script src="assets/jquery-pos-master/jquery.pos.js"></script>
+
+    <script src="modules/masterData/component/productPopup/factory/productPopupFactory.js"></script>
+
+    <!-- Inquiry_SKU -->
+    <script src="modules/Inquiry/SKU/skuSummary.js"></script>
+    <script src="modules/Inquiry/SKU/component/skuFilter.js"></script>
+    <script src="modules/Inquiry/SKU/component/skuTableList.js"></script>
+    <script src="modules/Inquiry/SKU/component/skuProductConversion.js"></script>
+    <script src="modules/Inquiry/SKU/factory/inquirySkuFactory.js"></script>
+    <script src="modules/Inquiry/SKU/component/skuStockDetail.js"></script>
+    <script src="modules/Inquiry/SKU/component/skuAllocated.js"></script>
+
+    <!-- Inquiry_Location -->
+    <script src="modules/Inquiry/Location/locationSummary.js"></script>
+    <script src="modules/Inquiry/Location/component/locationTableList.js"></script>
+    <script src="modules/Inquiry/Location/component/locationStockDetail.js"></script>
+    <script src="modules/Inquiry/Location/component/locationFilter.js"></script>
+    <script src="modules/Inquiry/Location/factory/inquiryLocationFactory.js"></script>
+
+
+    <!-- Inquiry_Order -->
+    <script src="modules/Inquiry/Order/OrderSummary.js"></script>
+    <script src="modules/Inquiry/Order/component/OrderFilter.js"></script>
+    <script src="modules/Inquiry/Order/component/OrderTableList.js"></script>
+    <script src="modules/Inquiry/Order/factory/inquiryOrderFactory.js"></script>
+
+    <!-- Stock Movement -->
+    <script src="modules/Inquiry/Stock/stockSummary.js"></script>
+    <script src="modules/Inquiry/Stock/component/stockFilter.js"></script>
+    <script src="modules/Inquiry/Stock/component/stockTableList.js"></script>
+    <script src="modules/Inquiry/Stock/factory/stockFactory.js"></script>
+
+    <!-- Task -->
+    <script src="modules/Inquiry/Task/taskSummary.js"></script>
+    <script src="modules/Inquiry/Task/component/taskTableList.js"></script>
+    <script src="modules/Inquiry/Task/component/taskFilter.js"></script>
+    <script src="modules/Inquiry/Task/factory/taskFactory.js"></script>
+
+
+    <!-- SerialScan -->
+    <script src="modules/SerialScan/serialScan.js"></script>
+    <script src="modules/SerialScanList/serialScanList.js"></script>
+    <script src="modules/SerialScan/factory/serialScanFactory.js"></script>
+
+
+
+    <!-- AutoTask -->
+    <script src="modules/GI/AutoTask/AutoTaskSummary.js"></script>
+    <script src="modules/GI/AutoTask/component/AutoTaskFilter.js"></script>
+    <script src="modules/GI/AutoTask/component/AutoTaskForm.js"></script>
+    <script src="modules/GI/AutoTask/component/AutoTaskTableList.js"></script>
+    <script src="modules/GI/AutoTask/factory/AutoTaskFactory.js"></script>
+
+    <!-- AssignTask -->
+    <script src="modules/GI/AssignTask/AssignTaskSummary.js"></script>
+    <script src="modules/GI/AssignTask/component/AssignTaskFilter.js"></script>
+    <script src="modules/GI/AssignTask/component/AssignTaskForm.js"></script>
+    <script src="modules/GI/AssignTask/component/AssignTaskTableList.js"></script>
+    <script src="modules/GI/AssignTask/factory/AssignTaskFactory.js"></script>
+
+    <!-- ScanTask -->
+    <script src="modules/GI/ScanTask/ScanTaskSummary.js"></script>
+    <script src="modules/GI/ScanTask/component/ScanTask.js"></script>
+    <script src="modules/GI/ScanTask/component/ScanTaskShortPick.js"></script>
+    <script src="modules/GI/ScanTask/factory/ScanTaskfactory.js"></script>
+
+    <!-- ScanTaskDrop -->
+    <script src="modules/GI/ScanTaskDrop/ScanTaskDrop.js"></script>
+    <script src="modules/GI/ScanTaskDrop/factory/ScanTaskDropfactory.js"></script>
+
+    <!-- ScanTaskConfirmCarton -->
+    <script src="modules/GI/ScanTaskConfrimCarton/ScanTaskConfrimCarton.js"></script>
+    <script src="modules/GI/ScanTaskConfrimCarton/factory/ScanTaskConfrimCartonfactory.js"></script>
+
+    <!-- AssignCart -->
+    <script src="modules/GI/AssignCart/AssignCartSummary.js"></script>
+    <script src="modules/GI/AssignCart/component/AssignCartFilter.js"></script>
+    <script src="modules/GI/AssignCart/component/AssignCartForm.js"></script>
+    <script src="modules/GI/AssignCart/component/AssignCartTableList.js"></script>
+    <script src="modules/GI/AssignCart/factory/AssignCartFactory.js"></script>
+
+
+    <!-- Cyclecount -->
+    <script src="modules/Tranfer/Cyclecount/CyclecountSummary.js"></script>
+    <script src="modules/Tranfer/Cyclecount/factory/CyclecountFactory.js"></script>
+    <script src="modules/Tranfer/Cyclecount/component/CyclecountFilter.js"></script>
+    <script src="modules/Tranfer/Cyclecount/component/CyclecountForm.js"></script>
+    <script src="modules/Tranfer/Cyclecount/component/CyclecountTableList.js"></script>
+
+    <!-- Task Cyclecount -->
+    <script src="modules/Tranfer/TaskCyclecount/factory/TaskCyclecountFactory.js"></script>
+    <script src="modules/Tranfer/TaskCyclecount/TaskCyclecountSummary.js"></script>
+    <script src="modules/Tranfer/TaskCyclecount/TaskCyclecountCount.js"></script>
+    <script src="modules/Tranfer/TaskCyclecount/component/masterRequire/masterRequirePopup.js"></script>
+    <script src="modules/Tranfer/TaskCyclecount/component/reasonCode/reasonCodeCyclePopupTable/reasonCodeCyclePopupTable.js"></script>
+    <script src="modules/Tranfer/TaskCyclecount/component/reasonCode/reasonCodeCyclePopup.js"></script>
+
+    <!-- CountManual -->
+    <script src="modules/Tranfer/CountManual/factory/countManualFactory.js"></script>
+    <script src="modules/Tranfer/CountManual/countManual.js"></script>    
+
+    <!-- AutoPOS -->
+    <script src="modules/GI/AutoPOS/AutoPOS.js"></script>
+    <script src="modules/GI/AutoPOS/factory/posFactory.js"></script>
+    <script src="modules/GI/AutoPOS/component/posTableList.js"></script>
+    <script src="modules/GI/AutoPOS/component/posForm.js"></script>
+    <script src="modules/GI/AutoPOS/component/posFilter.js"></script>
+
+    <!-- PackConfirmPWB -->
+    <script src="modules/GI/packConfirmPWB/packConfirmPWB.js"></script>
+    <script src="modules/GI/packConfirmPWB/factory/packConfirmPWBFactory.js"></script>
+    <script src="modules/GI/packConfirmPWB/component/packConfirmPWBTableList.js"></script>
+    <script src="modules/GI/packConfirmPWB/component/packConfirmPWBForm.js"></script>
+    <script src="modules/GI/packConfirmPWB/component/packConfirmPWBFilter.js"></script>
+
+    <!-- ConfigUserGroupMenu-->
+    <script src="modules/masterData/configUserGroupMenu/component/configUserGroupMenuTableList.js"></script>
+    <script src="modules/masterData/configUserGroupMenu/component/configUserGroupMenuForm.js"></script>
+    <script src="modules/masterData/configUserGroupMenu/component/configUserGroupMenuFilter.js"></script>
+    <script src="modules/masterData/configUserGroupMenu/factory/configUserGroupMenuFactory.js"></script>
+    <script src="modules/masterData/configUserGroupMenu/configUserGroupMenuSummary.js"></script>
+
+    <!-- PrintCarton2 -->
+    <script src="modules/GI/PrintCarton2/printCartonSummary.js"></script>
+    <script src="modules/GI/PrintCarton2/factory/PrintCartonFactory.js"></script>
+    <script src="modules/GI/PrintCarton2/component/printCartonFilter.js"></script>
+    <script src="modules/GI/PrintCarton2/component/printCartonTableList.js"></script>
+
+    <!-- PiecePopup -->
+    <script src="modules/GI/component/piecePopup/piecePopup.js"></script>
+
+    <script src="modules/GI/PickingPerformanceClickandCollect/PickingPerformanceClickandCollect.js"></script>
+
+    <!-- New Page Carton -->
+    <script src="modules/GI/Carton/CartonSummary.js"></script>
+    <script src="modules/GI/Carton/component/CartonFilter.js"></script>
+    <script src="modules/GI/Carton/component/CartonTableList.js"></script>
+    <script src="modules/GI/Carton/factory/CartonFactory.js"></script>
+
+</body>
+
+</html>

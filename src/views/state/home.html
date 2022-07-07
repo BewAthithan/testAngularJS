@@ -1,0 +1,1632 @@
+﻿<!-- Web Fonts  -->
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet"
+  type="text/css">
+
+<!-- Vendor CSS -->
+<link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.css" />
+<link rel="stylesheet" href="assets/vendor/magnific-popup/magnific-popup.css" />
+<link rel="stylesheet" href="assets/vendor/bootstrap-datepicker/css/datepicker3.css" />
+
+<!-- Specific Page Vendor CSS -->
+<link rel="stylesheet" href="assets/vendor/jquery-ui/css/ui-lightness/jquery-ui-1.10.4.custom.css" />
+<link rel="stylesheet" href="assets/vendor/bootstrap-multiselect/bootstrap-multiselect.css" />
+<link rel="stylesheet" href="assets/vendor/morris/morris.css" />
+
+<!-- Theme CSS -->
+<link rel="stylesheet" href="assets/stylesheets/theme.css" />
+
+<!-- Skin CSS -->
+<link rel="stylesheet" href="assets/stylesheets/skins/default.css" />
+
+<!-- Theme Custom CSS -->
+<link rel="stylesheet" href="assets/stylesheets/theme-custom.css">
+
+<!-- Head Libs -->
+<script src="assets/vendor/modernizr/modernizr.js"></script>
+<script type='text/javascript'>
+
+  (function () {
+    if (window.localStorage) {
+      if (!localStorage.getItem('firstLoad')) {
+        localStorage['firstLoad'] = true;
+        window.location.reload();
+        setTimeout(localStorage, 3000);
+      }
+      else
+        localStorage.removeItem('firstLoad');
+      setTimeout(localStorage, 3000);
+    }
+  })();
+
+</script>
+
+<style>
+  .menu1 {
+    width: 0px;
+    height: 100%;
+    background: #34495e;
+    -webkit-transition: width 2s, height 4s;
+    /* For Safari 3.1 to 6.0 */
+    transition: width 0.5s, height 0.5s;
+    position: absolute;
+    z-index: 899;
+  }
+
+  .menu1.open {
+    width: 380px;
+    /* height: 300px; */
+  }
+
+  .btnn1 {
+    width: 100%;
+    padding-left: 80%;
+    padding-right: 5%;
+    margin-top: 10px;
+    position: fixed;
+    z-index: 900;
+
+  }
+
+  .btnn2 {
+    width: 80%;
+    padding-left: 80%;
+    padding-right: 5%;
+    margin-top: 10px;
+    position: fixed;
+    z-index: 901;
+
+  }
+</style>
+
+<script>
+  var b = document.createElement('button');
+  b.setAttribute('content', 'test content');
+  b.setAttribute('class', 'btn');
+  b.innerHTML = '<i class="fa fa-arrows-alt" aria-hidden="true"></i> Full Screen';
+
+  var wrapper = document.getElementById('divWrapper');
+  wrapper.appendChild(b);
+
+
+  // var goFS = document.getElementById("goFS");
+  var goFS = document.getElementById("divWrapper");
+  goFS.addEventListener("click", function () {
+    // document.body.requestFullscreen();
+
+    var isInFullScreen = (document.fullscreenElement && document.fullscreenElement !== null) ||
+      (document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
+      (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
+      (document.msFullscreenElement && document.msFullscreenElement !== null);
+
+    var docElm = document.documentElement;
+    if (!isInFullScreen) {
+      if (docElm.requestFullscreen) {
+        docElm.requestFullscreen();
+        b.innerHTML = '<i class="fa fa-times-circle" aria-hidden="true"></i> Exit Screen';
+      } else if (docElm.mozRequestFullScreen) {
+        docElm.mozRequestFullScreen();
+        b.innerHTML = '<i class="fa fa-times-circle" aria-hidden="true"></i> Exit Screen';
+      } else if (docElm.webkitRequestFullScreen) {
+        docElm.webkitRequestFullScreen();
+        b.innerHTML = '<i class="fa fa-times-circle" aria-hidden="true"></i> Exit Screen';
+      } else if (docElm.msRequestFullscreen) {
+        docElm.msRequestFullscreen();
+        b.innerHTML = '<i class="fa fa-times-circle" aria-hidden="true"></i> Exit Screen';
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+        b.innerHTML = '<i class="fa fa-arrows-alt" aria-hidden="true"></i> Full Screen';
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+        b.innerHTML = '<i class="fa fa-arrows-alt" aria-hidden="true"></i> Full Screen';
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+        b.innerHTML = '<i class="fa fa-arrows-alt" aria-hidden="true"></i> Full Screen';
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+        b.innerHTML = '<i class="fa fa-arrows-alt" aria-hidden="true"></i> Full Screen';
+      }
+    }
+
+  }, false);
+</script>
+
+
+<section class="body">
+
+
+
+  <!-- Header Bar (see directive modules\widgets\dirHeader) -->
+  <dir-header user="{{component.user}}" toolbar="component.menuToolbar"></dir-header>
+
+  <div class="inner-wrapper">
+
+    <!-- <div class="visible-md visible-lg" style="position: fixed; margin-top: -45px; margin-right: 10px; margin-left: 45%; z-index: 902;" id='divWrapper'></div> -->
+    <div class="visible-xs"
+      style="position: fixed; margin-top: 10px; margin-right: 10px; margin-left: 45%; z-index: 901;" id='divWrapper'>
+    </div>
+    <div class="btnn1 visible-xs">
+      <button class="btn btn-primary btn-block" type="button" ng-click="openMenu(c)">
+        <i class="fa fa-bars" style="color: #ffffff;" aria-label="Toggle sidebar"></i>
+      </button>
+    </div>
+
+    <div class="menu1 {{c}}">
+      <div class="nano nano-slider">
+        <div class="nano-content">
+          <nav id="menu" class="nav-main" role="navigation">
+            <ul class="nav nav-main">
+
+              <!-- HOME -->
+              <li ng-class="selected =='Home' ? 'nav-active' : ''">
+                <a ng-click="selectedMenu('Home')" ui-sref="tops.index">
+                  <i class="fa fa-home" aria-hidden="true"></i>
+                  <span>Home</span>
+                </a>
+              </li>
+
+              <li ng-show="m3n7[0].isActive" ng-class="selected == 'Inbound' ? 'nav-active' : ''" class="nav-parent">
+                <a>
+                  <i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i>
+                  <span>{{m3n7[0].menuName}}</span>
+                </a>
+                <ul class="nav nav-children">
+                  <li ng-show="m3n7[1].isActive">
+                    <a ng-click="selectedMenu('Inbound')" data-ui-sref="tops.plan_summary" href="tops.plan_summary">
+                      {{m3n7[1].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[2].isActive">
+                    <a ng-click="selectedMenu('Inbound')" data-ui-sref="tops.gr_summary">
+                      {{m3n7[2].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[3].isActive">
+                    <a ng-click="selectedMenu('Inbound')" data-ui-sref="tops.scan_receive">
+                      {{m3n7[3].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[4].isActive">
+                    <a ng-click="selectedMenu('Inbound')" data-ui-sref="tops.lpn_management">
+                      {{m3n7[4].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[5].isActive">
+                    <a ng-click="selectedMenu('Inbound')" data-ui-sref="tops.putaway_by_lpn">
+                      {{m3n7[5].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[6].isActive">
+                    <a ng-click="selectedMenu('Inbound')" data-ui-sref="tops.putaway_by_sku">
+                      {{m3n7[6].menuName}}
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+
+              <li ng-show="m3n7[7].isActive" ng-class="selected == 'Outbound' ? 'nav-active' : ''" class="nav-parent">
+                <a>
+                  <i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i>
+                  <span>{{m3n7[7].menuName}}</span>
+                </a>
+                <ul class="nav nav-children">
+                  <li ng-show="m3n7[8].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.plan_gi_summary">
+                      {{m3n7[8].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[9].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.run_wave_summary">
+                      {{m3n7[9].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[10].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.print_carton_summary">
+                      {{m3n7[10].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[59].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.print_carton_summary_two">
+                      {{m3n7[59].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[11].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.gi_summary">
+                      {{m3n7[11].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[12].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.cart_assign_summary">
+                      {{m3n7[12].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[13].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.cart_assign_picking">
+                      {{m3n7[13].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[14].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.print_carton">
+                      {{m3n7[14].menuName}}
+                    </a>
+                  </li>
+                  <!-- <li>
+                          <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.cart_number_summary">
+                            CartNumber
+                          </a>
+                        </li>
+                        <li>
+                          <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.task_list">
+                            Tack List
+                          </a>
+                        </li> -->
+                  <!-- <li>
+                          <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.put_to_staging">
+                            PutToStaging
+                          </a>
+                        </li> -->
+                  <!-- <li>
+                          <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.picking_tools_list">
+                            Task List Picking Tools
+                          </a>
+                        </li> -->
+                  <li ng-show="m3n7[15].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.marshal_release_summary">
+                      {{m3n7[15].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[16].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.picking_tools_summary">
+                      {{m3n7[16].menuName}}
+                    </a>
+                  </li>
+                  <!-- <li>
+                          <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.scan_picking_tools_summary">
+                            Scan PickingTools
+                          </a>
+                        </li> -->
+                  <li ng-show="m3n7[17].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.marshal_confirm_transfer_summary">
+                      {{m3n7[17].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[18].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.scan_put_to_carton_summary">
+                      {{m3n7[18].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[19].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.pos">
+                      {{m3n7[19].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[20].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.scan_qa">
+                      {{m3n7[20].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[21].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.load_to_truck">
+                      {{m3n7[21].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[22].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.scan_load_to_truck">
+                      {{m3n7[22].menuName}}
+                    </a>
+                  </li>
+                  <!-- <li>
+                          <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.expected">
+                            Expected
+                          </a>
+                        </li> -->
+                  <!-- <li>
+                          <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.load_to_truck_list">
+                            Load To Truck – Carton List
+                          </a>
+                        </li> -->
+                  <li ng-show="m3n7[23].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.call_center_real_time">
+                      {{m3n7[23].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[24].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.call_center">
+                      {{m3n7[24].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[25].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.overall_performance_dashboard">
+                      {{m3n7[25].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[26].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.picking_order_performance">
+                      {{m3n7[26].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[39].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.picking_order_performance_express">
+                      {{m3n7[39].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[60].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.picking_performance_click">
+                      {{m3n7[60].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[37].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.pick_manual">
+                      {{m3n7[37].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[38].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.pick_short">
+                      {{m3n7[38].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[56].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.auto_task">
+                      {{m3n7[56].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[52].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.assign_task">
+                      {{m3n7[52].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[54].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.assign_cart">
+                      {{m3n7[54].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[57].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.print_blind_carton">
+                      {{m3n7[57].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[58].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.auto_pos">
+                      {{m3n7[58].menuName}}
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.pack_confirm_p_w_b">
+                      PackConfirmPWB
+                    </a>
+                  </li>
+                  <!-- <li>
+                          <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.print_carton">
+                            Print Carton (RF)
+                          </a>
+                        </li>
+                        <li>
+                          <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.scan_pos_detail">
+                            Scan POS Detail
+                          </a>
+                        </li> -->
+                </ul>
+              </li>
+              <!-- Tranfer -->
+              <li ng-show="m3n7[27].isActive" ng-class="selected == 'Tranfer' ? 'nav-active' : ''" class="nav-parent">
+                <a>
+                  <i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i>
+                  <span>{{m3n7[27].menuName}}</span>
+                </a>
+                <ul class="nav nav-children">
+                  <!-- <li>
+                          <a ng-click="selectedMenu('Tranfer')" data-ui-sref="tops.tranfer_summary">
+                            Tranfer
+                          </a>
+                        </li> -->
+                  <li ng-show="m3n7[28].isActive">
+                    <a ng-click="selectedMenu('Tranfer')" data-ui-sref="tops.transfer_item_active_summary">
+                      {{m3n7[28].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[29].isActive">
+                    <a ng-click="selectedMenu('Tranfer')" data-ui-sref="tops.transfer_item_reserve_summary">
+                      {{m3n7[29].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[30].isActive">
+                    <a ng-click="selectedMenu('Tranfer')" data-ui-sref="tops.carton_item_summary">
+                      {{m3n7[30].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[31].isActive">
+                    <a ng-click="selectedMenu('Tranfer')" data-ui-sref="tops.status_grade_summary">
+                      {{m3n7[31].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[32].isActive">
+                    <a ng-click="selectedMenu('Tranfer')" data-ui-sref="tops.transfer_item_relocation_active_summary">
+                      {{m3n7[32].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[33].isActive">
+                    <a ng-click="selectedMenu('Tranfer')" data-ui-sref="tops.transfer_item_relocation_reserve_summary">
+                      {{m3n7[33].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[34].isActive">
+                    <a ng-click="selectedMenu('Tranfer')" data-ui-sref="tops.transfer_pallet_summary">
+                      {{m3n7[34].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[35].isActive">
+                    <a ng-click="selectedMenu('Tranfer')" data-ui-sref="tops.transfer_carton_summary">
+                      {{m3n7[35].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[51].isActive">
+                    <a ng-click="selectedMenu('Tranfer')" data-ui-sref="tops.cyclecount_summary">
+                      {{m3n7[51].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[53].isActive">
+                    <a ng-click="selectedMenu('Tranfer')" data-ui-sref="tops.taskcyclecount_summary">
+                      {{m3n7[53].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[55].isActive">
+                    <a ng-click="selectedMenu('Tranfer')" data-ui-sref="tops.count_manual">
+                      {{m3n7[55].menuName}}
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+              <!-- Master Data -->
+              <li ng-show="m3n7[36].isActive" ng-class="selected == 'MasterData' ? 'nav-active' : ''"
+                class="nav-parent">
+                <a>
+                  <i class="glyphicon glyphicon-tasks" aria-hidden="true"></i>
+                  <span>{{m3n7[36].menuName}}</span>
+                </a>
+                <ul class="nav nav-children">
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" ui-sref="tops.document_type">
+                      Document Type
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" ui-sref="tops.grade">
+                      Item Status
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" ui-sref="tops.equipment">
+                      Equipment
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" ui-sref="tops.equipment_type">
+                      Equipment Type
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" ui-sref="tops.equipment_subtype">
+                      Equipment SubType
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" ui-sref="tops.vendor">
+                      Supplier
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.vendor_type">
+                      Supplier Type
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.owner">
+                      Owner
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.owner_vendor">
+                      Owner Supplier
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.owner_type">
+                      Owner Type
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.owner_soldto">
+                      Owner SoldTo
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.sold_to">
+                      SoldTo
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.sold_to_type">
+                      SoldTo Type
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.ship_to">
+                      ShipTo
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.ship_to_type">
+                      ShipTo Type
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.sold_to_ship_to">
+                      SoldTo ShipTo
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.product">
+                      Product
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.product_type">
+                      Product Type
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.product_category">
+                      Product Category
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.product_sub_type">
+                      Product SubType
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.product_owner">
+                      Product Owner
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.product_conversion">
+                      Product Convertion
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.product_conversion_barcode">
+                      Product Convertion Barcode
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.ware_house">
+                      WareHouse
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.work_area">
+                      Work Area
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.room">
+                      Room
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.zone">
+                      Zone
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.zone_put_away">
+                      Zone Put Away
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.zone_put_away_location">
+                      Zone Put Away Location
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.zone_location">
+                      Zone Location
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.location">
+                      Location
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.location_equipment">
+                      Location Equipment
+                    </a>
+                  </li>
+                  <li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.location_lock">
+                      LocationAisle
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.location_type">
+                      Location Type
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.location_work_area">
+                      Location WorkArea
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.user">
+                      User
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.user_group">
+                      User Group
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.user_group_menu">
+                      User Group Menu
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.user_group_zone">
+                      User Group Zone
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.task_group">
+                      Task Group
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.task_group_equipment">
+                      Task Group Equipment
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.task_group_user">
+                      Task Group User
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.task_group_work_area">
+                      Task Group WorkArea
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.config_user_group_menu">
+                      Config User Group Menu
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li ng-show="m3n7[40].isActive" ng-class="selected == 'Inquiry' ? 'nav-active' : ''" class="nav-parent">
+                <a>
+                  <i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i>
+                  <span>{{m3n7[40].menuName}}</span>
+                </a>
+                <ul class="nav nav-children">
+                  <li ng-show="m3n7[41].isActive">
+                    <a ng-click="selectedMenu('Inquiry')" data-ui-sref="tops.sku">
+                      {{m3n7[41].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[42].isActive">
+                    <a ng-click="selectedMenu('Inquiry')" data-ui-sref="tops.stock">
+                      {{m3n7[42].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[43].isActive">
+                    <a ng-click="selectedMenu('Inquiry')" data-ui-sref="tops.task">
+                      {{m3n7[43].menuName}}
+                    </a>
+                  </li>
+                  <!-- <li ng-show="m3n7[44].isActive">
+                    <a ng-click="selectedMenu('Inquiry')" data-ui-sref="tops.sku">
+                      {{m3n7[44].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[45].isActive">
+                    <a ng-click="selectedMenu('Inquiry')" data-ui-sref="tops.sku">
+                      {{m3n7[45].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[46].isActive">
+                    <a ng-click="selectedMenu('Inquiry')" data-ui-sref="tops.sku">
+                      {{m3n7[46].menuName}}
+                    </a>
+                  </li> -->
+                  <li ng-show="m3n7[47].isActive">
+                    <a ng-click="selectedMenu('Inquiry')" data-ui-sref="tops.inq_location">
+                      {{m3n7[47].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[50].isActive">
+                    <a ng-click="selectedMenu('Inquiry')" data-ui-sref="tops.inq_order">
+                      {{m3n7[50].menuName}}
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <!-- <li ng-class="selected == 'PickManual' ? 'nav-active' : ''"
+                      class="nav-parent">
+                      <a>
+                        <i class="glyphicon glyphicon-tasks" aria-hidden="true"></i>
+                        <span>Pick Manual</span>
+                      </a>
+                      <ul class="nav nav-children">
+                        <li>
+                          <a ng-click="selectedMenu('PickManual')" ui-sref="tops.pick_manual">
+                            Pick Manual
+                          </a>
+                      </ul>
+                    </li> -->
+
+              <!-- <li ng-class="selected == 'Report' ? 'nav-active' : ''" class="nav-parent">
+                        <a>
+                        <i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i>
+                        <span>Report</span>
+                      </a>
+                        <ul class="nav nav-children">
+                          <li>
+                            <a ng-click="selectedMenu('Report')" data-ui-sref="tops.report">
+                          ReportTEST
+                        </a>
+                          </li>
+                          <li>
+                            <a ng-click="selectedMenu('Report')" data-ui-sref="tops.report">
+                              Report - SKU master report
+                        </a>
+                          </li>
+                          <li>
+                            <a ng-click="selectedMenu('Report')" data-ui-sref="tops.report">
+                              Report - Transfer report
+                        </a>
+                          </li>
+                          <li>
+                            <a ng-click="selectedMenu('Report')" data-ui-sref="tops.report">
+                              Report - Location report
+                        </a>
+                          </li>
+                          <li>
+                            <a ng-click="selectedMenu('Report')" data-ui-sref="tops.report">
+                              Report - Stocktake report
+                        </a>
+                          </li>
+                          <li>
+                            <a ng-click="selectedMenu('Report')" data-ui-sref="tops.report">
+                              Report - Cycle Count variant report
+                        </a>
+                          </li>
+                          <li>
+                            <a ng-click="selectedMenu('Report')" data-ui-sref="tops.report">
+                              Report - QA Stock
+                        </a>
+                          </li>
+                          <li>
+                            <a ng-click="selectedMenu('Report')" data-ui-sref="tops.report">
+                              Report - Stock Adjustment
+                        </a>
+                          </li>
+                          <li>
+                            <a ng-click="selectedMenu('Report')" data-ui-sref="tops.report">
+                              Report - Stock By Location
+                        </a>
+                          </li>
+                          <li>
+                            <a ng-click="selectedMenu('Report')" data-ui-sref="tops.report">
+                              Report - Expired stock
+                        </a>
+                          </li>
+                          <li>
+                            <a ng-click="selectedMenu('Report')" data-ui-sref="tops.report">
+                              Report - Minimum by product Shelf life
+                        </a>
+                          </li>
+                          <li>
+                            <a ng-click="selectedMenu('Report')" data-ui-sref="tops.report">
+                              Report - Non movement
+                        </a>
+                          </li>
+                          <li>
+                            <a ng-click="selectedMenu('Report')" data-ui-sref="tops.report">
+                              Report - Load Summary report
+                        </a>
+                          </li>
+                          <li>
+                            <a ng-click="selectedMenu('Report')" data-ui-sref="tops.report">
+                              Report - Sale order Summary report
+                        </a>
+                          </li>
+                          <li>
+                            <a ng-click="selectedMenu('Report')" data-ui-sref="tops.report">
+                              Report - Goods Receipt Summary Report: Pending Putaway
+                        </a>
+                          </li>
+                        </ul>
+                      </li> -->
+
+              <li>
+                <a ui-sref="tops.serial_scan">
+                  <i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i>
+                  <span>Serial Scan</span>
+                </a>
+              </li>
+
+              <li ng-class="selected =='login' ? 'nav-active' : '' " class="visible-xs">
+                <a ng-click="logout()" ui-sref="login">
+                  <i class="fa fa-sign-out" aria-hidden="true"></i>
+                  <span>Log Out</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- Side Bar (see directive modules\widgets\dirSidebar) -->
+    <!-- start: sidebar -->
+    <aside id="sidebar-left" class="sidebar-left hidden-tablet hidden-phone">
+
+      <div class="sidebar-header" style="padding-left:14px;">
+        <div class="sidebar-title visible-xs" style="color: #abb4be">
+          <i class="fa fa-user" aria-hidden="true" style="padding-right:12px"></i>
+          <span>{{userName}}</span>
+        </div>
+        <div class="sidebar-toggle hidden-xs" data-toggle-class="sidebar-left-collapsed" data-target="html"
+          data-fire-event="sidebar-left-toggle">
+          <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+        </div>
+      </div>
+
+      <div class="nano nano-slider">
+        <div class="nano-content">
+          <nav id="menu" class="nav-main" role="navigation">
+            <ul class="nav nav-main">
+
+              <!-- HOME -->
+              <li ng-class="selected =='Home' ? 'nav-active' : ''">
+                <a ng-click="selectedMenu('Home')" ui-sref="tops.index">
+                  <i class="fa fa-home" aria-hidden="true"></i>
+                  <span>Home</span>
+                </a>
+              </li>
+
+              <li ng-show="m3n7[0].isActive" ng-class="selected == 'Inbound' ? 'nav-active' : ''" class="nav-parent">
+                <a>
+                  <i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i>
+                  <span>{{m3n7[0].menuName}}</span>
+                </a>
+                <ul class="nav nav-children">
+                  <li ng-show="m3n7[1].isActive">
+                    <a ng-click="selectedMenu('Inbound')" data-ui-sref="tops.plan_summary" href="tops.plan_summary">
+                      {{m3n7[1].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[2].isActive">
+                    <a ng-click="selectedMenu('Inbound')" data-ui-sref="tops.gr_summary">
+                      {{m3n7[2].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[3].isActive">
+                    <a ng-click="selectedMenu('Inbound')" data-ui-sref="tops.scan_receive">
+                      {{m3n7[3].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[4].isActive">
+                    <a ng-click="selectedMenu('Inbound')" data-ui-sref="tops.lpn_management">
+                      {{m3n7[4].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[5].isActive">
+                    <a ng-click="selectedMenu('Inbound')" data-ui-sref="tops.putaway_by_lpn">
+                      {{m3n7[5].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[6].isActive">
+                    <a ng-click="selectedMenu('Inbound')" data-ui-sref="tops.putaway_by_sku">
+                      {{m3n7[6].menuName}}
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+
+              <li ng-show="m3n7[7].isActive" ng-class="selected == 'Outbound' ? 'nav-active' : ''" class="nav-parent">
+                <a>
+                  <i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i>
+                  <span>{{m3n7[7].menuName}}</span>
+                </a>
+                <ul class="nav nav-children">
+                  <li ng-show="m3n7[8].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.plan_gi_summary">
+                      {{m3n7[8].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[9].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.run_wave_summary">
+                      {{m3n7[9].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[10].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.print_carton_summary">
+                      {{m3n7[10].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[59].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.print_carton_summary_two">
+                      {{m3n7[59].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[11].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.gi_summary">
+                      {{m3n7[11].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[12].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.cart_assign_summary">
+                      {{m3n7[12].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[13].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.cart_assign_picking">
+                      {{m3n7[13].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[14].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.print_carton">
+                      {{m3n7[14].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[15].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.marshal_release_summary">
+                      {{m3n7[15].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[16].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.picking_tools_summary">
+                      {{m3n7[16].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[17].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.marshal_confirm_transfer_summary">
+                      {{m3n7[17].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[18].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.scan_put_to_carton_summary">
+                      {{m3n7[18].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[19].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.pos">
+                      {{m3n7[19].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[20].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.scan_qa">
+                      {{m3n7[20].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[21].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.load_to_truck">
+                      {{m3n7[21].menuName}}
+                    </a>
+                  </li>
+
+                  <!-- Manow -->
+                  <li ng-show="m3n7[63].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.close_carton">
+                      {{m3n7[63].menuName}}
+                    </a>
+                  </li>
+
+                  <li ng-show="m3n7[22].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.scan_load_to_truck">
+                      {{m3n7[22].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[23].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.call_center_real_time">
+                      {{m3n7[23].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[24].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.call_center">
+                      {{m3n7[24].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[25].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.overall_performance_dashboard">
+                      {{m3n7[25].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[26].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.picking_order_performance">
+                      {{m3n7[26].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[39].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.picking_order_performance_express">
+                      {{m3n7[39].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[60].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.picking_order_performance_backlog">
+                      {{m3n7[60].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[999].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.picking_performance_click">
+                      {{m3n7[60].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[37].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.pick_manual">
+                      {{m3n7[37].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[38].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.pick_short">
+                      {{m3n7[38].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[56].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.auto_task">
+                      {{m3n7[56].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[52].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.assign_task">
+                      {{m3n7[52].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[54].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.assign_cart">
+                      {{m3n7[54].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[57].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.print_blind_carton">
+                      {{m3n7[57].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[58].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.auto_pos">
+                      {{m3n7[58].menuName}}
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.pack_confirm_p_w_b">
+                      PackConfirmPWB
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.packing_summary">
+                      Packing
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.packing_info">
+                      PackingInfo
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="tops.close_pack_station_summary">
+                      closePackStation
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <!-- Tranfer -->
+              <li ng-show="m3n7[27].isActive" ng-class="selected == 'Tranfer' ? 'nav-active' : ''" class="nav-parent">
+                <a>
+                  <i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i>
+                  <span>{{m3n7[27].menuName}}</span>
+                </a>
+                <ul class="nav nav-children">
+                  <!-- <li>
+                    <a ng-click="selectedMenu('Tranfer')" data-ui-sref="tops.tranfer_summary">
+                      Tranfer
+                    </a>
+                  </li> -->
+                  <li ng-show="m3n7[28].isActive">
+                    <a ng-click="selectedMenu('Tranfer')" data-ui-sref="tops.transfer_item_active_summary">
+                      {{m3n7[28].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[29].isActive">
+                    <a ng-click="selectedMenu('Tranfer')" data-ui-sref="tops.transfer_item_reserve_summary">
+                      {{m3n7[29].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[30].isActive">
+                    <a ng-click="selectedMenu('Tranfer')" data-ui-sref="tops.carton_item_summary">
+                      {{m3n7[30].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[31].isActive">
+                    <a ng-click="selectedMenu('Tranfer')" data-ui-sref="tops.status_grade_summary">
+                      {{m3n7[31].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[32].isActive">
+                    <a ng-click="selectedMenu('Tranfer')" data-ui-sref="tops.transfer_item_relocation_active_summary">
+                      {{m3n7[32].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[33].isActive">
+                    <a ng-click="selectedMenu('Tranfer')" data-ui-sref="tops.transfer_item_relocation_reserve_summary">
+                      {{m3n7[33].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[34].isActive">
+                    <a ng-click="selectedMenu('Tranfer')" data-ui-sref="tops.transfer_pallet_summary">
+                      {{m3n7[34].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[35].isActive">
+                    <a ng-click="selectedMenu('Tranfer')" data-ui-sref="tops.transfer_carton_summary">
+                      {{m3n7[35].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[51].isActive">
+                    <a ng-click="selectedMenu('Tranfer')" data-ui-sref="tops.cyclecount_summary">
+                      {{m3n7[51].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[53].isActive">
+                    <a ng-click="selectedMenu('Tranfer')" data-ui-sref="tops.taskcyclecount_summary">
+                      {{m3n7[53].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[55].isActive">
+                    <a ng-click="selectedMenu('Tranfer')" data-ui-sref="tops.count_manual">
+                      {{m3n7[55].menuName}}
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+              <!-- Master Data -->
+              <li ng-show="m3n7[36].isActive" ng-class="selected == 'MasterData' ? 'nav-active' : ''"
+                class="nav-parent">
+                <a>
+                  <i class="glyphicon glyphicon-tasks" aria-hidden="true"></i>
+                  <span>{{m3n7[36].menuName}}</span>
+                </a>
+                <ul class="nav nav-children">
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" ui-sref="tops.document_type">
+                      Document Type
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" ui-sref="tops.grade">
+                      Item Status
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" ui-sref="tops.equipment">
+                      Equipment
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" ui-sref="tops.equipment_type">
+                      Equipment Type
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" ui-sref="tops.equipment_subtype">
+                      Equipment SubType
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" ui-sref="tops.vendor">
+                      Supplier
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.vendor_type">
+                      Supplier Type
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.owner">
+                      Owner
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.owner_vendor">
+                      Owner Supplier
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.owner_type">
+                      Owner Type
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.owner_soldto">
+                      Owner SoldTo
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.sold_to">
+                      SoldTo
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.sold_to_type">
+                      SoldTo Type
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.ship_to">
+                      ShipTo
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.ship_to_type">
+                      ShipTo Type
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.sold_to_ship_to">
+                      SoldTo ShipTo
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.product">
+                      Product
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.product_type">
+                      Product Type
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.product_category">
+                      Product Category
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.product_sub_type">
+                      Product SubType
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.product_owner">
+                      Product Owner
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.product_conversion">
+                      Product Convertion
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.product_conversion_barcode">
+                      Product Convertion Barcode
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.ware_house">
+                      WareHouse
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.work_area">
+                      Work Area
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.room">
+                      Room
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.zone">
+                      Zone
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.zone_put_away">
+                      Zone Put Away
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.zone_put_away_location">
+                      Zone Put Away Location
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.zone_location">
+                      Zone Location
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.location">
+                      Location
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.location_equipment">
+                      Location Equipment
+                    </a>
+                  </li>
+                  <li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.location_lock">
+                      LocationAisle
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.location_type">
+                      Location Type
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.location_work_area">
+                      Location WorkArea
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.user">
+                      User
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.user_group">
+                      User Group
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.user_group_menu">
+                      User Group Menu
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.user_group_zone">
+                      User Group Zone
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.task_group">
+                      Task Group
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.task_group_equipment">
+                      Task Group Equipment
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.task_group_user">
+                      Task Group User
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.task_group_work_area">
+                      Task Group WorkArea
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('MasterData')" data-ui-sref="tops.config_user_group_menu">
+                      Config User Group Menu
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+              <li ng-show="m3n7[40].isActive" ng-class="selected == 'Inquiry' ? 'nav-active' : ''" class="nav-parent">
+                <a>
+                  <i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i>
+                  <span>{{m3n7[40].menuName}}</span>
+                </a>
+                <ul class="nav nav-children">
+                  <li ng-show="m3n7[41].isActive">
+                    <a ng-click="selectedMenu('Inquiry')" data-ui-sref="tops.sku">
+                      {{m3n7[41].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[42].isActive">
+                    <a ng-click="selectedMenu('Inquiry')" data-ui-sref="tops.stock">
+                      {{m3n7[42].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[43].isActive">
+                    <a ng-click="selectedMenu('Inquiry')" data-ui-sref="tops.task">
+                      {{m3n7[43].menuName}}
+                    </a>
+                  </li>
+                  <!-- <li ng-show="m3n7[44].isActive">
+                    <a ng-click="selectedMenu('Inquiry')" data-ui-sref="tops.sku">
+                      {{m3n7[44].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[45].isActive">
+                    <a ng-click="selectedMenu('Inquiry')" data-ui-sref="tops.sku">
+                      {{m3n7[45].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[46].isActive">
+                    <a ng-click="selectedMenu('Inquiry')" data-ui-sref="tops.sku">
+                      {{m3n7[46].menuName}}
+                    </a>
+                  </li> -->
+                  <li ng-show="m3n7[47].isActive">
+                    <a ng-click="selectedMenu('Inquiry')" data-ui-sref="tops.inq_location">
+                      {{m3n7[47].menuName}}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[50].isActive">
+                    <a ng-click="selectedMenu('Inquiry')" data-ui-sref="tops.inq_order">
+                      {{m3n7[50].menuName}}
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+              <!-- <li ng-class="selected == 'PickManual' ? 'nav-active' : ''"
+                class="nav-parent">
+                <a>
+                  <i class="glyphicon glyphicon-tasks" aria-hidden="true"></i>
+                  <span>Pick Manual</span>
+                </a>
+                <ul class="nav nav-children">
+                  <li>
+                    <a ng-click="selectedMenu('PickManual')" ui-sref="tops.pick_manual">
+                      Pick Manual
+                    </a>
+                </ul>
+              </li> -->
+
+              <!-- <li ng-class="selected == 'Report' ? 'nav-active' : ''" class="nav-parent">
+                  <a>
+                  <i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i>
+                  <span>Report</span>
+                </a>
+                  <ul class="nav nav-children">
+                    <li>
+                      <a ng-click="selectedMenu('Report')" data-ui-sref="tops.report">
+                    ReportTEST
+                  </a>
+                    </li>
+                    <li>
+                      <a ng-click="selectedMenu('Report')" data-ui-sref="tops.report">
+                        Report - SKU master report
+                  </a>
+                    </li>
+                    <li>
+                      <a ng-click="selectedMenu('Report')" data-ui-sref="tops.report">
+                        Report - Transfer report
+                  </a>
+                    </li>
+                    <li>
+                      <a ng-click="selectedMenu('Report')" data-ui-sref="tops.report">
+                        Report - Location report
+                  </a>
+                    </li>
+                    <li>
+                      <a ng-click="selectedMenu('Report')" data-ui-sref="tops.report">
+                        Report - Stocktake report
+                  </a>
+                    </li>
+                    <li>
+                      <a ng-click="selectedMenu('Report')" data-ui-sref="tops.report">
+                        Report - Cycle Count variant report
+                  </a>
+                    </li>
+                    <li>
+                      <a ng-click="selectedMenu('Report')" data-ui-sref="tops.report">
+                        Report - QA Stock
+                  </a>
+                    </li>
+                    <li>
+                      <a ng-click="selectedMenu('Report')" data-ui-sref="tops.report">
+                        Report - Stock Adjustment
+                  </a>
+                    </li>
+                    <li>
+                      <a ng-click="selectedMenu('Report')" data-ui-sref="tops.report">
+                        Report - Stock By Location
+                  </a>
+                    </li>
+                    <li>
+                      <a ng-click="selectedMenu('Report')" data-ui-sref="tops.report">
+                        Report - Expired stock
+                  </a>
+                    </li>
+                    <li>
+                      <a ng-click="selectedMenu('Report')" data-ui-sref="tops.report">
+                        Report - Minimum by product Shelf life
+                  </a>
+                    </li>
+                    <li>
+                      <a ng-click="selectedMenu('Report')" data-ui-sref="tops.report">
+                        Report - Non movement
+                  </a>
+                    </li>
+                    <li>
+                      <a ng-click="selectedMenu('Report')" data-ui-sref="tops.report">
+                        Report - Load Summary report
+                  </a>
+                    </li>
+                    <li>
+                      <a ng-click="selectedMenu('Report')" data-ui-sref="tops.report">
+                        Report - Sale order Summary report
+                  </a>
+                    </li>
+                    <li>
+                      <a ng-click="selectedMenu('Report')" data-ui-sref="tops.report">
+                        Report - Goods Receipt Summary Report: Pending Putaway
+                  </a>
+                    </li>
+                  </ul>
+                </li> -->
+              <li ng-class="selected =='login' ? 'nav-active' : '' " class="visible-xs">
+                <a ng-click="logout()" ui-sref="login">
+                  <i class="fa fa-sign-out" aria-hidden="true"></i>
+                  <span>Log Out</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+      </div>
+
+    </aside>
+    <!-- end: sidebar -->
+
+    <!-- Content -->
+    <section role="main" class="content-body">
+      <div ui-view></div>
+    </section>
+  </div>
+
+</section>
+
+
+<!-- Specific Page Vendor -->
+<script src="assets/vendor/jquery-ui/js/jquery-ui-1.10.4.custom.js"></script>
+<script src="assets/vendor/jquery-ui-touch-punch/jquery.ui.touch-punch.js"></script>
+<script src="assets/vendor/jquery-appear/jquery.appear.js"></script>
+<script src="assets/vendor/bootstrap-multiselect/bootstrap-multiselect.js"></script>
+<script src="assets/vendor/jquery-easypiechart/jquery.easypiechart.js"></script>
+<script src="assets/vendor/flot/jquery.flot.js"></script>
+<script src="assets/vendor/flot-tooltip/jquery.flot.tooltip.js"></script>
+<script src="assets/vendor/flot/jquery.flot.pie.js"></script>
+<script src="assets/vendor/flot/jquery.flot.categories.js"></script>
+<script src="assets/vendor/flot/jquery.flot.resize.js"></script>
+<script src="assets/vendor/jquery-sparkline/jquery.sparkline.js"></script>
+<script src="assets/vendor/raphael/raphael.js"></script>
+<script src="assets/vendor/morris/morris.js"></script>
+<script src="assets/vendor/gauge/gauge.js"></script>
+<script src="assets/vendor/snap-svg/snap.svg.js"></script>
+<script src="assets/vendor/liquid-meter/liquid.meter.js"></script>
+
+<!-- Theme Base, Components and Settings -->
+<script src="assets/javascripts/theme.js"></script>
+
+<!-- Theme Custom -->
+<script src="assets/javascripts/theme.custom.js"></script>
+
+<!-- Theme Initialization Files -->
+<script src="assets/javascripts/theme.init.js"></script>

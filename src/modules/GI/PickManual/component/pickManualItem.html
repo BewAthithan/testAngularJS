@@ -1,0 +1,209 @@
+<style>
+    .responsive {
+        width: 100%;
+        height: auto;
+    }
+</style>
+<div class="row" ng-show="$vm.isFilter">
+    <div class="div-shadow" style="margin-top:20px;margin-left:15px;margin-right:15px;margin-bottom:15px;">
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-3">
+                    <span>SO No.</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-9">
+                    <div class="input-group" style="padding:0!important;">
+                        <input type="text" class="form-control" ng-model="filterModel.soNo" value="filterModel.soIndex" placeholder="SO No.">
+                        <span class="input-group-btn">
+                            <button ng-click='soCatchWeightPopup.onClick()' class="btn btn-primary" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-3">
+                    <span>Work Order</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-9">
+                    <div class="input-group" style="padding:0!important;">
+                        <input type="text" class="form-control" ng-model="filterModel.giNo" value="filterModel.giIndex" placeholder="Work Order">
+                        <span class="input-group-btn">
+                            <button ng-click='sogiCatchWeightPopup.onClickWorkOrder(filterModel)' class="btn btn-primary" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-3">
+                    <span>Product</span>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xs-6">
+                    <input type="text" class="form-control" ng-model="filterModel.productName" disabled>
+                </div>
+                <div class="col-lg-3 col-md-3 col-xs-3">
+                    <button ng-click="$vm.productList(filterModel)" class="btn btn-success btn-block btn-md" type="button">
+                        <span class="glyphicon glyphicon-list"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-3">
+                    <span>รหัสสินค้า</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-9">
+                    <input type="text" class="form-control" ng-model="filterModel.productCode" disabled>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-3">
+                    <span>ชื่อสินค้า</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-9">
+                    <input type="text" class="form-control" ng-model="filterModel.productName" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-3">
+                    <span>Remark</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-9">
+                    <input type="text" class="form-control" ng-model="filterModel.remark" disabled>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-3 col-md-2 col-xs-3">
+                    <span>จำนวนในสต๊อก</span>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-4">
+                    <input type="text" class="form-control" ng-model="filterModel.qtyStock" disabled>
+                </div>
+                <div class="col-lg-1 col-md-2 col-xs-2">
+                    <span>หน่วย</span>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-3">
+                    <input type="text" class="form-control" ng-model="filterModel.unitStock" disabled>
+                </div>
+            </div>
+        </div>
+
+      
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-3 col-md-2 col-xs-3">
+                    <span>จำนวน</span>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-4">
+                    <script language="JavaScript">
+                        // function intOnly(input) {
+                            // var regExp = /^[0-9]*$/;
+                            // if (!regExp.test(input.value)) {
+                            //     input.value = "";
+                            // }
+                        // }
+                    </script>
+                    <input type="number" name="input" id="input" class="form-control"  ng-model="filterModel.qty" /> 
+                    <!-- onkeyup="javascript:intOnly(this);" -->
+                </div>
+
+                <div class="col-lg-1 col-md-2 col-xs-2">
+                    <span>หน่วย</span>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-3">
+                        <input type="text" class="form-control" ng-model="filterModel.unit" value="filterModel.unit"
+                            disabled>
+                        <!-- <span class="input-group-btn">
+                            <button ng-click='popupProductConversion.onClick()' class="btn btn-primary" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span> -->
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-3 col-md-2 col-xs-3">
+                    <span>ยืนยันจำนวนลูก</span>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-4">
+                    <script language="JavaScript">
+                        // function intOnly(input) {
+                            // var regExp = /^[0-9]*$/;
+                            // if (!regExp.test(input.value)) {
+                            //     input.value = "";
+                            // }
+                        // }
+                    </script>
+                    <input type="number" name="input" id="piece" ng-disabled="filterModel.is_WeightByPiece === 'N' " class="form-control"  ng-model="filterModel.qtyPiece"  /> 
+                    <!-- onkeyup="javascript:intOnly(this);" -->
+                </div>
+            </div>
+        </div>
+        <!-- <div class="col-lg-3 col-md-3 col-xs-3">
+            <a href="https://dockerbook.com/TheDockerBook_sample.pdf" target="_blank">
+                <button class="btn btn-success btn-block btn-md" type="button">
+                    <span class="glyphicon glyphicon-list"></span>
+                </button>
+            </a>
+        </div> -->
+        <!-- <a href="https://dockerbook.com/TheDockerBook_sample.pdf" target="_blank">TEST</a> -->
+
+        <!-- <iframe src="https://dockerbook.com/TheDockerBook_sample.pdf" height="500" width="500"></iframe> -->
+
+
+        <div class="col-md-12 col-md-offset-12" style="margin-top:20px;"></div>
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12 text-right" style="margin-bottom:15px;">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <button id="chkconfirm" class="btn btn-success hidden-xs" ng-click="Confirm(filterModel)">Confirm</button>
+                    <button id="chkconfirm1" class="btn btn-success btn-block btn-md visible-xs mt-lg" ng-click="Confirm(filterModel)">Confirm</button>
+                    <button ng-click="clearSearch()" class="btn btn-primary hidden-xs">Clear</button>
+                    <button ng-click="clearSearch()" class="btn btn-primary btn-block btn-md visible-xs mt-lg">Clear</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 col-md-offset-12" style="margin-top:20px;"></div>
+</div>
+
+
+<pick-manual-product-list is-loading="isLoading" providers="providers" search-result-model="$vm.searchResultModel" is-filter="$vm.isFilter" ng-hide="$vm.isFilter"></pick-manual-product-list>
+
+
+<!-- <owner-popup on-show='popupOwner.onShow' config='popupOwner.config' invokes='popupOwner.invokes' delegates='popupOwner.delegates'>
+</owner-popup>
+<warehouse-popup on-show='popupWarehouse.onShow' config='popupWarehouse.config' invokes='popupWarehouse.invokes' delegates='popupWarehouse.delegates'>
+</warehouse-popup>
+<product-conversion-popup on-show='popupProductConversion.onShow' config='popupProductConversion.config' invokes='popupProductConversion.invokes'
+    delegates='popupProductConversion.delegates'>
+</product-conversion-popup>
+
+<stock-adjustment-popup on-show='popupReasonCode.onShow' config='popupReasonCode.config' invokes='popupReasonCode.invokes'
+    delegates='popupReasonCode.delegates'>
+</stock-adjustment-popup> -->
+
+<so-catch-weight-popup on-show='soCatchWeightPopup.onShow' config='soCatchWeightPopup.config' invokes='soCatchWeightPopup.invokes' delegates='soCatchWeightPopup.delegates'>
+</so-catch-weight-popup>
+<sogi-catch-weight-popup on-show='sogiCatchWeightPopup.onShow' config='sogiCatchWeightPopup.config' invokes='sogiCatchWeightPopup.invokes' delegates='sogiCatchWeightPopup.delegates'>
+</sogi-catch-weight-popup>

@@ -1,0 +1,111 @@
+<div class="tab-content" ng-show="isCount">
+    <header class="page-header">
+        <h2>Count</h2>
+    </header>
+    <div class="row panel-body"></div>
+    <div class="form-group" style="margin-top:15px;">
+        <div class="col-lg-6 col-md-12 col-xs-12">
+            <div class="col-lg-4 col-md-3 col-xs-12">
+                <span>Count No. </span>
+            </div>
+            <div class="col-lg-8 col-md-9 col-xs-12">
+                <input type="text" ng-model="filterModel.cycleCount_No" class="form-control" disabled/>
+            </div>
+        </div>
+    </div>
+    <div class="form-group" style="margin-top:15px;">
+        <div class="col-lg-6 col-md-12 col-xs-12">
+            <div class="col-lg-4 col-md-3 col-xs-12">
+                <span>Task </span>
+            </div>
+            <div class="col-lg-8 col-md-9 col-xs-12">
+                <input type="text" ng-model="filterModel.task_No" class="form-control" disabled/>
+            </div>
+        </div>
+    </div>
+    <div class="form-group" style="margin-top:15px;">
+        <div class="col-lg-6 col-md-12 col-xs-12">
+            <div class="col-lg-4 col-md-3 col-xs-12">
+                <span>Location </span>
+            </div>
+            <div class="col-lg-8 col-md-9 col-xs-12">
+                <input type="text" ng-model="filterModel.location_Name" ks-enter="ScanLoc(filterModel)" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group" style="margin-top:15px;">
+        <div class="col-lg-6 col-md-12 col-xs-12">
+            <div class="col-lg-4 col-md-3 col-xs-12">
+                <span>LPN </span>
+            </div>
+            <div class="col-lg-8 col-md-9 col-xs-12">
+                <input type="text" id="Lpn" ng-model="filterModel.lpn_No" ks-enter="ScanLpn(filterModel)" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group" style="margin-top:15px;">
+        <div class="col-lg-6 col-md-12 col-xs-12">
+            <div class="col-lg-4 col-md-3 col-xs-12">
+                <span>Barcode </span>
+            </div>
+            <div class="col-lg-8 col-md-9 col-xs-12">
+                <input type="text" id="Barcode" ng-model="filterModel.productConvertionBarcode" ks-enter="ScanBarcode(filterModel)" class="form-control"
+                />
+            </div>
+        </div>
+    </div>
+    <div class="form-group" style="margin-top:15px;">
+        <div class="col-lg-6 col-md-12 col-xs-12">
+            <div class="col-lg-4 col-md-3 col-xs-12">
+                <span>Product </span>
+            </div>
+            <div class="col-lg-8 col-md-9 col-xs-12">
+                <input type="text" ng-model="filterModel.product_Id" class="form-control" disabled/>
+            </div>
+        </div>
+    </div>
+    <div class="form-group" style="margin-top:15px;">
+        <div class="col-lg-6 col-md-12 col-xs-12">
+            <div class="col-lg-4 col-md-3 col-xs-12">
+                <span>Name </span>
+            </div>
+            <div class="col-lg-8 col-md-9 col-xs-12">
+                <input type="text" ng-model="filterModel.product_SecondName" class="form-control" disabled/>
+            </div>
+        </div>
+    </div>
+    <div class="form-group" style="margin-top:15px;">
+        <div class="col-lg-6 col-md-12 col-xs-12">
+            <div class="col-lg-4 col-md-3 col-xs-12">
+                <span>Count </span>
+            </div>
+            <div class="col-lg-4 col-md-4 col-xs-6">
+                <input type="text" ng-model="filterModel.count" ks-enter="ScanCount(filterModel)" class="form-control" />
+            </div>
+            <div class="col-lg-4 col-md-4 col-xs-6">
+                <input type="text" ng-model="filterModel.productConversion_Name" class="form-control" disabled/>
+            </div>
+        </div>
+    </div>
+    <div class="form-group" style="margin-top:15px;">
+        <div class="col-lg-6 col-md-12 col-xs-12">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <button ng-click="ConfirmLocation()" class="btn btn-danger col-lg-12 col-md-12 col-xs-12">ยืนยันโลเคชั่น</button>
+
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12" style="margin-top:5px;">
+                <button ng-click="back()" class="btn btn-primary col-lg-12 col-md-12 col-xs-12">Back</button>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+</div>
+
+<master-require-cy on-show='popupMaster.onShow' config='popupMaster.config' invokes='popupMaster.invokes' delegates='popupMaster.delegates'>
+</master-require-cy>
+<reason-code-cycle on-show='popupReason.onShow' config='popupReason.config' invokes='popupReason.invokes' delegates='popupReason.delegates'>
+</reason-code-cycle>

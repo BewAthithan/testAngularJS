@@ -1,0 +1,19 @@
+<header class="page-header">
+    <h2>Cycle Count</h2>
+</header>
+<div >
+
+    <div >
+        <cyclecount-filter filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create"
+            ng-show="isFilter">
+            <br>
+        </cyclecount-filter>
+    </div>
+
+
+
+    <div style="margin-top:15px;">
+        <cyclecount-table-list filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create"
+            is-filter="isFilter"></cyclecount-table-list>
+    </div>
+</div>

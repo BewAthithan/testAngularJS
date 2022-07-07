@@ -1,0 +1,17 @@
+<header class="page-header">
+    <h2> PrintCarton</h2>
+</header>
+
+<div>
+    <print-carton-filter filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create"
+        ng-show="isFilter">
+        <br>
+    </print-carton-filter>
+</div>
+
+
+<div>
+    <print-carton-table-list filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create"
+        is-filter="isFilter">
+    </print-carton-table-list>
+</div>

@@ -1,0 +1,88 @@
+<div class="row">
+    <div class="div-shadow">
+
+        <!-- <header class="panel-heading "> -->
+            <div class="text-right" style="margin-top:10px;margin-right:10px;">
+                <button ng-click="$vm.triggerCreate()" class="btn btn-success hidden-xs">
+                    <i class="glyphicon glyphicon-plus-sign" aria-hidden="true"></i> Create</button>
+                <button ng-click="$vm.triggerCreate()" class="btn btn-success btn-block btn-md visible-xs mt-lg">
+                    <i class="glyphicon glyphicon-plus-sign" aria-hidden="true"></i> Create</button>
+            </div>
+        <!-- </header> -->
+        <div class="panel-body" style="display: block;" ng-show='header.Search'>
+
+            <div class="col-md-12 col-md-offset-12" style="margin-top:20px;"></div>
+
+            <div class="form-group" style="margin-top:20px">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                    <div class="col-lg-5 col-md-5 col-xs-5">
+                        <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                            <span>Count No.</span>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-xs-6" style="padding:0px">
+                            <input type="text" ng-model="filterModel.cycleCount_No" class="form-control" placeholder="Key Search" />
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5 col-md-5 col-xs-5">
+                        <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                            <span>Status</span>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-xs-6" style="padding:0px">
+                            <select class='form-control' ng-model='dropdownStatus.model' ng-options="v.processStatus_Name for v in dropdownStatus">
+                                <option value="">Please Selected</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                    <div class="col-lg-5 col-md-5 col-xs-5">
+                        <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                            <span>DocType</span>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-xs-6" style="padding:0px">
+                            <select class='form-control' ng-model='dropdownDocumentType.model' ng-options="v.documentType_Name for v in dropdownDocumentType">
+                                <option value="">Please Selected</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                    <div class="col-lg-5 col-md-5 col-xs-5">
+                        <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                            <span>Date</span>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-xs-6" style="padding:0px">
+                            <dir-date-picker ng-model="filterModel.cycleCount_Date"></dir-date-picker>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group ">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="text-right padding-m">
+                        <button ng-click="filterSearch(filterModel)" class="btn btn-primary hidden-xs">
+                            <i class="fa fa-search" aria-hidden="true"></i> Search</button>
+                        <button ng-click="filterSearch(filterModel)" class="btn btn-primary btn-block btn-md visible-xs mt-lg">
+                            <i class="fa fa-search" aria-hidden="true"></i> Search</button>
+                        <button ng-click="clearSearch()" class="btn btn-success hidden-xs">Clear</button>
+                        <button ng-click="clearSearch()" class="btn btn-success btn-block btn-md visible-xs mt-lg">Clear</button>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>

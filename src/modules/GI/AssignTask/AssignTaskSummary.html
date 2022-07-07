@@ -1,0 +1,19 @@
+<header class="page-header">
+    <h2>Picking by task</h2>
+</header>
+<div >
+
+    <div >
+        <assign-task-filter filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create"
+            ng-show="isFilter">
+            <br>
+        </assign-task-filter>
+    </div>
+
+
+
+    <div style="margin-top:15px;">
+        <assign-task-table-list filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create"
+            is-filter="isFilter"></assign-task-table-list>
+    </div>
+</div>

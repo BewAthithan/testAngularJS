@@ -1,0 +1,20 @@
+<header class="page-header">
+    <h2>WareHouse</h2>
+</header>
+<div class="container-fluid" style="padding: 20px; " id="master-ware-house">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12" style="padding:0px;">
+            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="margin-left:10px;">
+                <ware-house-filter filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create" ng-show="isFilter"> 
+                </ware-house-filter>
+            </div>      
+        </div>  
+    </div>   
+    <br>
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+            <ware-house-table-list filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create" is-filter="isFilter">
+            </ware-house-table-list>
+        </div>
+</div>
+
+

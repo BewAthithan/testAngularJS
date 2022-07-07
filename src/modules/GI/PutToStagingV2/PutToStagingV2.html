@@ -1,0 +1,72 @@
+<header class="page-header">
+    <h2>Put To Staging</h2>
+</header>
+<div class="row" >
+    <div class="div-shadow" style="margin-top:10px;">
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <span>Cart Location</span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <input type="text" ng-model="filterModel.equipmentItemName" class="form-control" disabled/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <span>Location</span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <input type="text" ng-model="filterModel.stagingLocation" class="form-control" disabled/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <span>Confirm Location</span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <input type="text" autocomplete="off" readonly ng-model="filterModel.locationName" class="form-control bgwrite" id="myText1" ks-enter="CheckLocation()" ng-blur="CheckScanLocation(filterModel)" placeholder="Confirm Location"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <span>Carton No</span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <input type="text" autocomplete="off" readonly ng-model="filterModel.tagOutNo" class="form-control bgwrite"  id="myText" ks-enter="ConfirmCarton()" placeholder=" Scan CartonNo"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group text-center padding-m">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12" style="margin-top:10px;">
+                    <button ng-click="ConfirmCarton()" class="btn btn-primary hidden-xs">
+                        Confirm</button>
+                    <button ng-click="ConfirmCarton()" class="btn btn-primary btn-block btn-md visible-xs mt-lg">
+                        Confirm</button>
+                    <button ng-click="clearSearch()" class="btn btn-success hidden-xs">Clear</button>
+                    <button ng-click="clearSearch()" class="btn btn-success btn-block btn-md visible-xs mt-lg">Clear</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

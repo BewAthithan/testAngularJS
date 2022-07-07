@@ -1,0 +1,233 @@
+<div class="row">
+
+    <div class="div-shadow">
+
+        <div class="col-lg-12 col-md-12 col-xs-12 text-right" style="padding:15px; ">
+            <button ng-click="$vm.triggerCreate()" class="btn btn-success">Create</button>
+            <!-- <button ng-click="Import()" class="btn btn-secondary" style="margin-right:15px;">Import</button> -->
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-5 col-md-3 col-xs-12">
+                        <span>Pre Receiving No.</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <input type="text" ng-model="filterModel.planGoodsReceiveNo" class="form-control" placeholder="Key Search"
+                            maxlength="15" />
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-4 col-md-3 col-xs-12">
+                        <span>Supplier</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <div class="input-group mb-md" style="padding:0!important;">
+                            <input type="text" class="form-control" ng-model="filterModel.vendorName" value="filterModel.vendorIndex">
+                            <span class="input-group-btn">
+                                <button ng-click='popupVendor.onClick()' class="btn btn-primary " type="button" type="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-4 col-md-3 col-xs-12">
+                        <span>Owner</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <div class="input-group" style="padding:0!important;">
+                            <input type="text" class="form-control" ng-model="filterModel.ownerName" value="filterModel.ownerIndex">
+                            <span class="input-group-btn">
+                                <button ng-click='popupOwner.onClick()' class="btn btn-primary" type="button" type="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-8 col-md-3 col-xs-12">
+                        <span>Pre Receiving Date From</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <dir-date-picker ng-model="filterModel.planGoodsReceiveDate"></dir-date-picker>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-8 col-md-3 col-xs-12">
+                        <span>Pre Receiving Date To</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <dir-date-picker ng-model="filterModel.planGoodsReceiveDateTo"></dir-date-picker>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-8 col-md-3 col-xs-12">
+                        <span>Due Date From</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <dir-date-picker ng-model="filterModel.planGoodsReceiveDueDate"></dir-date-picker>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-8 col-md-3 col-xs-12">
+                        <span>Due Date To</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <dir-date-picker ng-model="filterModel.planGoodsReceiveDueDateTo"></dir-date-picker>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-8 col-md-3 col-xs-12">
+                        <span>Document Type</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <div class="input-group" style="padding:0!important;">
+                            <input type="text" class="form-control" ng-model="filterModel.documentTypeName" value="filterModel.documentTypeIndex">
+                            <span class="input-group-btn">
+                                <button ng-click='popupDocumentType.onClick()' class="btn btn-primary" type="button"
+                                    type="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-8 col-md-3 col-xs-12">
+                        <span>Status</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <div class="input-group" style="padding:0!important;">
+                            <input type="text" class="form-control" ng-model="filterModel.processStatusName" value="filterModel.processStatusId">
+                            <span class="input-group-btn">
+                                <button ng-click='popupStatus.onClick()' class="btn btn-primary" type="button" type="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-8 col-md-3 col-xs-12">
+                        <span>From Warehouse</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <div class="input-group" style="padding:0!important;">
+                            <input type="text" class="form-control" ng-model="filterModel.warehouseName" value="filterModel.warehouseIndex">
+                            <span class="input-group-btn">
+                                <button ng-click='popupWarehouse.onClick()' class="btn btn-primary" type="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-8 col-md-3 col-xs-12">
+                        <span>To Warehouse</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <div class="input-group" style="padding:0!important;">
+                            <input type="text" class="form-control" ng-model="filterModel.warehouseNameTo" value="filterModel.warehouseIndexTo">
+                            <span class="input-group-btn">
+                                <button ng-click='popupWarehouseTo.onClick()' class="btn btn-primary" type="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-right padding-m">
+            <button ng-click="filterSearch()" class="btn btn-primary hidden-xs">
+                <i class="fa fa-search" aria-hidden="true"></i> Search</button>
+            <button ng-click="filterSearch()" class="btn btn-primary btn-block btn-md visible-xs mt-lg">
+                <i class="fa fa-search" aria-hidden="true"></i> Search</button>
+            <button ng-click="clearSearch()" class="btn btn-success hidden-xs">ClearSearch</button>
+            <button ng-click="clearSearch()" class="btn btn-success btn-block btn-md visible-xs mt-lg">ClearSearch</button>
+        </div>
+        <div class="form-group" style="margin-bottom: 15px;">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <span>Sort By</span>
+                </div>
+                <div class="col-lg-5 col-md-5 col-xs-7">
+                    <select ng-model="$vm.filterModel.columnName" class="form-control">
+                        <option value="">Select One</option>
+                        <option value="PlanGoodsReceive_Date">Pre Receiving Date</option>
+                        <option value="PlanGoodsReceive_Due_Date">Due Date</option>
+                        <option value="PlanGoodsReceive_No">Pre Receiving No.</option>
+                        <option value="DocumentType_Name">Document Type</option>
+                        <option value="Document_Status">Status</option>
+                        <option value="Owner_Name">Owner</option>
+                        <option value="Vendor_Name">Supplier</option>
+                        <option value="Warehouse_Name">From Warehouse</option>
+                        <option value="Warehouse_Name_To">To Warehouse</option>
+                        <option value="Document_Remark">Remark</option>
+                    </select>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-5">
+                    <select ng-model="$vm.filterModel.orderBy" class="form-control">
+                        <option value="">Order By</option>
+                        <option value="ASC">ASC</option>
+                        <option value="DESC">DESC</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="center padding-m">
+            <button ng-click="filterSearch()" class="btn btn-primary display-inline" style="margin:5px;min-width:100px">
+                <i class="fa fa-search" aria-hidden="true"></i> Search</button>
+            <button ng-click="clearSearch()" class="btn btn-primary display-inline" style="margin:5px;min-width:100px">
+                <i class="fa fa-search" aria-hidden="true"></i> ClearSearch</button>
+        </div> -->
+    </div>
+</div>
+
+<document-type-popup on-show='popupDocumentType.onShow' config='popupDocumentType.config' invokes='popupDocumentType.invokes'
+    delegates='popupDocumentType.delegates'>
+</document-type-popup>
+<owner-popup on-show='popupOwner.onShow' config='popupOwner.config' invokes='popupOwner.invokes' delegates='popupOwner.delegates'>
+</owner-popup>
+<vendor-popup on-show='popupVendor.onShow' config='popupVendor.config' invokes='popupVendor.invokes' delegates='popupVendor.delegates'>
+</vendor-popup>
+<plan-gr-type-popup on-show='popupPlanGrType.onShow' config='popupPlanGrType.config' invokes='popupPlanGrType.invokes'
+    delegates='popupPlanGrType.delegates'>
+</plan-gr-type-popup>
+<warehouse-popup on-show='popupWarehouse.onShow' config='popupWarehouse.config' invokes='popupWarehouse.invokes'
+    delegates='popupWarehouse.delegates'>
+</warehouse-popup>
+<warehouse-to-popup on-show='popupWarehouseTo.onShow' config='popupWarehouseTo.config' invokes='popupWarehouseTo.invokes'
+    delegates='popupWarehouseTo.delegates'>
+</warehouse-to-popup>
+<status-popup on-show='popupStatus.onShow' config='popupStatus.config' invokes='popupStatus.invokes' delegates='popupStatus.delegates'>
+</status-popup>

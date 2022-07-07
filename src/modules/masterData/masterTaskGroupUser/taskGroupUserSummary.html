@@ -1,0 +1,22 @@
+<header class="page-header">
+    <h2>Task Group User</h2>
+</header>
+<div class="container-fluid" style="padding: 20px; " id="master-sold-to-type">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12" style="padding:0px;">
+            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="margin-left:10px;">
+                <task-group-user-filter filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create" ng-show="isFilter"> 
+                </task-group-user-filter>
+            </div>      
+        </div>  
+    </div>   
+    <br>
+    
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+            <task-group-user-table-list filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create" is-filter="isFilter">
+            </task-group-user-table-list>
+        </div>
+    
+</div>
+
+

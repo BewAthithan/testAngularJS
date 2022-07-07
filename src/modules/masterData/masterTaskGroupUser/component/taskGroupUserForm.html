@@ -1,0 +1,72 @@
+<div id="page-content-wrapper" ng-show="onShow">
+    <div>
+        <h3>TaskGroupUser Form</h3>
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                TaskGroup UserId:
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="filterModel.taskGroupUserId" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                TaskGroup :
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="input-group" style="padding:0!important;">
+                    <input type="text" class="form-control" ng-model="filterModel.taskGroupName" value="filterModel.taskGroupIndex">
+                    <span class="input-group-btn">
+                        <button ng-click='popupTaskGroup.onClick()' class="btn btn-primary" style="padding: 8px 12px;"
+                            type="button">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                User :
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="input-group" style="padding:0!important;">
+                    <input type="text" class="form-control" ng-model="filterModel.userName" value="filterModel.userIndex">
+                    <span class="input-group-btn">
+                        <button ng-click='popupUser.onClick()' class="btn btn-primary" style="padding: 8px 12px;" type="button">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- .button -->
+    <div class="row  col-md-12 form-right" style="margin-right: 2px;padding: 5px 5px 5px 5px;margin-top:10px;">
+        <div ng-show="Cancel">
+            <button ng-click="back()" class="ks-btn red pull-right">Cancel</button>
+        </div>
+        <div ng-show="update">
+            <button ng-click="edit()" class="ks-btn pull-right" style="margin-right: 5px">
+                Update</button>
+        </div>
+        <div ng-show="create">
+            <button ng-click="add()" class="ks-btn primary pull-right" style="margin-right: 5px">
+                Create</button>
+        </div>
+    </div>
+    <!-- /.button -->
+
+</div>
+
+
+<task-group-popup on-show='popupTaskGroup.onShow' config='popupTaskGroup.config' invokes='popupTaskGroup.invokes'
+    delegates='popupTaskGroup.delegates'>
+</task-group-popup>
+<user-popup on-show='popupUser.onShow' config='popupUser.config' invokes='popupUser.invokes' delegates='popupUser.delegates'>
+</user-popup>

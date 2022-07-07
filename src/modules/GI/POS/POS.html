@@ -1,0 +1,17 @@
+<header class="page-header">
+    <h2> POS</h2>
+</header>
+
+<div>
+    <pos-filter filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create"
+        ng-show="isFilter">
+        <br>
+    </pos-filter>
+</div>
+
+
+<div>
+    <pos-table-list filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create"
+        is-filter="isFilter">
+    </pos-table-list>
+</div>

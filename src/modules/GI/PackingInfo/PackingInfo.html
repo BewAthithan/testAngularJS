@@ -1,0 +1,17 @@
+<header class="page-header">
+    <h2> PackingInfo</h2>
+</header>
+
+<div>
+    <packing-info-filter filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create"
+        ng-show="isFilter">
+        <br>
+    </packing-info-filter>
+</div>
+
+
+<div>
+    <packing-info-table-list filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create"
+        is-filter="isFilter">
+    </packing-info-table-list>
+</div>

@@ -1,0 +1,252 @@
+<div class="tabs" ng-show="$vm.isFilterTable">
+
+    <div class="tab-content">
+        <div class="row" ng-show="$vm.isFilterTable">
+
+            <div class="form-group" style="margin-top:20px">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                    <div class="col-lg-4 col-md-4 col-xs-4">
+                        <div class="col-lg-3 col-md-3 col-xs-12" style="padding:0px">
+                            <span>Count No.</span>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-xs-6" style="padding:0px">
+                            <input type="text" ng-model="binModel.cycleCount_No" class="form-control" disabled />
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-xs-4">
+                        <div class="col-lg-3 col-md-3 col-xs-12" style="padding:0px">
+                            <span>Zone</span>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-xs-6" style="padding:0px">
+                            <div class="input-group" style="padding:0!important;">
+                                <input type="text" class="form-control" ng-model="binModel.zone_Name" value="binModel.zone_Index">
+                                <span class="input-group-btn">
+                                    <button ng-click='popupZone.onClick()' class="btn btn-primary" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-2 col-md-2 col-xs-2">
+                        <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                            <span>Count By Product</span>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-xs-6" style="padding:0px">
+                            <label class="ios7-switch ios7-switch-md">
+                                <input type="checkbox" ng-click="hide()">
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top:20px">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+
+                    <div class="col-lg-4 col-md-4 col-xs-4">
+                        <div class="col-lg-3 col-md-3 col-xs-12" style="padding:0px">
+                            <span>DocType</span>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-xs-6" style="padding:0px">
+                            <select class='form-control' ng-model='dropdownDocumentType.model' ng-options="v.documentType_Name for v in dropdownDocumentType">
+                                <option value="">Please Selected</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-4 col-md-4 col-xs-4">
+                        <div class="col-lg-3 col-md-3 col-xs-12" style="padding:0px">
+                            <span>Loc Type</span>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-xs-6" style="padding:0px">
+                            <div class="input-group" style="padding:0!important;">
+                                <input type="text" class="form-control" ng-model="binModel.locationType_Name" value="binModel.locationType_Index">
+                                <span class="input-group-btn">
+                                    <button ng-click='popupLocationType.onClick()' class="btn btn-primary" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-xs-4" ng-show='sku.chk'>
+                        <div class="col-lg-3 col-md-3 col-xs-12" style="padding:0px">
+                            <span>Product</span>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-xs-6" style="padding:0px">
+                            <div class="input-group" style="padding:0!important;">
+                                <input readonly type="text" class="form-control bgwrite" ng-model="binModel.product_Id" value="binModel.product_Index">
+                                <span class="input-group-btn">
+                                    <button ng-click='popupProduct.onClick()' class="btn btn-primary" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top:20px">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                    <div class="col-lg-4 col-md-4 col-xs-4">
+                        <div class="col-lg-3 col-md-3 col-xs-12" style="padding:0px">
+                            <span>Date</span>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-xs-6" style="padding:0px">
+                            <dir-date-picker ng-model="binModel.cycleCount_Date"></dir-date-picker>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-xs-4">
+                        <div class="col-lg-3 col-md-3 col-xs-12" style="padding:0px">
+                            <span>Location</span>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-xs-6" style="padding:0px">
+                            <input type="text" ng-model="binModel.location_Name" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-xs-4">
+                        <div class="text-right">
+                            <button ng-click="SearchBin(binModel)" class="btn btn-primary">
+                                <i class="fa fa-search" aria-hidden="true"></i> Search</button>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+            <div class="tabs">
+                <ul class="nav nav-tabs">
+
+                    <li class="active">
+                        <a data-target="#table1" data-toggle="tab" ng-click="clickTab(1)">Loc</a>
+                    </li>
+                    <li>
+                        <a data-target="#table2" data-toggle="tab" ng-click="clickTab(2)">Detail</a>
+                    </li>
+
+                </ul>
+                <div id="table1" class="tab-pane active">
+                    <div class="table-responsive" style="padding:0px;" ng-if="click == 1">
+                        <div class="table-responsive table-overflow">
+                            <table class="table table-striped table-bordeered table-width-100">
+                                <thead>
+                                    <tr>
+                                        <th class="text-ceneter" style="width: 10%;">
+                                            <input ng-change="detectCheckAll()" ng-model="checkAll.lochk" type="checkbox" id="all2" class="ig-control__cbx" checked />
+                                            <label for="all2"></label>
+                                        </th>
+                                        <!-- <th class="text-center" style="width: 20%;">#</th> -->
+                                        <th class="text-center" style="width: 20%;">Location</th>
+                                        <th class="text-center" style="width: 20%;">Zone</th>
+                                        <th style="width: 50%;">Prodcut</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="data in listBinLoc">
+                                        <td class="text-ceneter" style="width: 10%;">
+                                            <div class="ig-control">
+                                                <input ng-model="data.selected" type="checkbox" id="check_{{$index}}" class="ig-control__cbx" checked />
+                                                <label for="check_{{$index}}"></label>
+                                            </div>
+                                        </td>
+                                        <!-- <td class="text-center"style="width: 20%;">{{$index+1}}</td> -->
+                                        <td class="text-center" style="width: 20%;">{{data.location_Name}}</td>
+                                        <td class="text-center" style="width: 20%;">{{data.zone_Name}}</td>
+                                        <td style="width: 50%;">{{data.product_SecondName}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="table2" class="tab-pane active">
+                        <div class="col-lg-12 col-md-12 col-sm-12 table-responsive" style="padding:0px;" ng-if="click == 2">
+                            <div class="table-responsive table-overflow">
+                                <table class="table table-striped table-bordeered table-width-120">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">action</th>
+                                            <th class="text-center">#</th>
+                                            <th class="text-center">Location</th>
+                                            <th class="text-center">Zone</th>
+                                            <th class="text-center">Product</th>
+                                            <th class="text-center">Attibute</th>
+                                            <th class="text-center">QtyBal</th>
+                                            <th class="text-center">QtyCount</th>
+                                            <th class="text-center">QtyDiff</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="data in listDetail">
+                                            <td class="text-center">
+                                                <div>
+                                                    <a class="btn btn-success" ng-click="stock(data)" ng-disabled="data.documentStatus == 2">
+                                                            Stock
+                                                    </a>
+                                                </div>
+                                            </td>
+                                            <td class="text-center">{{$index+1}}</td>
+                                            <td class="text-center">{{data.location_Name}}</td>
+                                            <td class="text-center">{{data.zone_Name}}</td>
+                                            <td class="text-center">{{data.product_SecondName}}</td>
+                                            <td class="text-center"></td>
+                                            <td class="text-center">{{data.qty_Bal}}</td>
+                                            <td class="text-center">{{data.qty_Count}}</td>
+                                            <td class="text-center">{{data.qty_Diff}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="footer-white" style="margin-top:10px;">
+            <ul class="pager">
+                <button type="button" class="btn btn-danger" ng-click="back()" style="float: left;">
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>Back
+                </button>
+
+                <button type="button" class="btn btn-primary previous" ng-click="add(binModel,listBinLoc)" style="float: right;">
+                    Save
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </button>
+
+            </ul>
+        </div>
+
+
+    </div>
+</div>
+</div>
+
+
+
+
+
+<location-type-popup on-show='popupLocationType.onShow' config='popupLocationType.config' invokes='popupLocationType.invokes'
+    delegates='popupLocationType.delegates'>
+</location-type-popup>
+<zone-popup on-show='popupZone.onShow' config='popupZone.config' invokes='popupZone.invokes' delegates='popupZone.delegates'>
+</zone-popup>
+<product-popup on-show='popupProduct.onShow' config='popupProduct.config' invokes='popupProduct.invokes' delegates='popupProduct.delegates'>
+</product-popup>

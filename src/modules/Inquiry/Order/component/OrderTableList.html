@@ -1,0 +1,465 @@
+<!-- <style>
+    /* .sortorder:after {
+        content: '\25b2'; 
+        }
+    .sortorder.reverse:after {
+        content: '\25bc';
+        } */
+
+    table {
+        display: flex;
+        flex-direction: column;
+        height: 400px;
+    }   
+
+    tbody {
+        overflow-y: auto;
+        overflow-x: auto;
+    }
+
+    thead>tr,
+    tbody>tr,
+    tfoot>tr {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        position: relative;
+    }
+
+    thead,
+    tfoot {
+        flex-shrink: 0;
+    }
+
+    th,
+    tbody td {
+        width: 400%;
+        text-overflow: auto;
+    }
+
+
+
+    .text-fixed-width {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .tooltip-inner {
+        min-width: 250px;
+    }
+
+    .tr320 {
+        max-width: 320px;
+        min-width: 320px;
+    }
+
+    .tr250 {
+        max-width: 250px;
+        min-width: 150px;
+    }
+
+    .tr180 {
+        max-width: 180px;
+        min-width: 120px;
+    }
+    .tr120 {
+        max-width: 180px;
+        min-width: 50px;
+    }
+    .tr80 {
+        max-width: 180px;
+        min-width: 10px;
+    }
+
+</style> -->
+<style>
+    /* .sortorder:after {
+            content: '\25b2'; 
+            }
+        .sortorder.reverse:after {
+            content: '\25bc';
+            } */
+
+    table {
+        display: flex;
+        flex-direction: column;
+        height: 400px;
+    }
+
+    tbody {
+        overflow-y: auto;
+        overflow-x: auto;
+    }
+
+    thead>tr,
+    tbody>tr,
+    tfoot>tr {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        position: relative;
+    }
+
+    thead,
+    tfoot {
+        flex-shrink: 0;
+    }
+
+    th,
+    tbody td {
+        width: 100%;
+        text-overflow: auto;
+    }
+</style>
+<!-- <header class="page-header">
+        <h2>Order Status</h2>
+    </header>
+<div class="row" style="margon-top:0px">
+    <ul class="nav nav-tabs col-lg-12">
+        <li class="active">
+            <a data-target="#tab1" data-toggle="tab" style="background-color:{{colortab1}}" ng-click="selectedTab(1)"
+                ng-init="colortab1 = '#FDFEFE'">Order Status</a>
+        </li>
+        <li class="active">
+            <a data-target="#tab2" data-toggle="tab" style="background-color:{{colortab2}}" ng-click="selectedTab(2)">Order
+                History</a>
+        </li>
+    </ul>
+
+</div> -->
+<!-- <div class="row" ng-if="selected == 1">
+    <div class="div-shadow">
+
+        <div class="form-group" style="margin-top:20px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-5 col-md-3 col-xs-12">
+                        <span>Order No.</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <input type="text" ng-model="$vm.filterModel.orderNo" class="form-control" placeholder="Key Search"
+                            maxlength="15" />
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-4 col-md-3 col-xs-12">
+                        <span>Round</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <div class="input-group" style="padding:0!important;">
+                            <input type="text" class="form-control" ng-model="$vm.filterModel.roundName">
+                            <span class="input-group-btn">
+                                <button ng-click='popupRound.onClick()' class="btn btn-primary" type="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-4 col-md-3 col-xs-12">
+                        <span>Route</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <div class="input-group" style="padding:0!important;">
+                            <input type="text" class="form-control" ng-model="$vm.filterModel.routeName">
+                            <span class="input-group-btn">
+                                <button ng-click='popupRoute.onClick()' class="btn btn-primary" type="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-8 col-md-3 col-xs-12">
+                        <span>Delivery Date From</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <dir-date-picker ng-model="$vm.filterModel.deliveryDateFrom"></dir-date-picker>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-8 col-md-3 col-xs-12">
+                        <span>Delivery Date To</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <dir-date-picker ng-model="$vm.filterModel.deliveryDateTo"></dir-date-picker>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-4 col-md-3 col-xs-12">
+                        <span>Order Type</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <div class="input-group" style="padding:0!important;">
+                            <input type="text" class="form-control" ng-model="$vm.filterModel.orderType">
+                            <span class="input-group-btn">
+                                <button ng-click='popupDocumentType.onClick()' class="btn btn-primary" type="button"
+                                    type="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-right padding-m">
+            <button ng-click="filterSearch()" class="btn btn-primary hidden-xs">
+                <i class="fa fa-search" aria-hidden="true"></i> Search</button>
+            <button ng-click="filterSearch()" class="btn btn-primary btn-block btn-md visible-xs mt-lg">
+                <i class="fa fa-search" aria-hidden="true"></i> Search</button>
+            <button ng-click="clearSearch()" class="btn btn-success hidden-xs">ClearSearch</button>
+            <button ng-click="clearSearch()" class="btn btn-success btn-block btn-md visible-xs mt-lg">ClearSearch</button>
+        </div>
+        <div class="col-md-12 col-md-offset-12" style="margin-top:20px;"></div>
+    </div>
+</div> -->
+<div class="row" ng-if="selected == 2">
+    <div class="div-shadow">
+
+        <div class="form-group" style="margin-top:20px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-5 col-md-3 col-xs-12">
+                        <span>Order No.</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <input type="text" ng-model="$vm.filterModel.orderNo" class="form-control" placeholder="Key Search"
+                            maxlength="15" />
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-4 col-md-3 col-xs-12">
+                        <span>Round</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <div class="input-group" style="padding:0!important;">
+                            <input type="text" class="form-control" ng-model="$vm.filterModel.roundName">
+                            <span class="input-group-btn">
+                                <button ng-click='popupRound.onClick()' class="btn btn-primary" type="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-4 col-md-3 col-xs-12">
+                        <span>Route</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <div class="input-group" style="padding:0!important;">
+                            <input type="text" class="form-control" ng-model="$vm.filterModel.routeName">
+                            <span class="input-group-btn">
+                                <button ng-click='popupRoute.onClick()' class="btn btn-primary" type="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-8 col-md-3 col-xs-12">
+                        <span>Delivery Date From</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <dir-date-picker ng-model="$vm.filterModel.deliveryDateFrom"></dir-date-picker>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-8 col-md-3 col-xs-12">
+                        <span>Delivery Date To</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <dir-date-picker ng-model="$vm.filterModel.deliveryDateTo"></dir-date-picker>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-4 col-md-3 col-xs-12">
+                        <span>Order Type</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <div class="input-group" style="padding:0!important;">
+                            <input type="text" class="form-control" ng-model="$vm.filterModel.orderType">
+                            <span class="input-group-btn">
+                                <button ng-click='popupDocumentType.onClick()' class="btn btn-primary" type="button"
+                                    type="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-right padding-m">
+            <button ng-click="historySearch()" class="btn btn-primary hidden-xs">
+                <i class="fa fa-search" aria-hidden="true"></i> Search</button>
+            <button ng-click="historySearch()" class="btn btn-primary btn-block btn-md visible-xs mt-lg">
+                <i class="fa fa-search" aria-hidden="true"></i> Search</button>
+            <button ng-click="clearSearch()" class="btn btn-success hidden-xs">ClearSearch</button>
+            <button ng-click="clearSearch()" class="btn btn-success btn-block btn-md visible-xs mt-lg">ClearSearch</button>
+        </div>
+        <div class="col-md-12 col-md-offset-12" style="margin-top:20px;"></div>
+    </div>
+</div>
+<div class="row   table-responsive table-overflow  div-shadow" ng-show="$vm.isFilter" style="margin-bottom:15px;">
+    <!-- <div class="div-shadow" style="margin-top:15px;"> -->
+    <!-- <div class="table-responsive kl-tbl-height table-overflow"> -->
+    <div class="tab">
+        <!-- PC -->
+        <div id="tab1" class="tab-pane active" ng-if="$vm.filterModel.selected == 1">
+            <table class="table table-striped table-bordeered  table-width-150">
+                <thead>
+                    <tr>
+                        <th class="text-center" style="width: 10%;">No.</th>
+                        <th class="text-center" style="width: 20%;">Order No</th>
+                        <th class="text-center" style="width: 20%;">Order Type</th>
+                        <th class="text-center" style="width: 20%;">Round Name</th>
+                        <th class="text-center" style="width: 20%;">Route Name</th>
+                        <th class="text-center" style="width: 20%;">Delivery Date</th>
+                        <th class="text-center" style="width: 20%;">Work OrderNo</th>
+                        <th class="text-center" style="width: 20%;">Picktick No</th>
+                        <th class="text-center" style="width: 20%;">Carton No</th>
+                        <th class="text-center" style="width: 20%;">Order Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="data in $vm.resultOrderStatus" ng-if="$vm.resultOrderStatus.length != 0">
+                        <td class="text-center" style="width: 10%;">{{$index+1}}</td>
+                        <td class="text-center" style="width: 20%;">{{data.orderNo}}</td>
+                        <td class="text-center" style="width: 20%;">{{data.orderType}}</td>
+                        <td class="text-center" style="width: 20%;">{{data.roundName}}</td>
+                        <td class="text-center" style="width: 20%;">{{data.routeName}}</td>
+                        <td class="text-center" style="width: 20%;">{{data.deliveryDate|dateFormate}}</td>
+                        <td class="text-center" style="width: 20%;">{{data.goodsIssueNo}}</td>
+                        <td class="text-center" style="width: 20%;">{{data.tagOutPickNo}}</td>
+                        <td class="text-center" style="width: 20%;">{{data.tagOutNo}}</td>
+                        <td class="text-center" style="width: 20%;">{{data.orderStatus}}</td>
+
+                    </tr>
+                    <tr ng-if="$vm.resultOrderStatus.length == 0">
+                        <td colspan="11" class="text-center">No Data</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- PC -->
+
+        <div id="tab2" class="tab-pane active" ng-if="$vm.filterModel.selected == 2">
+            <table class="table table-striped table-bordeered  table-width-200">
+                <thead>
+                    <tr>
+                        <th class="text-center" style="width: 10%;">No.</th>
+                        <th class="text-center" style="width: 40%;">Order No</th>
+                        <th class="text-center" style="width: 40%;">Order Type</th>
+                        <th class="text-center" style="width: 40%;">Round Name</th>
+                        <th class="text-center" style="width: 40%;">Route Name</th>
+                        <th class="text-center" style="width: 40%;">Delivery Date</th>
+                        <th class="text-center" style="width: 40%;">Create Date</th>
+                        <th class="text-center" style="width: 40%;">Create By</th>
+                        <th class="text-center" style="width: 40%;">Runwave Date</th>
+                        <th class="text-center" style="width: 40%;">Runwave By</th>
+                        <th class="text-center" style="width: 40%;">Picking Date</th>
+                        <th class="text-center" style="width: 40%;">Picking By</th>
+                        <th class="text-center" style="width: 40%;">DropStaging Date</th>
+                        <th class="text-center" style="width: 40%;">DropStaging By</th>
+                        <th class="text-center" style="width: 40%;">Marshal Release Date</th>
+                        <th class="text-center" style="width: 40%;">Marshal Release By</th>
+                        <th class="text-center" style="width: 40%;">Short Chasing Comfirmed Date</th>
+                        <th class="text-center" style="width: 40%;">Short Chasing Comfirmed By</th>
+                        <th class="text-center" style="width: 40%;">Pickingtools Comfirmed Date</th>
+                        <th class="text-center" style="width: 40%;">Pickingtools Comfirmed By</th>
+                        <th class="text-center" style="width: 40%;">CS Comfirmed Date</th>
+                        <th class="text-center" style="width: 40%;">CS Comfirmed By</th>
+                        <th class="text-center" style="width: 40%;">POS Comfirmed Date</th>
+                        <th class="text-center" style="width: 40%;">POS Comfirmed By</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="data in $vm.resultOrderHistory" ng-if="$vm.resultOrderHistory.length != 0">
+                        <td class="text-center" style="width: 10%;">{{$index+1}}</td>
+                        <td class="text-center" style="width: 40%;">{{data.orderNo}}</td>
+                        <td class="text-center" style="width: 40%;">{{data.orderType}}</td>
+                        <td class="text-center" style="width: 40%;">{{data.roundName}}</td>
+                        <td class="text-center" style="width: 40%;">{{data.routeName}}</td>
+                        <td class="text-center" style="width: 40%;">{{data.deliveryDate|dateFormate}}</td>
+                        <td class="text-center" style="width: 40%;">{{data.createdDate}}</td>
+                        <td class="text-center" style="width: 40%;">{{data.createdBy}}</td>
+                        <td class="text-center" style="width: 40%;">{{data.runwaveDate}}</td>
+                        <td class="text-center" style="width: 40%;">{{data.runwaveBy}}</td>
+                        <td class="text-center" style="width: 40%;">{{data.pickingDate}}</td>
+                        <td class="text-center" style="width: 40%;">{{data.pickingBy}}</td>
+                        <td class="text-center" style="width: 40%;">{{data.dropStagingDate}}</td>
+                        <td class="text-center" style="width: 40%;">{{data.dropStagingBy}}</td>
+                        <td class="text-center" style="width: 40%;">{{data.marshalReleaseDate}}</td>
+                        <td class="text-center" style="width: 40%;">{{data.marshalReleaseBy}}</td>
+                        <td class="text-center" style="width: 40%;">{{data.shortChasingConfirmedDate}}</td>
+                        <td class="text-center" style="width: 40%;">{{data.shortChasingConfirmedBy}}</td>
+                        <td class="text-center" style="width: 40%;">{{data.pickingToolsConfirmedDate}}</td>
+                        <td class="text-center" style="width: 40%;">{{data.pickingToolsConfirmedBy}}</td>
+                        <td class="text-center" style="width: 40%;">{{data.callcenterDate}}</td>
+                        <td class="text-center" style="width: 40%;">{{data.callcenterBy}}</td>
+                        <td class="text-center" style="width: 40%;">{{data.posDate}}</td>
+                        <td class="text-center" style="width: 40%;">{{data.posBy}}</td>
+                    </tr>
+                    <tr ng-if="$vm.resultOrderHistory.length == 0">
+                        <td colspan="11" class="text-center">No Data</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+<div  class="tab-pane active " ng-if="$vm.filterModel.selected == 1">
+    <div class="row table-responsive table-overflow" ng-show="$vm.isFilter" style="margin-bottom:15px;">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 " style="padding-top:0px;margin-top:20px" ng-show="show.pagination">
+                <select class='form-control' style='width:70px;display:inline;' ng-model='$vm.filterModel.perPage'
+                    ng-options="v.value as v.value for v in pageOption" ng-init='filterModel.perPage = 30' ng-change='changeTableSize()'>
+                </select>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 " style="padding:0px" ng-show="show.pagination">
+                <ul uib-pagination total-items="$vm.filterModel.totalRow" ng-change='changePage()' items-per-page="$vm.filterModel.perPage"
+                    num-pages="$vm.filterModel.num" ng-model="$vm.filterModel.currentPage" max-size="$vm.filterModel.maxSize"
+                    class="pull-right" boundary-link-numbers="true" rotate="false"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tab-pane active " ng-if="$vm.filterModel.selected == 2">
+    <div class="row table-responsive table-overflow" ng-show="$vm.isFilter" style="margin-bottom:15px;">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 " style="padding-top:0px;margin-top:20px" ng-show="show.pagination">
+                <select class='form-control' style='width:70px;display:inline;' ng-model='$vm.orderHistory.perPage'
+                    ng-options="v.value as v.value for v in pageOption" ng-init='$vm.orderHistory.perPage = 30' ng-change='changeTableSize1()'>
+                </select>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 " style="padding:0px" ng-show="show.pagination">
+                <ul uib-pagination total-items="$vm.orderHistory.totalRow" ng-change='changePage1()' items-per-page="$vm.orderHistory.perPage"
+                    num-pages="$vm.orderHistory.num" ng-model="$vm.orderHistory.currentPage" max-size="$vm.orderHistory.maxSize"
+                    class="pull-right" boundary-link-numbers="true" rotate="false"></ul>
+            </div>
+        </div>
+    </div>
+</div>

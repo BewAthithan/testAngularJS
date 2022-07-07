@@ -1,0 +1,143 @@
+<div class="row">
+    <div class="div-shadow">
+
+        <header class="panel-heading ">
+            <div class="text-right ">
+                <button class="btn btn-primary" ng-click="pickupFile()">
+                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span> Pick File
+                </button>
+                <input type="file" style="display: none;" id="pickup_excel" name="pickup_excel" 
+                onchange="angular.element(this).scope().getFilePickup(event)"
+                accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
+                <button class="btn btn-success" ng-click="importFile()">Import File</button>
+            </div>
+        </header>
+        <div class="panel-body" style="display: block;" ng-show='header.Search'>
+            <!--New Line White Space-->
+            <div class="col-md-12 col-md-offset-12" style="margin-top:20px;"></div>
+            <div class="form-group" style="margin-top:20px">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+
+                    <div class="col-lg-4 col-md-4 col-xs-12">
+                        <div class="col-lg-6 col-md-6 col-xs-12" style="padding:0px">
+                            <span>Owner</span>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                            <div class="input-group" style="padding:0!important;">
+                                <input type="text" class="form-control" ng-model="filterModel.ownerName" value="filterModel.ownerIndex">
+                                <span class="input-group-btn">
+                                    <button ng-click='popupOwner.onClick()' class="btn btn-primary" type="button" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-xs-12">
+                        <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                            <span>Warehouse</span>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                            <div class="input-group" style="padding:0!important;">
+                                <input type="text" class="form-control" ng-model="filterModel.warehouseName" value="filterModel.warehouseIndex">
+                                <span class="input-group-btn">
+                                    <button ng-click='popupWarehouse.onClick()' class="btn btn-primary" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-xs-12">
+                        <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                            <span>Sale Order Type</span>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                            <div class="input-group" style="padding:0!important;">
+                                <input type="text" class="form-control" ng-model="filterModel.documentTypeName" value="filterModel.documentTypeIndex">
+                                <span class="input-group-btn">
+                                    <button ng-click='popupDocumentType.onClick()' class="btn btn-primary" type="button" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <div class="col-lg-6 col-md-6 col-xs-12" style="padding:0px">
+                            <span>Route</span>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                            <div class="input-group" style="padding:0!important;">
+                                <input type="text" class="form-control" ng-model="filterModel.routeName" value="filterModel.routeIndex">
+                                <span class="input-group-btn">
+                                    <button ng-click='popupRoute.onClick()' class="btn btn-primary" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <div class="col-lg-6 col-md-6 col-xs-12" style="padding:0px">
+                            <span>Round</span>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                            <div class="input-group" style="padding:0!important;">
+                                <input type="text" class="form-control" ng-model="filterModel.roundName" value="filterModel.roundIndex">
+                                <span class="input-group-btn">
+                                    <button ng-click='popupRound.onClick()' class="btn btn-primary" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group ">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="text-right padding-m">
+                        <button ng-click="filterSearch()" class="btn btn-primary hidden-xs">
+                            <i class="fa fa-search" aria-hidden="true"></i> Search</button>
+                        <button ng-click="filterSearch()" class="btn btn-primary btn-block btn-md visible-xs mt-lg">
+                            <i class="fa fa-search" aria-hidden="true"></i> Search</button>
+                        <button ng-click="clearSearch()" class="btn btn-success hidden-xs">Clear</button>
+                        <button ng-click="clearSearch()" class="btn btn-success btn-block btn-md visible-xs mt-lg">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<document-type-popup-plan-gi on-show='popupDocumentType.onShow' config='popupDocumentType.config' invokes='popupDocumentType.invokes'
+    delegates='popupDocumentType.delegates'>
+</document-type-popup-plan-gi>
+<owner-popup on-show='popupOwner.onShow' config='popupOwner.config' invokes='popupOwner.invokes' delegates='popupOwner.delegates'>
+</owner-popup>
+<plan-gr-type-popup on-show='popupPlanGrType.onShow' config='popupPlanGrType.config' invokes='popupPlanGrType.invokes' delegates='popupPlanGrType.delegates'>
+</plan-gr-type-popup>
+<warehouse-popup on-show='popupWarehouse.onShow' config='popupWarehouse.config' invokes='popupWarehouse.invokes' delegates='popupWarehouse.delegates'>
+</warehouse-popup>
+<warehouse-to-popup on-show='popupWarehouseTo.onShow' config='popupWarehouseTo.config' invokes='popupWarehouseTo.invokes'
+    delegates='popupWarehouseTo.delegates'>
+</warehouse-to-popup>
+<sold-to-popup on-show='popupSoldTo.onShow' config='popupSoldTo.config' invokes='popupSoldTo.invokes' delegates='popupSoldTo.delegates'>
+</sold-to-popup>
+<ship-to-popup on-show='popupShipTo.onShow' config='popupShipTo.config' invokes='popupShipTo.invokes' delegates='popupShipTo.delegates'>
+</ship-to-popup>
+<round-popup on-show='popupRound.onShow' config='popupRound.config' invokes='popupRound.invokes' delegates='popupRound.delegates'>
+</round-popup>
+<route-popup on-show='popupRoute.onShow' config='popupRoute.config' invokes='popupRoute.invokes' delegates='popupRoute.delegates'>
+</route-popup>
+<status-popup on-show='popupStatus.onShow' config='popupStatus.config' invokes='popupStatus.invokes'
+    delegates='popupStatus.delegates'>
+</status-popup>
+    

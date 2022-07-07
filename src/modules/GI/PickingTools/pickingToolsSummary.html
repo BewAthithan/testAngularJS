@@ -1,0 +1,15 @@
+<header class="page-header">
+    <h2>Picking Tools</h2>
+</header>
+<div>
+    <div>
+        <picking-tools-filter filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch"
+            trigger-create="create" ng-show="isFilter">
+        </picking-tools-filter>
+
+        <div style="margin-top:15px;">
+            <picking-tools-table-list filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch"
+                trigger-create="create" is-filter="isFilter"></picking-tools-table-list >
+        </div>
+    </div>
+</div>

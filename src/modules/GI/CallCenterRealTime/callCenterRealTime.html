@@ -1,0 +1,17 @@
+<header class="page-header">
+    <h2>Customer Service Real Time</h2>
+</header>
+
+<div>
+    <call-center-real-time-filter filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create"
+        ng-show="isFilter">
+        <br>
+    </call-center-real-time-filter>
+</div>
+
+
+<div>
+    <call-center-real-time-table-list filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create"
+        is-filter="isFilter">
+    </call-center-real-time-table-list>
+</div>

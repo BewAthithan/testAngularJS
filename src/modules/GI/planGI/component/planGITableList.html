@@ -1,0 +1,155 @@
+<style>
+    /* .sortorder:after {
+        content: '\25b2'; 
+        }
+    .sortorder.reverse:after {
+        content: '\25bc';
+        } */
+
+    table {
+        display: flex;
+        flex-direction: column;
+        height: 400px;
+    }
+
+    tbody {
+        overflow-y: auto;
+        overflow-x: auto;
+    }
+
+    thead>tr,
+    tbody>tr,
+    tfoot>tr {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        position: relative;
+    }
+
+    thead,
+    tfoot {
+        flex-shrink: 0;
+    }
+
+    th,
+    tbody td {
+        width: 200%;
+        text-overflow: auto;
+    }
+</style>
+
+<div class="text-left" ng-show="$vm.isFilter" style="margin-bottom:15px;">
+    <button ng-click="copy_So()" class="btn btn-warning display-inline hidden-xs">Copy So</button>
+    <button ng-click="copy_So()" class="btn btn-warning display-inline btn-block btn-md visible-xs mt-lg">Copy So</button>
+    <button ng-click="confirm_Status()" class="btn btn-success hidden-xs">
+        Confirm</button>
+    <button ng-click="confirm_Status()" class="btn btn-success btn-block btn-md visible-xs mt-lg">
+        Confirm</button>
+    <button ng-click="closed_Status($vm.searchResultModel)" class="btn btn-dark hidden-xs">
+        Closed</button>
+    <button ng-click="closed_Status($vm.searchResultModel)" class="btn btn-dark btn-block btn-md visible-xs mt-lg">
+        Closed</button>
+</div>
+
+<div class="row   table-responsive table-overflow  div-shadow" ng-show="$vm.isFilter" style="margin-bottom:15px;">
+    <!-- <div class="table-responsive kl-tbl-height table-overflow div-shadow">
+        <table class="table table-striped table-width-150 table-bordeered"> -->
+    <!-- <div class="container table-responsive table-overflow  div-shadow"> -->
+        <table class="table table-striped table-bordeered  table-width-200">
+            <thead>
+                <tr>
+                    <th class="text-center">
+                        <div>
+                            Select all
+                        </div>
+                        <div>
+                            <input ng-change="detectCheckAll()" ng-model="checkAll" type="checkbox" id="all_" class="ig-control__cbx" checked />
+                            <label for="all_"></label>
+                        </div>
+                    </th>
+                    <th style="margin-top:15px;" class="text-center">Action</th>
+                    <th style="margin-top:15px;">Sale Order No.</th>
+                    <th style="margin-top:15px;">Sale Order Date</th>
+                    <th style="margin-top:15px;">Delivery Date</th>
+                    <th style="margin-top:15px;">Sale Order Type</th>
+                    <th style="margin-top:15px;">Owner</th>
+                    <th style="margin-top:15px;">Sold To</th>
+                    <th style="margin-top:15px;">Ship To</th>
+                    <th style="margin-top:15px;">Form Warehouse</th>
+                    <th style="margin-top:15px;">To Warehouse</th>
+                    <th style="margin-top:15px;">Sale Order Status</th>
+                    <th style="margin-top:15px;">Sale Order Loading Status</th>
+                    <th style="margin-top:15px;">Remark</th>
+                    <!-- <th ng-click="sortBy('planGoodsIssueNo')">No.<span class="sortorder" ng-show="propertyName === 'planGoodsIssueNo'" ng-class="{reverse: reverse}"></span></th>
+                    <th ng-click="sortBy('planGoodsIssueDate')">PlanGI Date<span class="sortorder" ng-show="propertyName === 'planGoodsIssueDate'" ng-class="{reverse: reverse}"></span></th>
+                    <th ng-click="sortBy('planGoodsIssueDueDate')">Delivery Date<span class="sortorder" ng-show="propertyName === 'planGoodsIssueDueDate'" ng-class="{reverse: reverse}"></span></th>
+                    <th ng-click="sortBy('documentTypeName')">PlanGI Type<span class="sortorder" ng-show="propertyName === 'documentTypeName'" ng-class="{reverse: reverse}"></span></th>
+                    <th ng-click="sortBy('ownerName')">Owner<span class="sortorder" ng-show="propertyName === 'ownerName'" ng-class="{reverse: reverse}"></span></th>
+                    <th ng-click="sortBy('soldToName')">Sold To<span class="sortorder" ng-show="propertyName === 'soldToName'" ng-class="{reverse: reverse}"></span></th>
+                    <th ng-click="sortBy('shipToName')">Ship To<span class="sortorder" ng-show="propertyName === 'shipToName'" ng-class="{reverse: reverse}"></span></th>
+                    <th ng-click="sortBy('warehouseName')">Form Warehouse<span class="sortorder" ng-show="propertyName === 'warehouseName'" ng-class="{reverse: reverse}"></span></th>
+                    <th ng-click="sortBy('warehouseNameTo')">To Warehouse<span class="sortorder" ng-show="propertyName === 'warehouseNameTo'" ng-class="{reverse: reverse}"></span></th>
+                    <th ng-click="sortBy('documentStatus')">PlanGI Status<span class="sortorder" ng-show="propertyName === 'documentStatus'" ng-class="{reverse: reverse}"></span></th>
+                    <th ng-click="sortBy('documentLoadingStatus')">PlanGI Loading Status<span class="sortorder" ng-show="propertyName === 'documentLoadingStatus'" ng-class="{reverse: reverse}"></span></th>
+                    <th ng-click="sortBy('documentRemark')">Remark<span class="sortorder" ng-show="propertyName === 'documentRemark'" ng-class="{reverse: reverse}"></span></th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in $vm.searchResultModel">
+                <!-- <tr ng-repeat="data in $vm.searchResultModel| orderBy:propertyName:reverse"> -->
+                <td class="text-center">
+                    <input ng-model="data.selected" type="checkbox" id="check_{{$index}}" class="ig-control__cbx" checked />
+                    <label for="check_{{$index}}"></label>
+                </td>
+                <td ng-show="show.action">
+                    <div style="width:150px;">
+                        <a class="btn btn-danger" style="margin-left:5px;" ng-click="delete(data)" ng-disabled="data.documentStatus == -1 || data.documentStatus != 0">
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true" ng-di></span>
+                        </a>
+                        <a class="btn btn-success" ng-click="editItem(data)">
+                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                        </a>
+                        <a class="btn btn-dark" ng-click="popupReason.onClick(data)" ng-disabled="data.documentStatus == -1 || data.reasonCodeIndex != null">
+                            <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                </td>
+                <td class="text-left">{{data.planGoodsIssueNo}}</td>
+                <td>{{data.createDate|dateFormate}}</td>
+                <td>{{data.planGoodsIssueDueDate|dateFormate}}</td>
+                <td>{{data.documentTypeName}}</td>
+                <td>{{data.ownerName}}</td>
+                <td>{{data.soldToName}}</td>
+                <td>{{data.shipToName}}</td>
+                <td>{{data.warehouseName}}</td>
+                <td>{{data.warehouseNameTo}}</td>
+                <td>{{data.processStatusName}}</td>
+                <td>{{data.documentLoadingStatus}}</td>
+                <td>{{data.documentRemark}}</td>
+            </tr>
+            <tr ng-if="$vm.searchResultModel.length == 0">
+                <td colspan="11" class="text-center">No Data</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- </div> -->
+</div>
+<div class="row table-responsive table-overflow " ng-show="$vm.isFilter" style="margin-bottom:15px;">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-4 " style="padding-top:18px" ng-show="show.pagination">
+            <select class='form-control' style='width:70px;display:inline;' ng-model='$vm.filterModel.perPage'
+                ng-options="v.value as v.value for v in pageOption" ng-init='$vm.filterModel.perPage = 30' ng-change='changeTableSize()'>
+            </select>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-8 " style="padding:0px" ng-show="show.pagination">
+            <ul uib-pagination total-items="$vm.filterModel.totalRow"
+                ng-change='changePage()' items-per-page="$vm.filterModel.perPage" num-pages="$vm.filterModel.num"
+                ng-model="$vm.filterModel.currentPage" max-size="$vm.filterModel.maxSize" class="pull-right"
+                boundary-link-numbers="true" rotate="false"></ul>
+        </div>
+    </div>
+</div>
+
+<plan-gi-form on-show="onShow" ng-hide="$vm.isFilter"></plan-gi-form>
+<reason-popup on-show='popupReason.onShow' config='popupReason.config' invokes='popupReason.invokes' delegates='popupReason.delegates'>
+</reason-popup>

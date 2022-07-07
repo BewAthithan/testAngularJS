@@ -1,0 +1,24 @@
+<header class="page-header">
+    <h2>Scan Receive</h2>
+</header>
+
+<div class="tabs">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a data-target="#productdetail" data-toggle="tab" ng-click="selectedTab(1)"> Product Detail</a>
+        </li>
+        <li>
+            <a data-target="#receivedproduct" data-toggle="tab" ng-click="selectedTab(2)">Received Product</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div id="productdetail" class="tab-pane active">
+            <scan-receive-product-detail ng-if="selected == 1" scan-receive="scanReceive"></scan-receive-product-detail>
+        </div>
+        <div id="receivedproduct" class="tab-pane">
+            <scan-receive-product ng-if="selected == 2" scan-receive="scanReceive"></scan-receive-product>
+        </div>      
+       
+        
+    </div>
+</div>

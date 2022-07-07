@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-lg-6 col-md-3 col-xs-4" style="margin-top:10px; padding-right:0px" ng-hide='model.advanceSearch'>
+        <div class="input-group-btn mb-md" style="padding:0!important;">
+            <div class="col-lg-6 dropdown display-inline" style="margin-left:-15px;">
+                <select ng-model="actionPS" class="form-control" ng-init="actionPS = '1' ">
+                    <option value="1">TaskGroup ID</option>
+                    <option value="2">TaskGroup Name</option>                    
+                </select>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-xs-12" style="padding-left:0px ">
+                <span class="input-group-btn">
+                    <div ng-switch="actionPS">
+                        <div class="input-group" ng-switch-when="1">
+                            <input type="text" ng-model="filterModel.taskGroupId" class="form-control">
+                            <span class="input-group-btn">
+                                <button ng-click="searchFilter(filterModel)" class="btn btn-primary form-control" style="padding: 8.5px;">
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                </button>
+                            </span>
+                        </div>
+                        <div class="input-group" ng-switch-when="2">
+                            <input type="text" ng-model="filterModel.taskGroupName" class="form-control">
+                            <span class="input-group-btn">
+                                <button ng-click="searchFilter(filterModel)" class="btn btn-primary form-control" style="padding: 8.5px;">
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                </button>
+                            </span>
+                        </div> 
+                    
+                    </div>
+                </span>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-xs-3" ng-show='$vm.filterModel.advanceSearch'></div>
+    <!-- end search box -->
+    <div class="col-lg-6 col-md-9 col-xs-9 text-right" style="margin-top: 5px;">
+        <!-- <button class="ks-btn primary" ng-click="toggleSearch()" style="padding: 8.5px;"> Advance Serach </button> -->
+        <button class="ks-btn" ng-click="$vm.triggerCreate()" style="padding: 8.5px; background-color: #57b5a7; border-color: #57b5a7;">
+        Create</button>
+    </div>
+</div>

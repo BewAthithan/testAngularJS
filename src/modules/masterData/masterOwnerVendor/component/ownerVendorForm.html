@@ -1,0 +1,75 @@
+<div id="page-content-wrapper" ng-show="onShow">
+    <div>
+        <h3>Owner Supplier Form</h3>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                Owner SupplierId:
+            </div>
+            <div class="col-lg-8 col-md-9 col-sm-12 col-xs-12 p0">
+                <input type="text" class="form-control" ng-model="filterModel.ownerVendorId">
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                Owner :
+            </div>
+            <div class="col-lg-8 col-md-9 col-sm-12 col-xs-12 p0">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p0">
+                    <div class="input-group" style="padding:0!important;">
+                        <input type="text" class="form-control" ng-model="filterModel.ownerName" value="filterModel.ownerId">
+                        <span class="input-group-btn">
+                            <button ng-click='popupOwner.onClick()' class="btn btn-primary" style="padding: 8px 12px;"
+                                type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                Supplier :
+            </div>
+            <div class="col-lg-8 col-md-9 col-sm-12 col-xs-12 p0">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p0">
+                    <div class="input-group" style="padding:0!important;">
+                        <input type="text" class="form-control" ng-model="filterModel.vendorName" value="filterModel.vendorId">
+                        <span class="input-group-btn">
+                            <button ng-click='popupVendor.onClick()' class="btn btn-primary" style="padding: 8px 12px;"
+                                type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- .button -->
+    <div ng-show="Cancel">
+        <button ng-click="back()" class="ks-btn red pull-right">Cancel</button>
+    </div>
+    <div ng-show="update">
+        <button ng-click="edit()" class="ks-btn pull-right" style="margin-right: 5px">
+            Update</button>
+    </div>
+    <div ng-show="create">
+        <button ng-click="add()" class="ks-btn primary pull-right" style="margin-right: 5px">
+            Create</button>
+    </div>
+    <!-- /.button -->
+</div>
+
+<owner-popup on-show='popupOwner.onShow' config='popupOwner.config' invokes='popupOwner.invokes' delegates='popupOwner.delegates'>
+</owner-popup>
+<vendor-popup on-show='popupVendor.onShow' config='popupVendor.config' invokes='popupVendor.invokes' delegates='popupVendor.delegates'>
+</vendor-popup>

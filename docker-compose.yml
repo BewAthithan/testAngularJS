@@ -1,0 +1,7 @@
+version: "1.0"
+services:
+  angular-service:
+    container_name: angular-service
+    build: .
+    ports:
+      - "4200:80"

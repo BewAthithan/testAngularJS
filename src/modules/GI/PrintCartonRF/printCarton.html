@@ -1,0 +1,145 @@
+<header class="page-header">
+    <h2>Print Carton</h2>
+</header>
+<div class="row">
+
+
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a data-target="#tab1" data-toggle="tab" style="background-color:{{colortab1}}" ng-click="selectedTab(1)" ng-init="colortab1 = '#FDFEFE'">Confirm PrintCarton</a>
+        </li>
+        <li class="active">
+            <a data-target="#tab2" data-toggle="tab" style="background-color:{{colortab2}}" ng-click="selectedTab(2)">Re-PrintCarton</a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="tab1" class="tab-pane active" ng-if="selected == 1">
+            <div class="form-group" style="margin-top:15px;">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-3">
+                        <span>Location</span>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-xs-9">
+                        <input type="text" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" ng-model="filterModel.locationName"
+                            class="form-control" ks-enter="ScanLocation()" placeholder="Scan Location">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" style="margin-top:15px;">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-3">
+                        <span>Cart No.</span>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-xs-9">
+                        <input type="text" ng-model="filterModel.equipmentItemName" class="form-control" disabled>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" style="margin-top:15px;">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-3">
+                        <span>Pick Ticket</span>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-xs-9">
+                        <input type="text" ng-model="filterModel.tagOutPickNo" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');"
+                            class="form-control" ks-enter="ScanTicket()" placeholder="Scan PickTicket">
+                    </div>
+                </div>
+            </div>
+
+            <div class="div-shadow" style="margin-top:15px;margin-left:15px;margin-right:15px;">
+                <div class="table-responsive kl-tbl-height table-overflow div-shadow">
+                    <table class="table table-striped table-width-100 table-bordeered">
+                        <thead>
+                            <tr>
+                                <th>Pick Ticket</th>
+                                <th>SO No</th>
+                                <th>Confirm Carton</th>
+                                <th>Print Carton</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in $vm.itemList" ng-if=" $vm.itemList.length != 0">
+                                <td>{{data.tagOutPickNo}}</td>
+                                <td>{{data.planGoodsIssueNo}}</td>
+                                <td class="">
+                                    <input type="text" maxlength="10" chars="only-numbers" ng-model="data.confirmTagOutQty "  class="form-control">
+                                </td>
+
+                                <td class="">
+                                    <input type="number" min="0" max="10"  ng-model="data.printCarton" ng-change="sum(data)" class="form-control">
+                                </td>
+                            </tr>
+                            
+                            <tr ng-if="$vm.itemList.length == 0">
+                                <td colspan="11" class="text-center">No Data</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="text-right padding-m">
+                    <button class="btn btn-success hidden-xs" ng-click="Confirm()">Confirm</button>
+                    <button class="btn btn-success btn-block btn-md visible-xs mt-lg" ng-click="Confirm()">Confirm</button>
+                    <button class="btn btn-primary hidden-xs" ng-click="clearSearch()">Clear</button>
+                    <button class="btn btn-primary btn-block btn-md visible-xs mt-lg" ng-click="clearSearch()">Clear</button>
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div id="tab2" class="tab-pane active" ng-if="selected == 2">
+            <div class="form-group" style="margin-top:15px;">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-3">
+                        <span>Pick Ticket</span>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-xs-9">
+                        <input type="text" ng-model="filterModel.tagOutPickNo" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');"
+                            class="form-control" ks-enter="ScanTicket()" placeholder="Scan PickTicket">
+                    </div>
+                </div>
+            </div>
+
+            <div class="div-shadow" style="margin-top:15px;margin-left:15px;margin-right:15px;">
+                <div class="table-responsive kl-tbl-height table-overflow div-shadow">
+                    <table class="table table-striped table-width-100 table-bordeered">
+                        <thead>
+                            <tr>
+                                <th>Pick Ticket</th>
+                                <th>SO No</th>
+                                <th>Print Carton</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in $vm.itemList" ng-if=" $vm.itemList.length != 0">
+                                <td>{{data.tagOutPickNo}}</td>
+                                <td>{{data.planGoodsIssueNo}}</td>
+                                <td class="">
+                                    <input type="number" maxlength="10"  ng-model="data.printCarton" class="form-control">
+                                </td>
+                            </tr>
+                            <tr ng-if="$vm.itemList.length == 0">
+                                <td colspan="11" class="text-center">No Data</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="text-right padding-m">
+                    <button class="btn btn-success hidden-xs" ng-click="Confirm()">Confirm</button>
+                    <button class="btn btn-success btn-block btn-md visible-xs mt-lg" ng-click="Confirm()">Confirm</button>
+                    <button class="btn btn-primary hidden-xs" ng-click="clearSearch()">Clear</button>
+                    <button class="btn btn-primary btn-block btn-md visible-xs mt-lg" ng-click="clearSearch()">Clear</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

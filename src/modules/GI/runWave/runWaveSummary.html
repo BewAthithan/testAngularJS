@@ -1,0 +1,17 @@
+<header class="page-header">
+    <h2> RunWave</h2>
+</header>
+
+<div>
+    <run-wave-filter filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create"
+        ng-show="isFilter">
+        <br>
+    </run-wave-filter>
+</div>
+
+
+<div>
+    <run-wave-table-list filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create"
+        is-filter="isFilter">
+    </run-wave-table-list>
+</div>

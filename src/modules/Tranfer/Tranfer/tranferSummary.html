@@ -1,0 +1,19 @@
+<header class="page-header">
+    <h2>Tranfer</h2>
+</header>
+<div >
+
+    <div >
+        <tranfer-filter filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create"
+            ng-show="isFilter">
+            <br>
+        </tranfer-filter>
+    </div>
+
+
+
+    <div style="margin-top:15px;">
+        <tranfer-table-list filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create"
+            is-filter="isFilter"></tranfer-table-list>
+    </div>
+</div>

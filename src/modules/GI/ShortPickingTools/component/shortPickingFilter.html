@@ -1,0 +1,121 @@
+<div class="row">
+    <header class="panel-heading">
+        <div class="text-right ">
+            <button ng-click="hide()" class="btn btn-light hidden-xs">
+                <i class="glyphicon glyphicon-chevron-down" aria-hidden="true"></i>
+            </button>
+            <button ng-click="hide()" class="btn btn-light btn-block btn-md visible-xs mt-lg">
+                <i class="glyphicon glyphicon-chevron-down" aria-hidden="true"></i>
+            </button>
+        </div>
+    </header>
+    <div class="div-shadow" ng-show='header.Search'>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-8 col-md-3 col-xs-12">
+                        <span>Due Date</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <dir-date-picker ng-model="filterModel.pickingDate"></dir-date-picker>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-8 col-md-3 col-xs-12">
+                        <span>Route</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <div class="input-group" style="padding:0!important;">
+                            <input type="text" class="form-control" ng-model="filterModel.routeName" value="filterModel.routeIndex">
+                            <span class="input-group-btn">
+                                <button ng-click='popupRoute.onClick()' class="btn btn-primary" type="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-8 col-md-3 col-xs-12">
+                        <span>Round</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <div class="input-group" style="padding:0!important;">
+                            <input type="text" class="form-control" ng-model="filterModel.roundName" value="filterModel.roundIndex">
+                            <span class="input-group-btn">
+                                <button ng-click='popupRound.onClick()' class="btn btn-primary" type="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-8 col-md-3 col-xs-12">
+                        <span>Sale Order Type</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <div class="input-group" style="padding:0!important;">
+                            <input type="text" class="form-control" ng-model="filterModel.documentTypeName" value="filterModel.documentTypeIndex">
+                            <span class="input-group-btn">
+                                <button ng-click='popupDocumentType.onClick()' class="btn btn-primary" type="button" type="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-8 col-md-3 col-xs-12">
+                        <span>Sale Order No</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <div class="input-group" style="padding:0!important;">
+                            <input type="text" class="form-control" ng-model="filterModel.planGoodsIssueNo">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="text-right padding-m">
+                    <button ng-click="filterSearch()" class="btn btn-primary hidden-xs">
+                        <i class="fa fa-search" aria-hidden="true"></i> Search</button>
+                    <button ng-click="filterSearch()" class="btn btn-primary btn-block btn-md visible-xs mt-lg">
+                        <i class="fa fa-search" aria-hidden="true"></i> Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<owner-popup on-show='popupOwner.onShow' config='popupOwner.config' invokes='popupOwner.invokes' delegates='popupOwner.delegates'>
+</owner-popup>
+<plan-gi-popup on-show='popupPlanGi.onShow' config='popupPlanGi.config' invokes='popupPlanGi.invokes' delegates='popupPlanGi.delegates'>
+</plan-gi-popup>
+<round-popup on-show='popupRound.onShow' config='popupRound.config' invokes='popupRound.invokes' delegates='popupRound.delegates'>
+</round-popup>
+<route-popup on-show='popupRoute.onShow' config='popupRoute.config' invokes='popupRoute.invokes' delegates='popupRoute.delegates'>
+</route-popup>
+<document-type-popup-plan-gi on-show='popupDocumentType.onShow' config='popupDocumentType.config' invokes='popupDocumentType.invokes'
+    delegates='popupDocumentType.delegates'>
+</document-type-popup-plan-gi>

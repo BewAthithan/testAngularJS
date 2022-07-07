@@ -1,0 +1,15 @@
+<header class="page-header">
+    <h2>Marshal Release</h2>
+</header>
+<div>
+    <div>
+        <marshal-release-filter filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch"
+            trigger-create="create" ng-show="isFilter">
+        </marshal-release-filter>
+
+        <div style="margin-top:15px;">
+            <marshal-release-table-list filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch"
+                trigger-create="create" is-filter="isFilter"></marshal-release-table-list >
+        </div>
+    </div>
+</div>

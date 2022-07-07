@@ -1,0 +1,20 @@
+<header class="page-header">
+    <h2>Location Type</h2>
+</header>
+<div class="container-fluid" style="padding: 20px; " id="master-location-type">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12" style="padding:0px;">
+            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="margin-left:10px;">
+                <location-type-filter filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create" ng-show="isFilter"> 
+                </location-type-filter>
+            </div>      
+        </div>  
+    </div>   
+    <br>
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+            <location-type-table-list filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create" is-filter="isFilter">
+            </location-type-table-list>
+        </div>
+</div>
+
+

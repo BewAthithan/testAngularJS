@@ -1,0 +1,19 @@
+<header class="page-header">
+    <h2>Pre Receiving</h2>
+</header>
+<div >
+
+    <div >
+        <plan-filter filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create"
+            ng-show="isFilter">
+            <br>
+        </plan-filter>
+    </div>
+
+
+
+    <div style="margin-top:15px;">
+        <plan-table-list filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create"
+            is-filter="isFilter"></plan-table-list>
+    </div>
+</div>

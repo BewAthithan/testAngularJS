@@ -1,0 +1,28 @@
+
+<header class="page-header">
+  <h2>Import Store to Store</h2>
+</header>
+<div>
+  <div>
+    <import-store-to-store-filter
+      filter-model="filterModel"
+      search-result-model="searchResultModel"
+      trigger-search="callSearch"
+      trigger-create="create"
+      ng-show="isFilter"
+    >
+      <br />
+    </import-store-to-store-filter>
+  </div>
+
+  <div style="margin-top: 15px">
+    <import-store-to-store-table-list
+      filter-model="filterModel"
+      search-result-model="searchResultModel"
+      pickup-file-result-model="pickupFileResultModel"
+      trigger-search="callSearch"
+      trigger-create="create"
+      is-filter="isFilter"
+    ></import-store-to-store-table-list>
+  </div>
+</div>

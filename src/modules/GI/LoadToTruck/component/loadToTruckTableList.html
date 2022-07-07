@@ -1,0 +1,170 @@
+<style>
+    /* .sortorder:after {
+            content: '\25b2'; 
+            }
+        .sortorder.reverse:after {
+            content: '\25bc';
+            } */
+
+    table {
+        display: flex;
+        flex-direction: column;
+        /* height: 400px; */
+    }
+
+    tbody {
+        overflow-y: auto;
+        overflow-x: auto;
+    }
+
+    thead>tr,
+    tbody>tr,
+    tfoot>tr {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        position: relative;
+    }
+
+    thead,
+    tfoot {
+        flex-shrink: 0;
+    }
+
+    th,
+    tbody td {
+        width: 200%;
+        text-overflow: auto;
+    }
+    .tr180 {
+        max-width: 200px;
+        min-width: 200px;
+    }
+    .tableHeight-400 {
+    height: 400px;
+    max-height: 400px;
+}
+
+</style>
+
+<div class="row" ng-show="$vm.isFilter" style="margin-bottom:15px;">
+    <div class="text-left padding-m">
+        <button ng-click="confirm_Status()" class="btn btn-success hidden-xs">
+            Confirm Load</button>
+        <button ng-click="confirm_Status()" class="btn btn-success btn-block btn-md visible-xs mt-lg">
+            Confirm Load</button>
+    </div>
+    <div class="table-responsive table-overflow  div-shadow" style="margin-bottom:15px;">
+        <table class="table table-striped table-bordeered  table-width-200 tableHeight-400">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th class="text-left tr200">Action</th>
+                    <th class="text-center">Loading</th>
+                    <th class="text-center">Import Round</th>
+                    <th class="text-center">Truck No</th>
+                    <!-- <th class="text-center">Round</th>
+                        <th class="text-center">Route</th> -->
+                    <th class="text-center">DockDoor</th>
+                    
+                    <th class="text-center">Owner</th>
+                    <!-- <th class="text-center">ShipTo</th>
+                    <th class="text-center">QTY</th> -->
+                    <th class="text-center">Delivery Date</th>
+                    <th class="text-center">Loading Status</th>
+                    <th class="text-center">Vehicle Type</th>
+                    <th class="text-center">Vehicle Res</th>
+                    <th class="text-center">Driver</th>
+                    <th class="text-center">3PL</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in $vm.searchResultModel" ng-if="$vm.searchResultModel.length != 0">
+                    <td>
+                        <div class="ig-control">
+                            <input ng-model="data.selected" ng-disabled="data.documentStatus == 2 || data.documentStatus == -1" type="checkbox" id="check_{{$index}}" class="ig-control__cbx" checked />
+                            <label for="check_{{$index}}"></label>
+                        </div>
+                    </td>
+                    <td ng-show="show.action" class="text-left">
+                        <div style="width: 200px;">
+                            <!-- <div class="ig-control">
+                                <input ng-model="data.selected" type="checkbox" id="check_{{$index}}" class="ig-control__cbx"
+                                    checked ng-disabled="data.documentStatus == 0 || data.documentStatus == -1" />
+                                <label for="check_{{$index}}"></label> -->
+
+                            <a class="btn btn-danger" ng-click="delete(data)" ng-disabled="data.documentStatus == 2 || data.documentStatus == -1">
+                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                            </a>
+                            <a class="btn btn-success" ng-click="editItem(data)" uib-tooltip="Edit">
+                                <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                            </a>
+                            <a class="btn btn-primary" ng-click="comfirmItem(data)" uib-tooltip="Confirm plan load" ng-disabled="data.documentStatus != 0">
+                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                            </a>
+                            <!-- <a class="btn btn-success" ng-click="popupReport.onClick(data)" uib-tooltip="Print Report" ng-show="data.documentStatus==2">
+                                <span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+                            </a> -->
+                            <a class="btn btn-success" ng-click="popupReport.onClick(data)" uib-tooltip="Print Report">
+                                <span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+                            </a>
+                            <a class="btn btn-primary" ng-click="popupReportCheck.onClick(data)" uib-tooltip="Print Report">
+                                <span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+                            </a>
+                            <a class="btn btn-info" ng-click="autoLoad(data,$index)" uib-tooltip="Auto Load" ng-disabled="data.isLoadCarton > 0" id="auto_load{{$index}}">
+                                <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                        <!-- </div> -->
+                    </td>
+                    <!-- <td class="text-center">{{$index+1}}</td> -->
+                    <td class="text-center">{{data.truckLoadNo}}</td>
+                    <td class="text-center">{{data.truckLoadRound}}</td>
+                    <td class="text-center">{{data.udF1}}</td>
+                    <!-- <td class="text-center">{{data.roundName}}</td>
+                    <td class="text-left">{{data.routeName}}</td> -->
+                    <td class="text-center">{{data.dockDoorName}}</td>
+                    <td class="text-center">{{data.ownerName}}</td>
+                    <!-- <td class="text-center">{{data.shipToName}}</td> -->
+                    <!-- <td class="text-center">{{data.udF2 | number : 2}}</td> -->
+                    <td class="text-center">{{data.deliveryDate|dateFormate}}</td>
+                    <td class="text-center">{{data.documentStatus == 1 ? 'ยืนยัน' : data.documentStatus == 2 ? 'เสร็จสิ้น' : data.documentStatus
+                        == -1 ? 'ยกเลิก' : 'รอการยืนยัน'}}</td>
+                    <td class="text-center">{{data.vehicleTypeName}}</td>
+                    <td class="text-center">{{data.vehicleRegistration}}</td>
+                    <td class="text-center">{{data.driver}}</td>
+                    <td class="text-center">{{data.c3PLName}}</td>
+                </tr>
+                <tr ng-if="$vm.searchResultModel.length == 0">
+                    <td colspan="15" class="text-center">No Data</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- </div> -->
+
+
+    <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 display-inline">
+            <select class='form-control display-inline' style='width:70px;display:inline-block;' ng-model='pagging.perPage' ng-options="v.value as v.value for v in pageOption"
+                ng-init='pagging.perPage' ng-change='pagging.changeSize()'>
+            </select>
+    </div> -->
+</div>
+<div class="row table-responsive table-overflow " ng-show="$vm.isFilter" style="margin-bottom:15px;">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 " style="padding-top:0px" ng-show="show.pagination">
+            <select class='form-control' style='width:70px;display:inline;' ng-model='$vm.filterModel.perPage' ng-options="v.value as v.value for v in pageOption"
+                ng-init='$vm.filterModel.perPage = 30' ng-change='changeTableSize()'>
+            </select>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 " style="padding:0px" ng-show="show.pagination">
+            <ul uib-pagination total-items="$vm.filterModel.totalRow" ng-change='changePage()' items-per-page="$vm.filterModel.perPage"
+                num-pages="$vm.filterModel.num" ng-model="$vm.filterModel.currentPage" max-size="$vm.filterModel.maxSize" class="pull-right"
+                boundary-link-numbers="true" rotate="false"></ul>
+        </div>
+    </div>
+</div>
+
+<load-to-truck-form on-show="onShow" ng-hide="$vm.isFilter"> </load-to-truck-form>
+<report-popup on-show='popupReport.onShow' config='popupReport.config' invokes='popupReport.invokes' delegates='popupReport.delegates'>
+</report-popup>

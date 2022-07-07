@@ -1,0 +1,67 @@
+<div id="page-content-wrapper" ng-show="onShow">
+    <div>
+        <h3>SoldTo ShipTo Form</h3>
+    </div>
+
+    <!-- .code -->
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                SoldToShipTo Id:
+            </div>
+            <div class="col-lg-8 col-md-9 col-sm-12 col-xs-12 p0">
+                <input type="text" class="form-control" ng-model="filterModel.soldToShipToId">
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                Sold To :
+            </div>
+            <div class="col-lg-8 col-md-9 col-sm-12 col-xs-12 p0">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p0">
+                    <div class="input-group" style="padding:0!important;">
+                        <input type="text" class="form-control" ng-model="filterModel.soldToName" value="filterModel.soldToIndex">
+                        <span class="input-group-btn">
+                            <button ng-click='popupSoldTo.onClick()' class="btn btn-primary" style="padding: 8px 12px;" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">        
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                Ship To :
+            </div>
+            <div class="col-lg-8 col-md-9 col-sm-12 col-xs-12 " style="padding:0px;" >
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p0">
+                    <div class="input-group" style="padding:0!important;">
+                        <input type="text" class="form-control" ng-model="filterModel.shipToName" value="filterModel.shipToIndex">
+                        <span class="input-group-btn">
+                            <button ng-click='popupShipTo.onClick()' class="btn btn-primary" style="padding: 8px 12px;" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- .button -->
+    <div ng-show="Cancel">
+        <button ng-click="back()" class="ks-btn red pull-right">Cancel</button>
+    </div>
+    <div ng-show="update">
+        <button ng-click="edit()" class="ks-btn pull-right" style="margin-right: 5px">Update</button>
+    </div>
+    <div ng-show="create">
+        <button ng-click="add()" class="ks-btn primary pull-right" style="margin-right: 5px">Create</button>
+    </div>
+    <!-- /.button -->
+</div>
+<sold-to-popup on-show='popupSoldTo.onShow' config='popupSoldTo.config' invokes='popupSoldTo.invokes' delegates='popupSoldTo.delegates'></sold-to-popup>
+<ship-to-popup on-show='popupShipTo.onShow' config='popupShipTo.config' invokes='popupShipTo.invokes' delegates='popupShipTo.delegates'></ship-to-popup>

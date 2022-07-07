@@ -1,0 +1,166 @@
+<style>
+    /* .sortorder:after {
+        content: '\25b2'; 
+        }
+    .sortorder.reverse:after {
+        content: '\25bc';
+        } */
+
+    table {
+        display: flex;
+        flex-direction: column;
+        height: 400px;
+    }
+
+    tbody {
+        overflow-y: auto;
+        overflow-x: auto;
+    }
+
+    thead>tr,
+    tbody>tr,
+    tfoot>tr {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        position: relative;
+    }
+</style>
+<div class="text-left" ng-show="$vm.isFilter" style="margin-bottom:15px;">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a data-target="#tab1" data-toggle="tab" style="background-color:{{colortab1}}" ng-click="selectedTab(1)" ng-init="colortab1 = '#FDFEFE'">Task</a>
+        </li>
+        <li class="active">
+            <a data-target="#tab2" data-toggle="tab" style="background-color:{{colortab2}}" ng-click="selectedTab(2)">Assign</a>
+        </li>
+        <li class="active">
+            <a data-target="#tab3" data-toggle="tab" style="background-color:{{colortab3}}" ng-click="selectedTab(3)">Cart</a>
+        </li>
+    </ul>
+    <div id="tab1" class="tab-pane active" ng-if="selected == 1">
+        <div class="row table-responsive table-overflow  div-shadow" ng-show="$vm.isFilter" style="margin-bottom:15px;margin-left: 1px;">
+            <table class="table table-striped table-bordeered ">
+                <thead>
+                    <tr>
+                        <th style="width:200px;" class="text-center">
+
+                        </th>
+                        <th style="width:170px;" class="text-center">Task No</th>
+                        <th style="width:170px;" class="text-center">Order No</th>
+                        <th style="width:150px;" class="text-center">Route</th>
+                        <th style="width:150px;" class="text-center">Round</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="data in $vm.searchResultModel">
+                        <td style="width:200px;">
+                            <a class="btn btn-success" ng-click="selectTask(data)" data-toggle="tooltip" title="Select Task" data-placement="bottom">
+                                Select
+                            </a>
+                        </td>
+                        <th style="width:170px;" class="text-center">{{data.task_No}}</th>
+                        <th style="width:170px;" class="text-center">{{data.planGoodsIssue_No}}</th>
+                        <th style="width:150px;" class="text-center">{{data.route_Name}}</th>
+                        <th style="width:150px;" class="text-center">{{data.round_Name}}</th>
+                    </tr>
+                    <tr ng-if="$vm.searchResultModel.length == 0">
+                        <td colspan="11" class="text-center">No Data</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- </div> -->
+        </div>
+    </div>
+    <div id="tab2" class="tab-pane active" ng-if="selected == 2">
+        <div class="row table-responsive table-overflow  div-shadow" ng-show="$vm.isFilter" style="margin-bottom:15px;margin-left: 1px;">
+            <table class="table table-striped table-bordeered ">
+                <thead>
+                    <tr>
+                        <th style="width:200px;" class="text-center">
+
+                        </th>
+                        <th style="width:170px;" class="text-center">Task No</th>
+                        <th style="width:170px;" class="text-center">Order No</th>
+                        <th style="width:150px;" class="text-center">Route</th>
+                        <th style="width:150px;" class="text-center">Round</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="data in $vm.searchResultModel">
+                        <td style="width:200px;">
+                            <a class="btn btn-success" ng-click="pick(data)" data-toggle="tooltip" title="Select Task" data-placement="bottom">
+                                Select
+                            </a>
+                            <a class="btn btn-danger" ng-click="delete(data)" data-toggle="tooltip" title="Assign Task" data-placement="bottom">
+                                Del
+                            </a>
+                        </td>
+                        <th style="width:170px;" class="text-center">{{data.task_No}}</th>
+                        <th style="width:170px;" class="text-center">{{data.planGoodsIssue_No}}</th>
+                        <th style="width:150px;" class="text-center">{{data.route_Name}}</th>
+                        <th style="width:150px;" class="text-center">{{data.round_Name}}</th>
+                    </tr>
+                    <tr ng-if="$vm.searchResultModel.length == 0">
+                        <td colspan="11" class="text-center">No Data</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- </div> -->
+        </div>
+    </div>
+    <div id="tab3" class="tab-pane active" ng-if="selected == 3">
+        <div class="row table-responsive table-overflow  div-shadow" ng-show="$vm.isFilter" style="margin-bottom:15px;margin-left: 1px;">
+            <table class="table table-striped table-bordeered ">
+                <thead>
+                    <tr>
+                        <th style="width:170px;" class="text-center">Cart</th>
+                        <th style="width:170px;" class="text-center">Task</th>
+                        <th style="width:170px;" class="text-center">Order</th>
+                        <th style="width:150px;" class="text-center">Product</th>
+                        <th style="width:150px;" class="text-center">Qty</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="data in $vm.searchResultModel">
+                        <th style="width:170px;" class="text-center">{{data.equipment_Name}}</th>
+                        <th style="width:170px;" class="text-center">{{data.task_No}}</th>
+                        <th style="width:170px;" class="text-center">{{data.planGoodsIssue_No}}</th>
+                        <th style="width:150px;" class="text-center">{{data.product_SecondName}}</th>
+                        <th style="width:150px;" class="text-center">{{data.totalQty}}</th>
+                    </tr>
+                    <tr ng-if="$vm.searchResultModel.length == 0">
+                        <td colspan="11" class="text-center">No Data</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- </div> -->
+        </div>
+    </div>
+</div>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 " style="padding-top:0px" ng-show="$vm.isFilter">
+        <select class='form-control' style='width:70px;display:inline;' ng-model='$vm.filterModel.perPage' ng-options="v.value as v.value for v in pageOption"
+            ng-init='$vm.filterModel.perPage = 30' ng-change='changeTableSize()'>
+        </select>
+    </div>
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 " style="padding:0px" ng-show="$vm.isFilter">
+        <ul uib-pagination total-items="$vm.filterModel.totalRow" ng-change='changePage()' items-per-page="$vm.filterModel.perPage"
+            num-pages="$vm.filterModel.num" ng-model="$vm.filterModel.currentPage" max-size="$vm.filterModel.maxSize" class="pull-right"
+            boundary-link-numbers="true" rotate="false"></ul>
+    </div>
+</div>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 " style="margin-bottom: 25px" ng-show="$vm.isFilter">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+        <!-- <button ng-click="back()" class="btn btn-danger form-left" style="margin-right:20px;width:13%">
+            Back</button> -->
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+        <button ng-click="pick()" class="btn btn-success form-right hidden-xs" style="margin-right:-5px;width:20%"  ng-if="selected == 1">
+            Pick</button>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+        <button ng-click="pick()" class="btn btn-success btn-block btn-md visible-xs mt-lg" style="margin-right:20px"  ng-if="selected == 1">
+            Pick</button>
+    </div>
+</div>

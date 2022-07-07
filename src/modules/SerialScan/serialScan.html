@@ -1,0 +1,41 @@
+<div class="container-fluid" ng-hide="!$vm.isSerialListHide">
+    <div class="row">
+        <div class="col-12 col-md-6 col-md-offset-3">
+            <div class="div-shadow" style="padding:20px;">
+                <table width="100%">
+                    <tr>
+                        <td width="33%">Owner:</td>
+                        <td>{{$vm.orderModel.OwnerName}}</td>
+                    </tr>
+                    <tr>
+                        <td width="33%">Order No.:</td>
+                        <td>{{$vm.orderModel.OrderNo}}</td>
+                    </tr>
+                    <tr>
+                        <td width="33%">Barcode:</td>
+                        <td>{{$vm.orderModel.Barcode}}</td>
+                    </tr>
+                    <tr>
+                        <td width="33%">Product Description:</td>
+                        <td>{{$vm.orderModel.ProductDesc}}</td>
+                    </tr>
+                    <tr>
+                        <td width="33%">Quantity:</td>
+                        <td>{{$vm.QtyScan}}</td>
+                    </tr>
+                    <tr>
+                        <td width="33%">Scan Count:</td>
+                        <td>{{$vm.QtySerialScan}}</td>
+                    </tr>
+                </table>
+                <div class="form-group" style="margin: 20px 0;">
+                    <label>Serial No:</label>
+                    <input type="text" class="form-control input-lg" id="SerialNo" ng-model="serialno" ng-disabled="completeSerial" ng-keypress="$event.keyCode == 13 && doSerialNoSubmit()" focus-me="true">
+                </div>
+                <button type="button" class="btn btn-default btn-block" ng-click="$vm.GoToList()">List Serial Scan</button>
+                <div class="text-center" style="margin-top: 20px;" ng-click="$vm.close()" ng-show="buttons.back">Back</div>
+            </div>
+        </div>
+    </div>
+</div>
+<serial-scan-list on-close-modal="$vm.HideModal()" ng-hide="$vm.isSerialListHide"></serial-scan-list>

@@ -1,0 +1,132 @@
+<style>
+    /* .sortorder:after {
+            content: '\25b2'; 
+            }
+        .sortorder.reverse:after {
+            content: '\25bc';
+            } */
+
+    table {
+        display: flex;
+        flex-direction: column;
+        height: 400px;
+    }
+
+    tbody {
+        overflow-y: auto;
+        overflow-x: auto;
+    }
+
+    thead>tr,
+    tbody>tr,
+    tfoot>tr {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        position: relative;
+    }
+
+    thead,
+    tfoot {
+        flex-shrink: 0;
+    }
+
+    th,
+    tbody td {
+        width: 100%;
+        text-overflow: auto;
+    }
+</style>
+<div ng-show="isStock">
+    <header class="page-header">
+        <h2>Stock Detail</h2>
+    </header>
+    <div class="row" style="margin-bottom:15px;margin-left: 10px;margin-right: 20px;">
+        <div class="div-shadow">
+            <div class="col-md-12 col-md-offset-12" style="margin-top:20px;"></div>
+            <div class="form-group" style="margin-top:50px;margin-bottom: 50px;">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-2 col-xs-2 dropdown display-inline" style="margin-left:-15px;">
+                        <select ng-model="actionPS" class="form-control" ng-init="actionPS = '1'">
+                            <option value="1">GoodsReceive No.</option>
+                        </select>
+                    </div>
+                    <div ng-switch="actionPS">
+                        <div class="input-group col-lg-3 col-xs-3" ng-switch-when="1">
+                            <input type="text" ng-model="$vm.filterModel.goodsReceiveNo" class="form-control">
+                            <span class="input-group-btn">
+                                <button ng-click="filterSearch()" class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-md-offset-12" style="margin-top:20px;"></div>
+
+        </div>
+    </div>
+
+    <div class="row   table-responsive table-overflow  div-shadow" style="margin-bottom:15px;margin-left: 10px;margin-right: 20px;">
+        <div class="table table-striped table-bordeered  table-width-200">
+            <table class="table table-striped table-bordeered  table-width-400">
+                <thead>
+                    <tr>
+                        <th class="text-center">No.</th>
+                        <th class="text-center">SKU Barcode</th>
+                        <th class="text-center">SKu Name</th>
+                        <th class="text-center">Location Name</th>
+                        <th class="text-center">Receiving No.</th>
+                        <th class="text-center">Receiving Ref</th>
+                        <th class="text-center">Receiving Date</th>
+                        <th class="text-center">LPN No.</th>
+                        <th class="text-center">Item Grade</th>
+                        <th class="text-center">MFG Date</th>
+                        <th class="text-center">EXP Date</th>
+                        <th class="text-center">Stock on Hand</th>
+                        <th class="text-center">Stock Allocated</th>
+                        <th class="text-center">Stock Available</th>
+                        <th class="text-center">Unit</th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="data in $vm.locationStock">
+                        <td class="text-center">{{$index+1}}</td>
+                        <td class="text-center">{{data.productId}}</td>
+                        <td class="text-center">{{data.productSecondName}}</td>
+                        <td class="text-center">{{data.locationName}}</td>
+                        <td class="text-center">{{data.goodsReceiveNo}}</td>
+                        <td class="text-center">{{data.receivingRef}}</td>
+                        <td class="text-center">{{data.goodsReceiveDate}}</td>
+                        <td class="text-center">{{data.tagNo}}</td>
+                        <td class="text-center">{{data.itemStatusName}}</td>
+                        <td class="text-center">{{data.mFGDate|dateFormate}}</td>
+                        <td class="text-center">{{data.eXPDate|dateFormate}}</td>
+                        <td class="text-center">{{data.stockONHand}}</td>
+                        <td class="text-center">{{data.stockAllocated}}</td>
+                        <td class="text-center">{{data.stockAvailable}}</td>
+                        <td class="text-center">{{data.productConversionName}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row table-responsive table-overflow" style="margin-bottom:15px;">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 " style="padding-top:0px;margin-top:15px;margin-left:15px;" ng-show="show.pagination">
+                <select class='form-control' style='width:70px;display:inline;' ng-model='$vm.filterModel.perPage'
+                    ng-options="v.value as v.value for v in pageOption" ng-init='$vm.filterModel.perPage = 30' ng-change='changeTableSize()'>
+                </select>
+            </div>
+            <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 " style="padding:0px;margin-left:70px;" ng-show="show.pagination">
+                <ul uib-pagination total-items="$vm.filterModel.totalRow" ng-change='changePage()' items-per-page="$vm.filterModel.perPage"
+                    num-pages="$vm.filterModel.num" ng-model="$vm.filterModel.currentPage" max-size="$vm.filterModel.maxSize"
+                    class="pull-right" boundary-link-numbers="true" rotate="false"></ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12 text-right" style="margin-bottom:15px;">
+        <button ng-click="back()" class="btn btn-danger pull-right" ng-show="buttons.back">Back</button>
+    </div>
+
+</div>

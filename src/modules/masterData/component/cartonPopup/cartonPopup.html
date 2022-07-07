@@ -1,0 +1,20 @@
+<div id="modal-form" class="modal" tabindex="-1" dp-modal on-show="onShow" on-hide="onHide" style="z-index: 1035;">
+    <div class="modal-dialog" style="overflow: hidden; width: 80%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="onClose()">&times;</button>
+                <h4 class="blue bigger">Carton</h4>
+            </div>
+            <div class="modal-body">
+                <carton-filter></carton-filter>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" ng-click="onClose()">Clear</button>
+                <!--
+         <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
+         -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- PAGE CONTENT ENDS -->

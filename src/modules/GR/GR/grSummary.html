@@ -1,0 +1,19 @@
+<header class="page-header">
+    <h2> Receiving</h2>
+</header>
+
+<div>
+    <gr-filter filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create"
+        ng-show="isFilter">
+        <br>
+    </gr-filter>
+</div>
+
+
+<div>
+    <gr-table-list filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create"
+        is-filter="isFilter">
+    </gr-table-list>
+</div>
+
+<!-- GUID : {{filterModel}} -->

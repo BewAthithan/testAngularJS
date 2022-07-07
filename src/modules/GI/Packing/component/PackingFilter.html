@@ -1,0 +1,268 @@
+
+<div class="row">
+    <div class="div-shadow">
+        <div class="panel-body" style="display: block;" ng-show='header.Search'>
+            <!--New Line White Space-->
+            <div class="col-md-12 col-md-offset-12" style="margin-top:20px;"></div>
+            <div class="form-group" style="margin-top:20px">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                    <div class="col-lg-4 col-md-4 col-xs-12">
+                        <div class="col-lg-6 col-md-6 col-xs-12" style="padding:0px">
+                            <span>Owner</span>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                            <div class="input-group" style="padding:0!important;">
+                                <input type="text" class="form-control" ng-model="filterModel.ownerName">
+                                <span class="input-group-btn">
+                                    <button ng-click='popupOwner.onClick()' class="btn btn-primary" type="button" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <div class="col-lg-6 col-md-12 col-xs-12" style="padding:0px">
+                            <span>Pack Station</span>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                            <input type="text" class="form-control" ng-model="filterModel.packStation" ks-enter="inputPackStation()" id="packStationInput">
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-xs-12">
+                        <div class="col-lg-6 col-md-6 col-xs-12" style="padding:0px">
+                            <span>LPN No.</span>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-xs-8" style="padding:0px">
+                            <input type="text" class="form-control" ng-model="filterModel.lpnNo" ks-enter="inputLPN()" id="lpnNoInput">
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-xs-4 " style="padding:0px;">
+                            <button class="btn btn-success" style="width: 95%; margin-left: 5px;" ng-click='closeLPN()'>Close LPN</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" style="margin-top:20px">
+                <div class="ccol-lg-4 col-md-6 col-xs-6">
+                    <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                        <span>Sale Order Number</span>
+                        <input type="text" class="form-control" ng-model="$vm.filterModel.saleOrderNo" ks-enter="inputSaleOrderNo()" id="saleOrderNoInput">
+                    </div>
+                </div>
+                <div class="ccol-lg-3 col-md-6 col-xs-6">
+                    <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                        <span>Sale Order Type</span>
+                        <input type="text" class="form-control" ng-model="$vm.filterModel.saleOrderType" id="saleOrderTypeInput" disabled>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-6 col-md-6 col-xs-12" style="padding:0px">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                            <span>Packing</span>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                            <input class="form-control" ng-model="$vm.filterModel.saleOrderTable.webRespone.isConfirmTxt"
+                                value="$vm.filterModel.saleOrderTable.webRespone.isConfirmTxt" readonly />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xs-12" style="padding:0px">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                            <span>Packing Instruction</span>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                            <textarea rows="3" class="form-control" ng-model="$vm.filterModel.saleOrderTable.documentRemark" readonly></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                    <div ng-class="{'col-lg-12 col-md-12 col-xs-12': filterModel.packingOption == '1',
+                    'col-lg-6 col-md-6 col-xs-6': filterModel.packingOption == '2'}">
+                        <div class="col-lg-4 col-md-4 col-xs-12" style="padding:0px">
+                            <span>Packing Option</span>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                            <select ng-model="filterModel.packingOption" class="form-control"
+                            ng-disabled="$vm.searchResultModel.length > 0" ng-change="changePackingOption()">
+                                <option value="1">Scan All Items</option>
+                                <option value="2">Ignore Item Scan</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-6" ng-show="!$vm.filterModel.packStatus"
+                    ng-style="{display: {true: 'none', false: 'block'}[filterModel.packingOption == '1']}">
+                        <div class="col-lg-4 col-md-4 col-xs-12" style="padding:0px">
+                            <span>Box Sizes</span>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                            <select ng-model="$vm.box" class="form-control" style="margin-bottom: 15px;"
+                            ng-options="box.boxId as box.boxName for box in boxSizes track by box.boxId"
+                            ng-change="getBoxSize()">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" ng-show="!$vm.filterModel.packStatus">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                    <div class="col-lg-6 col-md-6 col-xs-6">
+                        <div class="col-lg-4 col-md-4 col-xs-12" style="padding:0px">
+                            <span>Box Qty</span>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                            <input type="number" class="form-control" ng-model="$vm.filterModel.boxQty" ng-disabled="filterModel.packingOption == '1'">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-6">
+                        <button class="btn btn-success" style="margin-top: 20px; width: 100%;"
+                        ng-if="!$vm.filterModel.packStatus" ng-click="createNewCarton()">
+                            <i class="glyphicon glyphicon-plus-sign" aria-hidden="true"></i> New Box
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- button pack station modal -->
+<button type="button" style="display:none;" data-toggle="modal" data-target="#packStationModal" id="packStationBtn">pack station btn</button>
+<!-- pack station modal -->
+<div class="modal fade" id="packStationModal" tabindex="-1" role="dialog" aria-labelledby="packStationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="packStationModalLabel">Input LPN</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top:-20px;" id="btnCloseLpnNo">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <p class="text-left">LPN No.</p>
+                <input type="text" class="form-control" ng-model="filterModel.lpnNo" id="lpnNo" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click='saveLpn()'>Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- button sale order no modal -->
+<button type="button" style="display:none;" data-toggle="modal" data-target="#saleOrderNoModal" id="saleOrderNoBtn">sale order no btn</button>
+<!-- sale order no modal -->
+<div class="modal fade" id="saleOrderNoModal" tabindex="-1" role="dialog" aria-labelledby="saleOrderNoModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="saleOrderNoModalLabel">Cancel Detail</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top:-20px;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table text-center">
+                    <thead>
+                        <tr>
+                            <th class="text-center">No</th>
+                            <th class="text-center">Product No</th>
+                            <th class="text-center">Product</th>
+                            <th class="text-center">Qty</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="(index, data) in $vm.filterModel.saleOrderTableRender" ng-if="index != 0">
+                            <td class="text-center">{{index}}</td>
+                            <td class="text-center">{{data.productId}}</td>
+                            <td class="text-center">{{data.productName}}</td>
+                            <td class="text-center">{{data.totalQtyCancelled}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer text-center">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- button new box modal -->
+<button type="button" style="display:none;" data-toggle="modal" data-target="#newBoxModal" id="newBoxBtn" data-backdrop="static" data-keyboard="false">new box btn</button>
+<!-- new box modal -->
+<div class="modal fade" id="newBoxModal" tabindex="-1" role="dialog" aria-labelledby="newBoxModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="newBoxModalLabel">Packing Item</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top:-20px;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Carton No: {{$vm.packingItem.tagOutNo}}</p>
+                <p>Box</p>
+                <select ng-model="$vm.box" class="form-control" style="margin-bottom: 15px;" ng-disabled="$vm.filterModel.packStatus"
+                ng-options="box.boxId as box.boxName for box in boxSizes track by box.boxId" ng-change="getBoxSize()">
+                </select>
+                <div class="col-xs-3" style="margin-bottom: 20px;">
+                    <p>Length (cm.)</p>
+                    <input type="number" class="form-control" ng-model="filterModel.packL" id="packL"
+                    ng-disabled="!$vm.customBox || $vm.filterModel.packStatus"/>
+                </div>
+                <div class="col-xs-3" style="margin-bottom: 20px;">
+                    <p>Width (cm.)</p>
+                    <input type="number" class="form-control" ng-model="filterModel.packW" id="packW"
+                    ng-disabled="!$vm.customBox || $vm.filterModel.packStatus"/>
+                </div>
+                <div class="col-xs-3" style="margin-bottom: 20px;">
+                    <p>Height (cm.)</p>
+                    <input type="number" class="form-control" ng-model="filterModel.packH" id="packH"
+                    ng-disabled="!$vm.customBox || $vm.filterModel.packStatus"/>
+                </div>
+                <div class="col-xs-3" style="margin-bottom: 20px;">
+                    <p>Weight (kg.)</p>
+                    <input type="number" class="form-control" ng-model="filterModel.packWeight" id="packWeight"
+                    ng-disabled="$vm.filterModel.packStatus" />
+                </div>
+                <p>Product</p>
+                <input type="text" class="form-control" ng-model="filterModel.productBarcode" ks-enter="inputProductBarcode()" id="productBarcode"
+                ng-disabled="$vm.filterModel.packStatus" />
+                <table class="table" style="margin-top: 20px;">
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;" class="text-center">No</th>
+                            <th class="text-center">Product No</th>
+                            <th class="text-center">Product</th>
+                            <th style="width: 20%;" class="text-center">Qty</th>
+                            <th style="width: 30%;" class="text-center">UOM</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="(index, data) in $vm.packingItemTable.packingItem">
+                            <td style="width: 20%;" class="text-center">{{index+1}}</td>
+                            <td class="text-center">{{data.productConversionBarcode}}</td>
+                            <td class="text-center">{{data.productName}}</td>
+                            <td style="width: 20%;" class="text-center">{{data.qty}}</td>
+                            <td style="width: 30%;" class="text-center">{{data.productConversionName}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" ng-click='newBox()'>New</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Back</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<owner-popup on-show='popupOwner.onShow' config='popupOwner.config' invokes='popupOwner.invokes'
+    delegates='popupOwner.delegates'>
+</owner-popup>

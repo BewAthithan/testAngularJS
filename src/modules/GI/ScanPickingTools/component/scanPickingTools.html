@@ -1,0 +1,106 @@
+<style>
+    .responsive {
+  width: 100%;
+  height: auto;
+}
+</style>
+<div class="row" ng-show="$vm.isFilter">
+    <div class="div-shadow" style="margin-top:20px;margin-left:15px;margin-right:15px;margin-bottom:15px;">
+        <div class="form-group" style="margin-top:15px;">            
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <span>Task ID</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-12">
+                    <div class="input-group" style="padding:0!important;">
+                        <input type="text" class="form-control" ng-model="$vm.filterModel.TaskID" ks-enter="ScanTaskID()">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="button" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-12 col-md-12 col-xs-12 text-center">
+                        <img src="https://sv1.picz.in.th/images/2019/01/21/TWtFsy.png" width="200" height="153"><br>
+                </div>                
+            </div>         
+        </div>
+        <div class="form-group" style="margin-top:15px;">            
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12 text-right">
+                    <button class="btn btn-primary hidden-xs">
+                         Replace</button>
+                    <button class="btn btn-primary btn-block btn-md visible-xs mt-lg">
+                        Replace</button>
+                </div>               
+
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <span class="hidden-xs visible-lg visible-md text-right">Location</span>
+                    <span class="visible-xs">Location</span>
+                </div>
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <input type="text" class="form-control" disabled/>
+                </div>
+            </div>
+        </div>       
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <span>Description</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-12">
+                    <input type="text" class="form-control" disabled/>
+                </div>
+            </div>           
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <span>QTY</span>
+                </div>
+                <div class="col-lg-5 col-md-5 col-xs-6">
+                    <input type="text" class="form-control" disabled/>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-6 text-right">
+                    <input type="text" class="form-control" disabled/>
+                </div>
+            </div>           
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <span>Product</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-12">
+                    <input type="text" class="form-control" ng-model="$vm.filterModel.Product" ks-enter="ScanProduct()"/>
+                </div>
+            </div>           
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <span>Count</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-12">
+                    <input type="text" class="form-control" disabled/>
+                </div>
+            </div>           
+        </div>
+        <div class="col-md-12 col-md-offset-12" style="margin-top:20px;"></div>
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12 text-right" style="margin-bottom:15px;">
+                    <div class="col-lg-12 col-md-12 col-xs-12">                    
+                    <button class="btn btn-success hidden-xs" ng-click="$vm.addItem()">Confirm</button>
+                    <button class="btn btn-success btn-block btn-md visible-xs mt-lg" ng-click="$vm.addItem()">Confirm</button> 
+                    </div>                   
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 col-md-offset-12" style="margin-top:20px;"></div>
+    </div>
+</div>
