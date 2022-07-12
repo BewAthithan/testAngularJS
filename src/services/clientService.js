@@ -1,11 +1,16 @@
 app.factory("clientService", ["$q", "$http", "localStorageService", "webServiceAPI", function($q, $http, localStorageService, webServiceAPI) {
 
     var modules = {};
-
+    
+    var config = { 
+        headers : {
+            'authorization': localStorageService.get('authorization')
+        }
+    };
 
     modules.get = function(url) {
         var defer = $q.defer();
-        $http.get(url).then(function(result) {
+        $http.get(url, config).then(function(result) {
             if (result.status === 200) {
                 defer.resolve(result);
             } else {
@@ -37,7 +42,7 @@ app.factory("clientService", ["$q", "$http", "localStorageService", "webServiceA
             data.warehouseName = localStorageService.get('warehouseVariableName');
         }
 
-        $http.post(url, data).then(function (result) {
+        $http.post(url, data, config).then(function (result) {
 
             if (result.status === 200) {
                 defer.resolve(result);
@@ -206,7 +211,7 @@ app.factory("clientService", ["$q", "$http", "localStorageService", "webServiceA
         data.warehouseIndex = localStorageService.get('warehouseVariableIndex');
         data.warehouseName = localStorageService.get('warehouseVariableName');
 
-        $http.put(url, data).then(function(result) {
+        $http.put(url, data, config).then(function(result) {
 
             if (result.status === 200) {
                 defer.resolve(result);
@@ -223,7 +228,7 @@ app.factory("clientService", ["$q", "$http", "localStorageService", "webServiceA
     modules.delete = function(url) {
         var defer = $q.defer();
 
-        $http.delete(url).then(function(result) {
+        $http.delete(url, config).then(function(result) {
 
             if (result.status === 200) {
                 defer.resolve(result);
