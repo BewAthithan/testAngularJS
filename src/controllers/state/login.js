@@ -36,6 +36,7 @@ app.controller('loginController', ['$scope', '$location', 'ngAuthSettings', '$st
                             $window.localStorage['isReload'] = 1; 
                             $window.localStorage['userGroupName'] = res.data.userGroupName; 
                             $window.localStorage['m3n7'] = JSON.stringify(res.data.userMenuViewModel);
+                            localStorageService.set('authorization', res.data.authorization);
                             $state.go('tops.index');
                         }
                     }
